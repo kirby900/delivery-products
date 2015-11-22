@@ -1,0 +1,73 @@
+<h4>New Enterprise Product</h4>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="product.entrpPrdctNam" placeholder="Unique product name" autofocus >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="product.entrpPrdctDesc" placeholder="Optional description">
+        </div>
+    </div>
+<!--
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Group Id</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="product.entrpPrdctGrpGid">
+        </div>
+    </div>
+-->
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Target database</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="product.trgtDbNam" placeholder="Database name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Target schema</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="product.trgtSchmaNam" placeholder="Schema name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Perl driver</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="product.trgtPerlDrvrNam" placeholder="DBI module name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Enabled</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label>
+                <input type="checkbox"
+                    data-ng-model="product.aprvdInd"
+                    data-ng-true-value="'Y'"
+                    data-ng-false-value="'N'">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Base output directory</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="product.fileLctnTmpltTxt" placeholder="Enter absolute path">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" data-ng-click="save(product)">Save</button>
+            <a role="button" class="btn btn-default" data-ui-sref="products.list">Cancel</a>
+        </div>
+    </div>
+</form>

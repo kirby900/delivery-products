@@ -1,0 +1,25 @@
+//
+// Proposed API
+//
+
+// Get list of Enterprise Products
+http://localhost:1337/enterpriseProducts
+
+// Get list of Product Parameters
+http://localhost:1337/productParameters
+
+// Get list of Product Tasks
+http://localhost:1337/productTasks
+
+
+// Get details for one Enterprise Product
+http://localhost:1337/enterpriseProducts/2
+
+// Get parameters tied to Enterprise Product 1
+http://localhost:1337/enterpriseProducts/1/parameters
+
+// Get formats tied to Enterprise Product 2
+http://localhost:1337/enterpriseProducts/2/formats
+
+// Get tasks tied to Enterprise Product 3
+http://localhost:1337/enterpriseProducts/3/tasks

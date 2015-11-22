@@ -1,0 +1,11 @@
+<h4>Product List</h4>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <a href="#/products/new">Add New Product</a>
+    </li>
+
+    <li class="list-group-item" data-ng-repeat="p in products | orderBy: 'entrpPrdctNam'">
+        <a data-ng-href="#/products/{{ p.entrpPrdctGid }}/detail">{{ p.entrpPrdctNam }}</a>
+    </li>
+</ul>

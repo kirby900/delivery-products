@@ -1,0 +1,13 @@
+<h4>Product Parameters</h4>
+
+<ul class="list-group">
+    <li class="list-group-item bg-primary">
+        <a ng-href="#/products/{{ entrpPrdctGid }}/parameters/new">Add Product Parameter</a>
+    </li>
+
+    <li class="list-group-item" data-ng-repeat="p in productParameters | orderBy: 'parmGid.parmNam'">
+        <a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/{{ p.prdctParmGid }}">{{ p.parmGid.parmNam }}</a>
+    </li>
+</ul>
+
+<a role="button" class="btn btn-default" data-ng-href="#/products/{{entrpPrdctGid}}/detail">Back to Product</a>

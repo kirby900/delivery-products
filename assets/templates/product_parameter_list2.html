@@ -1,0 +1,25 @@
+<h4>Product Parameters</h4>
+
+<div class="form-horizontal">
+    <div class="col-sm-3">
+        <ul class="list-group">
+            <li class="list-group-item" data-ng-repeat="p in productParameters | orderBy: 'parmGid.parmNam'">
+                <a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/{{ p.prdctParmGid }}">{{ p.parmGid.parmNam }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-3">
+        <ul class="list-group">
+            <li class="list-group-item" 
+                data-ng-repeat="p in productParameters | orderBy: 'parmGid.parmNam'">
+                <a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/{{ p.prdctParmGid }}">{{ p.parmGid.parmNam }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-6">
+    </div>
+</div>
+
+<a role="button" class="btn btn-default" data-ng-href="#/products/{{entrpPrdctGid}}/detail">Back to Product</a>
