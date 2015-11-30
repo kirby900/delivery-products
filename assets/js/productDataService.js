@@ -3,7 +3,7 @@
 ** It uses Angular ngResource to generate functions for standard CRUD
 ** operations.
 */
-angular.module('ProductLayerModule', ['ngResource'])
+angular.module('ProductDataService', ['ngResource'])
 .factory('Parameter', ['$resource', function($resource){
     console.log('Entered factory function for Parameter');
 
@@ -18,7 +18,7 @@ angular.module('ProductLayerModule', ['ngResource'])
     */
     return $resource(
         '/parameters/:id',             // the associated URL
-        { id: '@parmGid' },            // maps id parameter to a property
+        { id: '@parmGid' },            // map id parameter to a property
         {                              // additional or override methods
             update: { method: 'PUT' }
         }
@@ -29,7 +29,7 @@ angular.module('ProductLayerModule', ['ngResource'])
 
     return $resource(
         '/enterpriseProducts/:id',         // the associated URL
-        { id: '@entrpPrdctGid' },          // maps id parameter to a property
+        { id: '@entrpPrdctGid' },          // map id parameter to a property
         {                                  // additional or override methods
             update: { method: 'PUT' }
         }
@@ -40,7 +40,7 @@ angular.module('ProductLayerModule', ['ngResource'])
 
     return $resource(
         '/productParameters/:id',         // the associated URL
-        { id: '@prdctParmGid' },          // maps id parameter to a property
+        { id: '@prdctParmGid' },          // map id parameter to a property
         {                                 // additional or override methods
             update: { method: 'PUT' }
         }
@@ -51,7 +51,7 @@ angular.module('ProductLayerModule', ['ngResource'])
 
     return $resource(
         '/productFormats/:id',         // the associated URL
-        { id: '@prdctFrmtGid' },       // maps id parameter to a property
+        { id: '@prdctFrmtGid' },       // map id parameter to a property
         {                              // additional or override methods
             update: { method: 'PUT' }
         }
@@ -62,7 +62,18 @@ angular.module('ProductLayerModule', ['ngResource'])
 
     return $resource(
         '/productTasks/:id',           // the associated URL
-        { id: '@taskGid' },            // maps id parameter to a property
+        { id: '@taskGid' },            // map id parameter to a property
+        {                              // additional or override methods
+            update: { method: 'PUT' }
+        }
+    );
+}])
+.factory('ProductAttribute', ['$resource', function($resource){
+    console.log('Entered factory function for ProductAttribute');
+
+    return $resource(
+        '/productAttributes/:id',      // the associated URL
+        { id: '@prdctAtrbGid' },       // map id parameter to a property
         {                              // additional or override methods
             update: { method: 'PUT' }
         }

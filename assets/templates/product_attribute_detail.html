@@ -1,0 +1,37 @@
+<h4>Product Attribute Details</h4>
+
+<table class="table table-condensed">
+    <tbody>
+        <tr><td>Gid</td><td>{{ attribute.prdctAtrbGid }}</td></tr>
+        <tr><td>Name</td><td>{{ attribute.atrbNam }}</td></tr>
+        <tr><td>Description</td><td>{{ attribute.atrbDesc }}</td></tr>
+        <tr><td>Format Gid</td><td>{{ attribute.prdctFrmtGid }}</td></tr>
+        <tr><td>Header</td><td>{{ attribute.atrbHdrNam }}</td></tr>
+        <tr><td>Order #</td><td>{{ attribute.atrbOrdrNbr }}</td></tr>
+        <tr><td>Format</td><td>{{ attribute.atrbFrmtTxt }}</td></tr>
+        <tr><td>Field width</td><td>{{ attribute.atrbMaxLngthNbr }}</td></tr>
+        <tr><td>Alignment</td><td>{{ attribute.atrbDataAlgnCde }}</td></tr>
+        <tr><td>Pad character</td><td>{{ attribute.atrbPadVal }}</td></tr>
+        <tr><td>Filler?</td><td>{{ indicatorToText(attribute.atrbIsFlrInd) }}</td></tr>
+        <tr><td>Filler value</td><td>{{ attribute.atrbDfltVal }}</td></tr>
+        <tr><td>Data type</td><td>{{ attribute.atrbDataTypTxt }}</td></tr>
+        <tr><td>Pivot?</td><td>{{ indicatorToText(attribute.atrbPivotInd) }}</td></tr>
+        <tr><td>Required?</td><td>{{ indicatorToText(attribute.atrbRqrdInd) }}</td></tr>
+        <tr><td>Aggregate function</td><td>{{ attribute.aggFnctnCde }}</td></tr>
+        <tr><td>Pivot value sort</td><td>{{ attribute.pivotSortOrdr }}</td></tr>
+        <tr><td>Empty value override</td><td>{{ attribute.aggNullPlugVal }}</td></tr>
+        <tr><td>Split field?</td><td>{{ indicatorToText(attribute.splitFileOnAtrbValInd) }}</td></tr>
+        <tr><td>Standard attribute?</td><td>{{ indicatorToText(attribute.stdAtrbInd) }}</td></tr>
+        <tr><td>Quote character</td><td>{{ attribute.txtWrapVal }}</td></tr>
+        <tr><td>Record sort field rank</td><td>{{ attribute.ordrByRankNbr }}</td></tr>
+        <tr><td>Metric Id</td><td>{{ attribute.unpivotSrceAtrbId }}</td></tr>
+        <tr><td>Unpivot Id target?</td><td>{{ indicatorToText(attribute.unpivotIdTrgtAtrbInd) }}</td></tr>
+        <tr><td>Unpivot value target?</td><td>{{ indicatorToText(attribute.unpivotValTrgtAtrbInd) }}</td></tr>
+        <tr><td>Pivot value function</td><td>{{ attribute.pivotValFnctnNam }}</td></tr>
+        <tr><td>Last update</td><td>{{ attribute.lstUpdtTstmp | date:'medium' }} by {{ attribute.lstUpdtId }}</td></tr>
+    </tbody>
+</table>
+
+<a role="button" class="btn btn-default" data-ng-href="#/attributes/{{ attribute.prdctAtrbGid }}/edit">Edit</a>
+<a role="button" class="btn btn-default" data-ng-href="#/formats/{{ attribute.prdctFrmtGid }}">Format</a>
+<a role="button" data-ng-href="#/products">Products</a>

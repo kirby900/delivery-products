@@ -30,6 +30,7 @@ var jsFilesToInject = [
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/jquery/*.js',
+  'js/dependencies/jquery-ui/*.js',
   'js/dependencies/bootstrap/*.js',
   'js/dependencies/angular/angular.min.js',
   'js/dependencies/angular/*.js',

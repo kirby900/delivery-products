@@ -1,44 +1,39 @@
-<h4>Product Details</h4>
+<h4>Product Detail</h4>
 
-<table class="table">
-<tr><th>Property</th><th>Value</th></tr>
+<table class="table table-condensed">
+    <thead>
+        <tr><th>Property</th><th>Value</th></tr>
+    </thead>
 
-<tr><td>Gid</td><td>{{ product.entrpPrdctGid }}</td></tr>
-<tr><td>Name</td><td>{{ product.entrpPrdctNam }}</td></tr>
-<tr><td>Description</td><td>{{ product.entrpPrdctDesc }}</td></tr>
-<!--
-<tr><td>Group Id</td><td>{{ product.entrpPrdctGrpGid }}</td></tr>
--->
-<tr><td>Target database</td><td>{{ product.trgtSchmaNam }} @ {{ product.trgtDbNam }}</td></tr>
-<tr><td>Perl driver</td><td>{{ product.trgtPerlDrvrNam }}</td></tr>
-<tr><td>Enabled</td><td>{{ product.aprvdInd == 'Y' ? 'Yes' : 'No' }}</td></tr>
-<tr><td>Output directory</td><td>{{ product.fileLctnTmpltTxt }}</td></tr>
-
-<tr>
-    <td>Parameters</td>
-    <td>
-        {{ product.parameters.length }} 
-        <a ng-href="#/products/{{ product.entrpPrdctGid }}/parameters">Edit Parameters</a>
-    </td>
-</tr>
-
-<tr>
-    <td>Formats</td>
-    <td>
-        {{ product.formats.length }}
-        <a ng-href="#/products/{{ product.entrpPrdctGid }}/formats">Edit Formats</a>
-    </td>
-</tr>
-
-<tr>
-    <td>Tasks</td>
-    <td>
-        {{ product.tasks.length }}
-        <a ng-href="#/products/{{ product.entrpPrdctGid }}/tasks">Edit Tasks</a>
-    </td>
-</tr>
+    <tbody>
+        <tr><td>Gid</td><td>{{ product.entrpPrdctGid }}</td></tr>
+        <tr><td>Name</td><td>{{ product.entrpPrdctNam }}</td></tr>
+        <tr><td>Description</td><td>{{ product.entrpPrdctDesc }}</td></tr>
+        <!--
+        <tr><td>Group Id</td><td>{{ product.entrpPrdctGrpGid }}</td></tr>
+        -->
+        <tr><td>Target database</td><td>{{ product.trgtSchmaNam }} @ {{ product.trgtDbNam }}</td></tr>
+        <tr><td>Perl driver</td><td>{{ product.trgtPerlDrvrNam }}</td></tr>
+        <tr><td>Enabled</td><td>{{ indicatorToText(product.aprvdInd) }}</td></tr>
+        <tr><td>Output directory</td><td>{{ product.fileLctnTmpltTxt }}</td></tr>
+        <tr><td>Last update</td><td>{{ product.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ product.lstUpdtId }}</td></tr>
+    </tbody>
 </table>
 
+<ul class="list-inline">
+    <li>
+        <a ng-href="#/products/{{ product.entrpPrdctGid }}/parameters/list">Product Parameters</a>
+    </li>
+    <li>
+        <a ng-href="#/products/{{ product.entrpPrdctGid }}/formats/list">Product Formats</a>
+    </li>
+    <li>
+        <a ng-href="#/products/{{ product.entrpPrdctGid }}/tasks/list">Product Tasks</a>
+    </li>
+</ul>
+
 <a role="button" class="btn btn-default" data-ng-href="#/products/{{ product.entrpPrdctGid }}/edit">Edit</a>
-<a role="button" class="btn btn-default" ui-sref="products.list">Back to list</a>
+<a role="button" class="btn btn-default" href="#/products/list">Back to Products</a>
+<!--
 <button type="button" class="btn btn-danger" data-ng-click="delete(product)">Delete</a>
+-->

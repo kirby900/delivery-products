@@ -1,11 +1,30 @@
 <h4>Product List</h4>
 
-<ul class="list-group">
-    <li class="list-group-item">
-        <a href="#/products/new">Add New Product</a>
-    </li>
+<p data-ng-hide="products">Loading...</p>
 
-    <li class="list-group-item" data-ng-repeat="p in products | orderBy: 'entrpPrdctNam'">
-        <a data-ng-href="#/products/{{ p.entrpPrdctGid }}/detail">{{ p.entrpPrdctNam }}</a>
-    </li>
-</ul>
+<div data-ng-show="products">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Gid</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat=" p in products | orderBy: 'entrpPrdctNam' ">
+            <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/detail">{{ p.entrpPrdctNam }}</a></td>
+            <td>{{ p.entrpPrdctDesc }}</td>
+            <td>{{ p.entrpPrdctGid }}</td>
+            <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/list">Parameters</a></td>
+            <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/formats/list">Formats</a></td>
+            <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/tasks/list">Tasks</a></td>
+        </tr>        
+    </tbody>
+</table>
+
+<a role="button" class="btn btn-default" href="#/products/new">New Product</a>
+</div>

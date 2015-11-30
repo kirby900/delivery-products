@@ -12,8 +12,7 @@ module.exports = {
   autoUpdatedAt: false,
   
   attributes: {
-    prdctTaskGid: { columnName: 'TASK_GID', type: 'integer', primaryKey: true, autoIncrement: true },
-    // entrpPrdctGid is key to the parent Enterprise Product
+    taskGid: { columnName: 'TASK_GID', type: 'integer', primaryKey: true, autoIncrement: true },
     entrpPrdctGid: { /*model: "EnterpriseProduct",*/ columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
     taskNam: { columnName: 'TASK_NAM', type: 'string', size: 60, required: true },
     taskSeqNbr: { columnName: 'TASK_SEQ_NBR', type: 'integer', required: false },

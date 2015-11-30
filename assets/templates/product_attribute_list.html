@@ -1,0 +1,35 @@
+<h4>Attribute List</h4>
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Width</th>
+            <th>Data Type</th>
+            <th>Format</th>
+            <th>Standard</th>
+            <th>Pivot</th>
+            <th>Agg</th>
+            <th>Metric ID</th>
+            <th>ID target</th>
+            <th>Value target</th>
+            <th>Gid</th>
+        </tr>
+    </thead>
+
+    <tbody data-ui-sortable="" data-ng-model="attributes">
+        <tr data-ng-repeat=" a in attributes ">
+            <td><a data-ng-href="#/products/{{ selected.entrpPrdctGid }}/formats/{{ a.prdctFrmtGid }}/attributes/{{ a.prdctAtrbGid }}">{{ a.atrbNam }}</a></td>
+            <td>{{ a.atrbMaxLngthNbr }}</td>
+            <td>{{ a.atrbDataTypTxt }}</td>
+            <td>{{ a.atrbFrmtTxt }}</td>
+            <td><input type="checkbox" data-ng-model="a.stdAtrbInd" ng-true-value="'Y'" ng-false-value="'N'"></td>
+            <td><input type="checkbox" data-ng-model="a.atrbPivotInd" ng-true-value="'Y'" ng-false-value="'N'">
+            <td>{{ a.aggFnctnCde }}</td>
+            <td>{{ a.unpivotSrceAtrbId }}</td>
+            <td>{{ indicatorToText(a.unpivotIdTrgtAtrbInd) }}</td>
+            <td>{{ indicatorToText(a.unpivotValTrgtAtrbInd) }}</td>
+            <td>{{ a.prdctAtrbGid }}</td>
+        </tr>        
+    </tbody>
+</table>
