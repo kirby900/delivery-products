@@ -1,13 +1,38 @@
 <h4>Product Parameters</h4>
 
-<ul class="list-group">
-    <li class="list-group-item bg-primary">
-        <a ng-href="#/products/{{ entrpPrdctGid }}/parameters/new">Add Product Parameter</a>
-    </li>
+<!--
+    prdctParmGid: { columnName: 'PRDCT_PARM_GID', type: 'integer', primaryKey: true, autoIncrement: true },
+    parmGid: { /*model: 'Parameter',*/ columnName: 'PARM_GID', type: 'integer', required: true },
+    entrpPrdctGid: { /*model: 'EnterpriseProduct',*/ columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+    minOcrncNbr: { columnName: 'MIN_OCRNC_NBR', type: 'integer', required: true },
+    maxOcrncNbr: { columnName: 'MAX_OCRNC_NBR', type: 'integer' },
+    clctdParmInd: { columnName: 'CLCTD_PARM_IND', type: 'string', size: 1, required: true },
+    clctdValExprsTxt: { columnName: 'CLCTD_VAL_EXPRS_TXT', type: 'string', size: 2000 },
+    rltdColNam: { columnName: 'RLTD_COL_NAM', type: 'string', size: 30 },
+    lstUpdtId: { columnName: 'LST_UPDT_ID', type: 'string', size: 60 },
+    lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime' }
+-->
 
-    <li class="list-group-item" data-ng-repeat="p in productParameters | orderBy: 'parmGid.parmNam'">
-        <a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/{{ p.prdctParmGid }}">{{ p.parmGid.parmNam }}</a>
-    </li>
-</ul>
+<table class="table table-condensed table-striped">
+	<thead>
+		<th>Gid</th>
+		<th>Parm Gid</th>
+		<th>Min Occurs</th>
+		<th>Max Occurs</th>
+		<th>Calculated</th>
+	</thead>
+	<tbody>
+	    <tr data-ng-repeat="pp in productParameters | orderBy: 'prdctParmGid'">
+	    	<td>
+	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.prdctParmGid }}</a>
+	        </td>
+	        <td>{{ pp.parmGid }}</td>
+	        <td>{{ pp.minOcrncNbr }}</td>
+	        <td>{{ pp.maxOcrncNbr }}</td>
+	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
+	    </tr>
+	</tbody>
+</table>
 
-<a role="button" class="btn btn-default" data-ng-href="#/products/{{entrpPrdctGid}}/detail">Back to Product</a>
+<a role="button" class="btn btn-default" ng-href="#/products/{{selections.entrpPrdctGid}}/parameters/new">Add Product Parameter</a>
+<a role="button" class="btn btn-default" data-ng-href="#/products/{{selections.entrpPrdctGid}}/detail">Product</a>

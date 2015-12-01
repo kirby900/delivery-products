@@ -7,7 +7,6 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
 .config(function($stateProvider, $urlRouterProvider, $breadcrumbProvider){
 
     $breadcrumbProvider.setOptions({
-      //template: 'bootstrap2',
       includeAbstract: true,
       prefixStateName: 'home'
     });
@@ -30,16 +29,14 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('products', {
       abstract: true,
       url: "/products",
-      template: "<ui-view/>",
-      ncyBreadcrumb: {
-        //label: 'Products (abstract)',
-      }
+      template: "<ui-view/>"
     })
     .state('products.list', {
       url: "/list",
       templateUrl: "templates/product_list.html",
       ncyBreadcrumb: {
-        label: 'Products'
+        label: 'Products',
+        parent: 'home'
       },
       controller: function($scope, $state, EnterpriseProduct){
         console.log('State ' + $state.current.name);
@@ -53,7 +50,7 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       url: "/new",
       templateUrl: "templates/product_new.html",
       ncyBreadcrumb: {
-        label: 'New Product',
+        label: 'Add Product',
         parent: 'products.list'
       },
       controller: function($scope, $state, EnterpriseProduct, user) {
@@ -82,10 +79,9 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
         selectedProduct: function($stateParams, EnterpriseProduct){
           return EnterpriseProduct.get({ id: $stateParams.productId }).$promise;
         }
-      },
-      ncyBreadcrumb: {
-        //label: 'Product (abstract)'
-        //label: 'Product ' + $stateParams.productId
+      }, controller: function($scope, $state, $stateParams){
+        console.log('State ' + $state.current.name);
+        $scope.selections.entrpPrdctGid = $stateParams.productId;
       }
     })
     .state('products.selected.detail', {
@@ -93,7 +89,7 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       templateUrl: "templates/product_detail.html",
       ncyBreadcrumb: {
         //label: 'Product ' + $stateParams.productId
-        label: '{{product.entrpPrdctNam}} Detail',
+        label: '{{ selections.entrpPrdctGid }}',
         parent: 'products.list'
       },
       controller: function($scope, $state, $stateParams, selectedProduct, EnterpriseProduct){
@@ -114,16 +110,11 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       url: "/edit",
       templateUrl: "templates/product_edit.html",
       ncyBreadcrumb: {
-        label: 'Edit'
+        label: 'Edit',
+        parent: 'products.selected.detail'
       },
       controller: function($scope, $state, $stateParams, EnterpriseProduct){
         console.log('State ' + $state.current.name);
-
-        $scope.crumbs = [
-          { url: '#/products', label: 'Products' },
-          { url: '#/products/' + parseInt($stateParams.productId, 10), label: $stateParams.productId },
-          { url: '#/products/' + parseInt($stateParams.productId, 10) + '/edit', label: 'Edit' }
-        ];
 
         $scope.product = EnterpriseProduct.get({ id: $stateParams.productId });
 
@@ -131,7 +122,9 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
           return dirty;
         };
         
-        $scope.update = function(p){
+        $scope.save = function(p){
+          console.log('Entered save()');
+
           EnterpriseProduct.update({ id: p.entrpPrdctGid }, p, function(response){
             console.log('Updated Enterprise Product');
             $state.go('products.list');
@@ -142,27 +135,19 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('products.selected.parameters', {
       abstract: true,
       url: "/parameters",
-      template: "<ui-view/>",
-      ncyBreadcrumb: {
-        //label: 'Parameters'
-      }
+      template: "<ui-view/>"
     })
     .state('products.selected.parameters.list', {
       url: "/list",
       templateUrl: "templates/product_parameter_list.html",
       ncyBreadcrumb: {
-        label: 'Parameter List'
+        label: 'Parameters',
+        parent: 'products.selected.detail'
       },
       controller: function($scope, $state, $stateParams, ProductParameter){
         console.log('State ' + $state.current.name);
 
-        $scope.crumbs = [
-          { url: '#/products', label: 'Products' },
-          { url: '#/products/' + parseInt($stateParams.productId, 10), label: $stateParams.productId },
-          { url: '#/products/' + parseInt($stateParams.productId, 10) + '/parameters', label: 'Parameters' }
-        ];
-
-        $scope.entrpPrdctGid = $stateParams.productId;
+        //$scope.entrpPrdctGid = $stateParams.productId;
         $scope.productParameters = ProductParameter.query({
           entrpPrdctGid: $stateParams.productId 
         });
@@ -171,21 +156,21 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('products.selected.parameters.new', {
       url: "/new",
       templateUrl: "templates/product_parameter_new.html",
-      ncyBreadcrumb: {
-        label: 'New Product Parameter'
+      resolve: {
+        parameters: function($stateParams, Parameter){
+          return Parameter.query().$promise;
+        }
       },
-      controller: function($scope, $state, $stateParams, Parameter, ProductParameter, user) {
+      ncyBreadcrumb: {
+        label: 'Add Product Parameter',
+        parent: 'products.selected.parameters.list'
+      },
+      controller: function($scope, $state, $stateParams, parameters, ProductParameter, user) {
         console.log('State ' + $state.current.name);
 
-        $scope.crumbs = [
-          { url: '#/products', label: 'Products' },
-          { url: '#/products/' + parseInt($stateParams.productId, 10), label: $stateParams.productId },
-          { url: '#/products/' + parseInt($stateParams.productId, 10) + '/parameters', label: 'Parameters'},
-          { url: '#/products/' + parseInt($stateParams.productId, 10) + '/parameters/new', label: 'New' }
-        ];
-
         // Get list of available parameters
-        $scope.parameters = Parameter.query();
+        //$scope.parameters = Parameter.query();
+        $scope.parameters = parameters;
 
         $scope.productParameter = {
           entrpPrdctGid: $stateParams.productId,
@@ -197,11 +182,75 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
 
         $scope.save = function(p){
           console.log('Entered save()');
+          console.log(p);
+
           ProductParameter.save(p, function(response){
             console.log('Saved Product Parameter');
-            $state.go('products.selected.parameters', { 
-              entrpPrdctGid: p.entrpPrdctGid 
+            $state.go('products.selected.parameters.list', { 
+              entrpPrdctGid: p.entrpPrdctGid
             });            
+          });
+        };
+      }
+    })
+    .state('products.selected.parameters.selected', {
+      abstract: true,
+      url: "/{productParmId}",
+      template: "<ui-view/>",
+      resolve: {
+        selectedProductParm: function($stateParams, ProductParameter){
+          return ProductParameter.get({ id: $stateParams.productParmId }).$promise;
+        }
+      }, 
+      controller: function($scope, $state, $stateParams){
+        console.log('State ' + $state.current.name);
+        $scope.selections.prdctParmGid = $stateParams.productParmId;
+      }
+    })
+    .state('products.selected.parameters.selected.detail', {
+      url: "/detail",
+      templateUrl: "templates/product_parameter_detail.html",
+      ncyBreadcrumb: {
+        label: '{{ selections.prdctParmGid }}',
+        parent: 'products.selected.parameters.list'
+      },
+      controller: function($scope, $state, $stateParams, selectedProductParm, ProductParameter){
+        console.log('State ' + $state.current.name);
+
+        $scope.productParameter = selectedProductParm;
+
+        $scope.delete = function(p){
+          console.log('Entered delete()');
+
+          ProductParameter.delete({ id: p.prdctParmGid }, function(response){
+            console.log('Deleted Product Parameter');
+            $state.go('products.selected.parameters.list', {
+              productId: $stateParams.productId
+            });
+          });
+        };
+      }
+    })
+    .state('products.selected.parameters.selected.edit', {
+      url: "/edit",
+      templateUrl: "templates/product_parameter_edit.html",
+      ncyBreadcrumb: {
+        label: 'Edit',
+        parent: 'products.selected.parameters.selected.detail'
+      },
+      controller: function($scope, $state, $stateParams, selectedProductParm, ProductParameter){
+        console.log('State ' + $state.current.name);
+
+        $scope.productParameter = selectedProductParm;
+
+        $scope.save = function(pp){
+          console.log('Entered save()');
+
+          ProductParameter.update({ id: pp.prdctParmGid }, pp, function(response){
+            console.log('Updated Product Parameter');
+            $state.go('products.selected.parameters.list', {
+              productId: $stateParams.productId
+            });
           });
         };
       }
@@ -209,16 +258,14 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('products.selected.formats', {
       abstract: true,
       url: "/formats",
-      template: "<ui-view/>",
-      ncyBreadcrumb: {
-        //label: 'Formats'
-      }
+      template: "<ui-view/>"
     })
     .state('products.selected.formats.list', {
       url: "/list",
       templateUrl: "templates/product_format_list.html",
       ncyBreadcrumb: {
-        label: 'Format List'
+        label: 'Formats',
+        parent: 'products.selected.detail'
       },
       controller: function($scope, $state, $stateParams, ProductFormat){
         console.log('State ' + $state.current.name);
@@ -227,11 +274,11 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
           //containment: 'window',
           axis: 'y',
           update: function(event, ui){
-            console.log('Entered update function');
+            console.log('Order updated');
           }
         };
 
-        $scope.entrpPrdctGid = $stateParams.productId;
+        //$scope.entrpPrdctGid = $stateParams.productId;
         $scope.formats = ProductFormat.query({
           entrpPrdctGid: $stateParams.productId
         });
@@ -240,21 +287,24 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('products.selected.formats.selected', {
       abstract: true,
       url: "/{formatId}",
-      template: "<ui-view/>",
-      ncyBreadcrumb: {
-        //label: 'Attributes'
+      template: "<ui-view/>", 
+      controller: function($scope, $state, $stateParams){
+        console.log('State ' + $state.current.name);
+        $scope.selections.prdctFrmtGid = $stateParams.formatId;
       }
     })
-    .state('products.selected.formats.selected.edit', {
-      url: "/edit",
-      templateUrl: "templates/product_format_edit.html",
+    .state('products.selected.formats.selected.detail', {
+      url: "/detail",
+      templateUrl: "templates/product_format_detail.html",
       ncyBreadcrumb: {
-        label: 'Edit Format'
+        label: '{{ selections.prdctFrmtGid }}',
+        parent: 'products.selected.formats.list'
       },
       controller: function($scope, $state, $stateParams, ProductFormat){
         console.log('State ' + $state.current.name);
 
-        $scope.entrpPrdctGid = $stateParams.productId;
+        //$scope.selections.entrpPrdctGid = $stateParams.productId;
+        //$scope.selections.prdctFrmtGid = $stateParams.formatId;
         $scope.format = ProductFormat.get({
           id: $stateParams.formatId
         });
@@ -262,6 +312,33 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
         $scope.save = function(fmt){
           console.log('Entered save()');
           console.log('NOT YET IMPLEMENTED');
+        };
+      }
+    })
+    .state('products.selected.formats.selected.edit', {
+      url: "/edit",
+      templateUrl: "templates/product_format_edit.html",
+      ncyBreadcrumb: {
+        label: 'Edit',
+        parent: 'products.selected.formats.selected.detail'
+      },
+      controller: function($scope, $state, $stateParams, ProductFormat){
+        console.log('State ' + $state.current.name);
+
+        //$scope.entrpPrdctGid = $stateParams.productId;
+        $scope.format = ProductFormat.get({
+          id: $stateParams.formatId
+        });
+
+        $scope.save = function(fmt){
+          console.log('Entered save()');
+
+          ProductFormat.update({ id: fmt.prdctFrmtGid }, fmt, function(response){
+            console.log('Updated Product Format');
+            $state.go('products.selected.formats.list', {
+              productId: $stateParams.productId
+            });
+          });
         };
       }
     })
@@ -277,8 +354,8 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       url: "/list",
       templateUrl: "templates/product_attribute_list.html",
       ncyBreadcrumb: {
-        label: 'Attribute List'
-        //parent: ???
+        label: 'Attributes',
+        parent: 'products.selected.formats.selected.detail'
       },
       controller: function($scope, $state, $stateParams, ProductAttribute){
         console.log('State ' + $state.current.name);
@@ -291,8 +368,8 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
           }
         };
 
-        $scope.entrpPrdctGid = $stateParams.productId;
-        $scope.prdctFrmtGid = $stateParams.formatId;
+        $scope.selections.entrpPrdctGid = $stateParams.productId;
+        $scope.selections.prdctFrmtGid = $stateParams.formatId;
 
         $scope.attributes = [];
 
@@ -317,20 +394,24 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       template: "<ui-view/>",
       ncyBreadcrumb: {
         //label: 'Selected Attribute'
+      }, controller: function($scope, $state, $stateParams){
+        console.log('State ' + $state.current.name);
+        $scope.selections.prdctAtrbGid = $stateParams.attributeId;        
       }
     })
     .state('products.selected.formats.selected.attributes.selected.detail', {
       url: "/detail",
       templateUrl: "templates/product_attribute_detail.html",
       ncyBreadcrumb: {
-        label: 'Attribute Detail'
+        label: '{{ selections.prdctAtrbGid }}',
+        parent: 'products.selected.formats.selected.attributes.list'
       },
       controller: function($scope, $state, $stateParams, ProductAttribute){
         console.log('State ' + $state.current.name);
 
-        $scope.selections.entrpPrdctGid = $stateParams.productId;
-        $scope.selections.prdctFrmtGid = $stateParams.formatId;
-        $scope.selections.prdctAtrbGid = $stateParams.attributeId;
+        //$scope.selections.entrpPrdctGid = $stateParams.productId;
+        //$scope.selections.prdctFrmtGid = $stateParams.formatId;
+        //$scope.selections.prdctAtrbGid = $stateParams.attributeId;
         
         $scope.attribute = ProductAttribute.get({ 
           id: $stateParams.attributeId 
@@ -347,6 +428,37 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
         };
       }
     })
+    .state('products.selected.formats.selected.attributes.selected.edit', {
+      url: "/edit",
+      templateUrl: "templates/product_attribute_edit.html",
+      ncyBreadcrumb: {
+        label: 'Edit',
+        parent: 'products.selected.formats.selected.attributes.selected.detail'
+      },
+      controller: function($scope, $state, $stateParams, ProductAttribute){
+        console.log('State ' + $state.current.name);
+
+        $scope.selections.entrpPrdctGid = $stateParams.productId;
+        $scope.selections.prdctFrmtGid = $stateParams.formatId;
+        $scope.selections.prdctAtrbGid = $stateParams.attributeId;
+        
+        $scope.attribute = ProductAttribute.get({ 
+          id: $stateParams.attributeId 
+        });
+
+        $scope.save = function(attr){
+          console.log('Entered save()');
+
+          ProductAttribute.update({ id: attr.prdctAtrbGid }, attr, function(response){
+            console.log('Updated Product Attribute');
+            $state.go('products.selected.formats.selected.attributes.list', {
+              productId: $stateParams.productId,
+              formatId: $stateParams.formatId
+            });
+          });
+        };
+      }
+    })
     .state('products.selected.tasks', {
       abstract: true,
       url: "/tasks",
@@ -359,12 +471,13 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       url: "/list",
       templateUrl: "templates/product_task_list.html",
       ncyBreadcrumb: {
-        label: 'Task List'
+        label: 'Tasks',
+        parent: 'products.selected.detail'
       },
       controller: function($scope, $state, $stateParams, ProductTask){
         console.log('State ' + $state.current.name);
 
-        $scope.entrpPrdctGid = $stateParams.productId;
+        //$scope.entrpPrdctGid = $stateParams.productId;
         $scope.tasks = [];
 
         // Get tasks for selected product
@@ -383,21 +496,53 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       template: "<ui-view/>",
       ncyBreadcrumb: {
         //label: 'Selected Task'
+      }, controller: function($scope, $state, $stateParams){
+        console.log('State ' + $state.current.name);
+        $scope.selections.taskGid = $stateParams.taskId;        
       }
     })
     .state('products.selected.tasks.selected.detail', {
       url: "/detail",
       templateUrl: "templates/product_task_detail.html",
       ncyBreadcrumb: {
-        label: 'Task Detail'
+        label: '{{ selections.taskGid }}',
+        parent: 'products.selected.tasks.list'
       },
       controller: function($scope, $state, $stateParams, ProductTask){
         console.log('State ' + $state.current.name);
 
-        $scope.entrpPrdctGid = $stateParams.productId;
+        //$scope.selections.entrpPrdctGid = $stateParams.productId;
         $scope.task = ProductTask.get({
           id: $stateParams.taskId 
         });
+      }
+    })
+    .state('products.selected.tasks.selected.edit', {
+      url: "/edit",
+      templateUrl: "templates/product_task_edit.html",
+      ncyBreadcrumb: {
+        label: 'Edit',
+        parent: 'products.selected.tasks.selected.detail'
+      },
+      controller: function($scope, $state, $stateParams, ProductTask){
+        console.log('State ' + $state.current.name);
+
+        //$scope.selections.entrpPrdctGid = $stateParams.productId;
+        $scope.task = ProductTask.get({
+          id: $stateParams.taskId 
+        });
+
+        $scope.save = function(task){
+          console.log('Entered save()');
+
+          ProductTask.update({id: task.taskGid}, task, function(response){
+            console.log('Updated Product Task');
+            $state.go('products.selected.tasks.list', {
+              productId: $stateParams.productId
+            });
+
+          });
+        }
       }
     });
 

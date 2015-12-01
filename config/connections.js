@@ -25,21 +25,23 @@ module.exports.connections = {
   * Local Oracle database.                                                   *
   * User and password maintained in local.js                                 *
   ***************************************************************************/
+
   localOracle: {
     adapter: 'sails-oracle-db',
     connectString: 'localhost:1521/xe'
-  },
+  }
 
   /***************************************************************************
   * Local MySQL database.                                                    *
   * User and password maintained in local.js                                 *
   ***************************************************************************/
+/*
   localMysql: {
     adapter: 'sails-mysql',
     host: 'localhost',
     port: 3307
   },
-
+*/
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *
@@ -48,6 +50,7 @@ module.exports.connections = {
   * Run: npm install sails-mysql                                             *
   *                                                                          *
   ***************************************************************************/
+  /*
   someMysqlServer: {
     adapter: 'sails-mysql',
     host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
@@ -55,7 +58,7 @@ module.exports.connections = {
     password: 'YOUR_MYSQL_PASSWORD',
     database: 'YOUR_MYSQL_DB'
   },
-
+  */
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
@@ -64,6 +67,7 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
+  /*
   someMongodbServer: {
     adapter: 'sails-mongo',
     host: 'localhost',
@@ -72,6 +76,7 @@ module.exports.connections = {
     // password: 'password',
     // database: 'your_mongo_db_name_here'
   },
+  */
 
   /***************************************************************************
   *                                                                          *
@@ -82,6 +87,7 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
+  /*
   somePostgresqlServer: {
     adapter: 'sails-postgresql',
     host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
@@ -89,6 +95,7 @@ module.exports.connections = {
     password: 'YOUR_POSTGRES_PASSWORD',
     database: 'YOUR_POSTGRES_DB'
   },
+  */
 
   /***************************************************************************
   *                                                                          *
@@ -97,9 +104,11 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
+  /*
   localDiskDb: {
     adapter: 'sails-disk'
   }
+  */
 
 
   /***************************************************************************
