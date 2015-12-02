@@ -44,13 +44,17 @@
         <div class="form-group">
         <label class="col-sm-2 control-label">Create target table</label>
         <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="task.crteTrgtTblInd">
+        <label class="control-label">
+        <input type="checkbox" data-ng-model="task.crteTrgtTblInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+        </label>
         </div>
         </div>
         <div class="form-group">
         <label class="col-sm-2 control-label">Truncate target table</label>
         <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="task.trgtTrnctInd">
+        <label class="control-label">
+        <input type="checkbox" data-ng-model="task.trgtTrnctInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+        </label>
         </div>
         </div>
         <div class="form-group">
@@ -68,7 +72,9 @@
         <div class="form-group">
         <label class="col-sm-2 control-label">Prepare partition</label>
         <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="task.prepPrtnInd">
+        <label class="control-label">
+        <input type="checkbox" data-ng-model="task.prepPrtnInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+        </label>
         </div>
         </div>
         <div class="form-group">
@@ -90,12 +96,6 @@
         </div>
         </div>
 
-        <div class="form-group">
-        <label class="col-sm-2 control-label">Last update</label>
-        <div class="col-sm-10">
-        <p class="form-control-static">{{ task.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ task.lstUpdtId }}</p>
-        </div>
-        </div>
     </fieldset>
 
     <div class="form-group">

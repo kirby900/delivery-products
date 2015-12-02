@@ -1,9 +1,10 @@
 <h4>Product Format List</h4>
 
-<table class="table table-condensed">
+<table class="table table-condensed table-striped">
     <thead>
         <th>Name</th>
         <th>Gid</th>
+        <th>Display Order</th>
         <th></th>
     </thead>
 
@@ -11,6 +12,7 @@
         <tr data-ng-repeat="f in formats">
             <td><a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/edit">{{ f.prdctFrmtNam }}</a></td>
             <td>{{ f.prdctFrmtGid }}</td>
+            <td>{{ f.dsplyOrdrNbr }}</td>
             <td>
                 <a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/attributes/list">Attributes</a>
             </td>

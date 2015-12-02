@@ -279,8 +279,14 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
         };
 
         //$scope.entrpPrdctGid = $stateParams.productId;
-        $scope.formats = ProductFormat.query({
+        //$scope.formats = ProductFormat.query({
+        ProductFormat.query({
           entrpPrdctGid: $stateParams.productId
+        }).$promise.then(function(data){
+          data.sort(function(a, b){
+            return a.dsplyOrdrNbr - b.dsplyOrdrNbr;
+          });
+          $scope.formats = data;
         });
       }
     })

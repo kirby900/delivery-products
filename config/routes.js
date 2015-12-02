@@ -46,8 +46,4 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /enterpriseProducts/:entrpPrdctGid/formats'   : 'ProductFormatController.findByEnterpriseProduct',
-  'GET /enterpriseProducts/:entrpPrdctGid/parameters': 'ProductParameterController.findByEnterpriseProduct',
-  'GET /enterpriseProducts/:entrpPrdctGid/tasks'     : 'ProductTaskController.findByEnterpriseProduct'
-
 };

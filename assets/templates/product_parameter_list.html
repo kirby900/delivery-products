@@ -15,21 +15,29 @@
 
 <table class="table table-condensed table-striped">
 	<thead>
+		<th>Name</th>
+		<th>Data Type</th>
+		<th>Calculated</th>
 		<th>Gid</th>
+<!--
 		<th>Parm Gid</th>
 		<th>Min Occurs</th>
 		<th>Max Occurs</th>
-		<th>Calculated</th>
+-->
 	</thead>
 	<tbody>
-	    <tr data-ng-repeat="pp in productParameters | orderBy: 'prdctParmGid'">
+	    <tr data-ng-repeat="pp in productParameters | orderBy: 'parameter.parmNam'">
 	    	<td>
-	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.prdctParmGid }}</a>
+	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parameter.parmNam }}</a>
 	        </td>
-	        <td>{{ pp.parmGid }}</td>
+	        <td>{{ pp.parameter.parmDataTyp }}</td>
+	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
+	        <td>{{ pp.prdctParmGid }}</td>
+<!--
+	        <td>{{ pp.parameter.parmGid }}</td>
 	        <td>{{ pp.minOcrncNbr }}</td>
 	        <td>{{ pp.maxOcrncNbr }}</td>
-	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
+-->
 	    </tr>
 	</tbody>
 </table>
