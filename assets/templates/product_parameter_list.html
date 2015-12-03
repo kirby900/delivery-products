@@ -15,10 +15,10 @@
 
 <table class="table table-condensed table-striped">
 	<thead>
-		<th>Name</th>
-		<th>Data Type</th>
-		<th>Calculated</th>
-		<th>Gid</th>
+		<th><a href="" data-ng-click="setSort('parameter.parmNam')">Name</a></th>
+        <th><a href="" data-ng-click="setSort('parameter.parmDataTyp')">Data Type</a></th>
+        <th><a href="" data-ng-click="setSort('clctdParmInd')">Calculated</a></th>
+        <th><a href="" data-ng-click="setSort('prdctParmGid')">Gid</a></th>
 <!--
 		<th>Parm Gid</th>
 		<th>Min Occurs</th>
@@ -26,7 +26,7 @@
 -->
 	</thead>
 	<tbody>
-	    <tr data-ng-repeat="pp in productParameters | orderBy: 'parameter.parmNam'">
+	    <tr data-ng-repeat="pp in productParameters | orderBy: sort.key: sort.reverse ">
 	    	<td>
 	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parameter.parmNam }}</a>
 	        </td>

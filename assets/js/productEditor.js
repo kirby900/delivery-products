@@ -147,6 +147,20 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       controller: function($scope, $state, $stateParams, ProductParameter){
         console.log('State ' + $state.current.name);
 
+        $scope.sort = {
+          key: 'parameter.parmNam',
+          reverse: false
+        };
+
+        $scope.setSort = function(key){
+          if ( key === $scope.sort.key ){
+            $scope.sort.reverse = !$scope.sort.reverse;
+          } else {
+            $scope.sort.key = key;
+            $scope.sort.reverse = false;
+          }
+        };
+
         //$scope.entrpPrdctGid = $stateParams.productId;
         $scope.productParameters = ProductParameter.query({
           entrpPrdctGid: $stateParams.productId 
