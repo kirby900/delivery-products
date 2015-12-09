@@ -23,9 +23,9 @@ module.exports = {
     fileLctnTmpltTxt: { columnName: 'FILE_LCTN_TMPLT_TXT', type: 'string', size: 1000 },
 
     // Collections linked to an Enterprise Product
-    //parameters: { collection: "ProductParameter", via: "entrpPrdctGid" },
-    //formats: { collection: "ProductFormat", via: "entrpPrdctGid" },
-    //tasks: { collection: "ProductTask", via: "entrpPrdctGid" },
+    //parameters: { collection: "ProductParameter", via: "enterpriseProduct" },
+    //formats: { collection: "ProductFormat", via: "enterpriseProduct" },
+    //tasks: { collection: "ProductTask", via: "enterpriseProduct" },
 
     lstUpdtId: { columnName: 'LST_UPDT_ID', type: 'string', size: 60 },
     lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime' }

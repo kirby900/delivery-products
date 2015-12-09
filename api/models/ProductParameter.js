@@ -16,6 +16,7 @@ module.exports = {
     //parmGid: { /*model: 'Parameter',*/ columnName: 'PARM_GID', type: 'integer', required: true },
     parameter: { model: 'Parameter', columnName: 'PARM_GID', type: 'integer', required: true },
     entrpPrdctGid: { /*model: 'EnterpriseProduct',*/ columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+    //enterpriseProduct: { model: 'EnterpriseProduct', columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
     minOcrncNbr: { columnName: 'MIN_OCRNC_NBR', type: 'integer', required: true },
     maxOcrncNbr: { columnName: 'MAX_OCRNC_NBR', type: 'integer' },
     clctdParmInd: { columnName: 'CLCTD_PARM_IND', type: 'string', size: 1, required: true },

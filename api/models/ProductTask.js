@@ -13,7 +13,8 @@ module.exports = {
   
   attributes: {
     taskGid: { columnName: 'TASK_GID', type: 'integer', primaryKey: true, autoIncrement: true },
-    entrpPrdctGid: { /*model: "EnterpriseProduct",*/ columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+    entrpPrdctGid: { columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+    //enterpriseProduct: { model: "EnterpriseProduct", columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
     taskNam: { columnName: 'TASK_NAM', type: 'string', size: 60, required: true },
     taskSeqNbr: { columnName: 'TASK_SEQ_NBR', type: 'integer', required: false },
     taskTypCde: { columnName: 'TASK_TYP_CDE', type: 'string', size: 20 },

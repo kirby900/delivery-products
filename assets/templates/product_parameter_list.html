@@ -1,46 +1,55 @@
-<h4>Product Parameters</h4>
+<div class="row">
+    <div class="col-sm-9">
+        <h4>Product Parameters</h4>
 
-<!--
-    prdctParmGid: { columnName: 'PRDCT_PARM_GID', type: 'integer', primaryKey: true, autoIncrement: true },
-    parmGid: { /*model: 'Parameter',*/ columnName: 'PARM_GID', type: 'integer', required: true },
-    entrpPrdctGid: { /*model: 'EnterpriseProduct',*/ columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
-    minOcrncNbr: { columnName: 'MIN_OCRNC_NBR', type: 'integer', required: true },
-    maxOcrncNbr: { columnName: 'MAX_OCRNC_NBR', type: 'integer' },
-    clctdParmInd: { columnName: 'CLCTD_PARM_IND', type: 'string', size: 1, required: true },
-    clctdValExprsTxt: { columnName: 'CLCTD_VAL_EXPRS_TXT', type: 'string', size: 2000 },
-    rltdColNam: { columnName: 'RLTD_COL_NAM', type: 'string', size: 30 },
-    lstUpdtId: { columnName: 'LST_UPDT_ID', type: 'string', size: 60 },
-    lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime' }
--->
+        <!--
+            prdctParmGid: { columnName: 'PRDCT_PARM_GID', type: 'integer', primaryKey: true, autoIncrement: true },
+            parmGid: { /*model: 'Parameter',*/ columnName: 'PARM_GID', type: 'integer', required: true },
+            entrpPrdctGid: { /*model: 'EnterpriseProduct',*/ columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+            minOcrncNbr: { columnName: 'MIN_OCRNC_NBR', type: 'integer', required: true },
+            maxOcrncNbr: { columnName: 'MAX_OCRNC_NBR', type: 'integer' },
+            clctdParmInd: { columnName: 'CLCTD_PARM_IND', type: 'string', size: 1, required: true },
+            clctdValExprsTxt: { columnName: 'CLCTD_VAL_EXPRS_TXT', type: 'string', size: 2000 },
+            rltdColNam: { columnName: 'RLTD_COL_NAM', type: 'string', size: 30 },
+            lstUpdtId: { columnName: 'LST_UPDT_ID', type: 'string', size: 60 },
+            lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime' }
+        -->
 
-<table class="table table-condensed table-striped">
-	<thead>
-		<th><a href="" data-ng-click="setSort('parameter.parmNam')">Name</a></th>
-        <th><a href="" data-ng-click="setSort('parameter.parmDataTyp')">Data Type</a></th>
-        <th><a href="" data-ng-click="setSort('clctdParmInd')">Calculated</a></th>
-        <th><a href="" data-ng-click="setSort('prdctParmGid')">Gid</a></th>
-<!--
-		<th>Parm Gid</th>
-		<th>Min Occurs</th>
-		<th>Max Occurs</th>
--->
-	</thead>
-	<tbody>
-	    <tr data-ng-repeat="pp in productParameters | orderBy: sort.key: sort.reverse ">
-	    	<td>
-	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parameter.parmNam }}</a>
-	        </td>
-	        <td>{{ pp.parameter.parmDataTyp }}</td>
-	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
-	        <td>{{ pp.prdctParmGid }}</td>
-<!--
-	        <td>{{ pp.parameter.parmGid }}</td>
-	        <td>{{ pp.minOcrncNbr }}</td>
-	        <td>{{ pp.maxOcrncNbr }}</td>
--->
-	    </tr>
-	</tbody>
-</table>
+        <table class="table table-condensed table-striped">
+        	<thead>
+        		<th><a href="" data-ng-click="setSort('parameter.parmNam')">Name</a></th>
+                <th><a href="" data-ng-click="setSort('parameter.parmDataTyp')">Data Type</a></th>
+                <th><a href="" data-ng-click="setSort('clctdParmInd')">Calculated</a></th>
+                <th><a href="" data-ng-click="setSort('prdctParmGid')">Gid</a></th>
+        <!--
+        		<th>Parm Gid</th>
+        		<th>Min Occurs</th>
+        		<th>Max Occurs</th>
+        -->
+        	</thead>
+        	<tbody>
+        	    <tr data-ng-repeat="pp in productParameters | orderBy: sort.key: sort.reverse ">
+        	    	<td>
+        	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parameter.parmNam }}</a>
+        	        </td>
+        	        <td>{{ pp.parameter.parmDataTyp }}</td>
+        	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
+        	        <td>{{ pp.prdctParmGid }}</td>
+        <!--
+        	        <td>{{ pp.parameter.parmGid }}</td>
+        	        <td>{{ pp.minOcrncNbr }}</td>
+        	        <td>{{ pp.maxOcrncNbr }}</td>
+        -->
+        	    </tr>
+        	</tbody>
+        </table>
+    </div>
 
-<a role="button" class="btn btn-default" ng-href="#/products/{{selections.entrpPrdctGid}}/parameters/new">Add Product Parameter</a>
-<a role="button" class="btn btn-default" data-ng-href="#/products/{{selections.entrpPrdctGid}}/detail">Product</a>
+    <div class="col-sm-3">
+        <h4>Actions</h4>
+        <div class="list-group">
+            <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/parameters/new">Add Product Parameter</a>
+            <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/detail">Product</a>
+        </div>
+    </div>
+</div>

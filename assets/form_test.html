@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Delivery Product Editor</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--STYLES-->
+    <!--STYLES END-->
+
+    <!--SCRIPTS-->
+    <!--SCRIPTS END-->
+
+    <script>
+    angular.module('app', [])
+    .controller('ctrl', function($scope){
+      $scope.users = [
+        { firstName: 'Dean', lastName: 'Holbrook', ageRange: 6 },
+        { firstName: 'Robin', lastName: 'Holbrook', ageRange: 5 },
+        { firstName: 'Steven', lastName: 'Holbrook', ageRange: 5 },
+        { firstName: 'James', lastName: 'Holbrook', ageRange: 9 },
+        { firstName: 'Barbara', lastName: 'Holbrook', ageRange: 8 },
+        { firstName: 'Kayla', lastName: 'Holbrook', ageRange: 2 }
+      ];
+
+      $scope.ranges = [
+        { id: 1, label: '0-9' },
+        { id: 2, label: '10-19' },
+        { id: 3, label: '20-29' },
+        { id: 4, label: '30-39' },
+        { id: 5, label: '40-49' },
+        { id: 6, label: '50-59' },
+        { id: 7, label: '60-69' },
+        { id: 8, label: '70-79' },
+        { id: 9, label: '80+' }
+      ];
+
+      $scope.user = undefined;
+
+      $scope.select = function(user){
+        $scope.user = user;
+      };
+
+    });
+    </script>
+
+  </head>
+
+  <body ng-app="app" ng-controller="ctrl">
+
+    <div class="container">
+      <h2>Test form changes</h2>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <ul class="list-group">
+            <li class="list-group-item"
+              ng-click="new(u)" ng-class="{ active: 0 }">Add</li>
+              
+            <li class="list-group-item" ng-repeat="u in users" 
+              ng-click="select(u)" ng-class="{ active: u === user }">
+              {{ u.firstName }} {{ u.lastName }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-9">
+          <form name="zippy" class="form-horizontal" ng-show="user">
+            <fieldset>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">First Name</label>
+                <div class="col-sm-4"><input type="text" class="form-control" ng-model="user.firstName"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Last Name</label>
+                <div class="col-sm-4"><input type="text" class="form-control" ng-model="user.lastName"></div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Age Range</label>
+                <div class="col-sm-4">
+                  <select class="form-control" ng-model="user.ageRange"
+                    ng-options="range.id as range.label for range in ranges">
+                    <option value="">Select a range</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default" ng-disabled="zippy.$pristine" ng-click="submit(item)">Submit</button>
+                  <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                </div>
+              </div>
+            </fieldset>
+
+          </form>
+        </div>
+
+      </div>
+
+      <p>Form status: {{ zippy.$pristine ? 'Clean' : 'Dirty' }}</p>
+      <pre>{{ user | json }}</pre>
+
+    </div>
+  </body>
+</html>

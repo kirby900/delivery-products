@@ -14,6 +14,8 @@ module.exports = {
   attributes: {
     prdctFrmtGid: { columnName: 'PRDCT_FRMT_GID', type: 'integer', primaryKey: true, autoIncrement: true },
     entrpPrdctGid: { columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+    //enterpriseProduct: { model: 'EnterpriseProduct', columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+
     prdctFrmtNam: { columnName: 'PRDCT_FRMT_NAM', type: 'string', size: 100, required: false },
     fileNamTmpltTxt: { columnName: 'FILE_NAM_TMPLT_TXT', type: 'string', size: 256 },
     fileDesc: { columnName: 'FILE_DESC', type: 'string', size: 255 },

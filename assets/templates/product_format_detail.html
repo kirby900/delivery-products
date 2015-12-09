@@ -1,32 +1,53 @@
-<h4>Product Format Detail</h4>
 
-<table class="table table-condensed">
-    <tbody>
-        <tr><td>prdctFrmtGid<td><td>{{ format.prdctFrmtGid }}</td></tr>
-        <tr><td>entrpPrdctGid<td><td>{{ format.entrpPrdctGid }}</td></tr>
-        <tr><td>prdctFrmtNam<td><td>{{ format.prdctFrmtNam }}</td></tr>
-        <tr><td>fileNamTmpltTxt<td><td>{{ format.fileNamTmpltTxt }}</td></tr>
-        <tr><td>fileDesc<td><td>{{ format.fileDesc }}</td></tr>
-        <tr><td>fileTypCde<td><td>{{ format.fileTypCde }}</td></tr>
-        <tr><td>fileRqrdInd<td><td>{{ indicatorToText(format.fileRqrdInd) }}</td></tr>
-        <tr><td>fldSeparatorVal<td><td>{{ format.fldSeparatorVal }}</td></tr>
-        <tr><td>fldDlmtrVal<td><td>{{ format.fldDlmtrVal }}</td></tr>
-        <tr><td>fileCmprsNam<td><td>{{ format.fileCmprsNam }}</td></tr>
-        <tr><td>fileExtTxt<td><td>{{ format.fileExtTxt }}</td></tr>
-        <tr><td>fileLctnTmpltTxt<td><td>{{ format.fileLctnTmpltTxt }}</td></tr>
-        <tr><td>gnrtHdrInd<td><td>{{ indicatorToText(format.gnrtHdrInd) }}</td></tr>
-        <tr><td>applyFactActvyFltrInd<td><td>{{ indicatorToText(format.applyFactActvyFltrInd) }}</td></tr>
-        <tr><td>fileMaxRecCnt<td><td>{{ format.fileMaxRecCnt }}</td></tr>
-        <tr><td>endOfRecTxt<td><td>{{ format.endOfRecTxt }}</td></tr>
-        <tr><td>dsplyOrdrNbr<td><td>{{ format.dsplyOrdrNbr }}</td></tr>
-        <tr><td>allowEmptyFileInd<td><td>{{ indicatorToText(format.allowEmptyFileInd) }}</td></tr>
-        <tr><td>applyDstctClusInd<td><td>{{ indicatorToText(format.applyDstctClusInd) }}</td></tr>
-        <tr><td>lineEndngCde<td><td>{{ format.lineEndngCde }}</td></tr>
-        <tr><td>Last update<td><td>{{ format.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ format.lstUpdtId }}</td></tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-sm-8">
+        <h4>Product Format Detail</h4>
+        <table class="table table-condensed">
+            <tbody>
+                <tr><td>Gid</td><td>{{ format.prdctFrmtGid }}</td></tr>
+                <tr><td>Name</td><td>{{ format.prdctFrmtNam }}</td></tr>
+                <tr><td>Description</td><td>{{ format.fileDesc }}</td></tr>
+                <tr><td>Record type</td><td>{{ format.fileTypCde }}</td></tr>
+                <tr><td>File name</td><td>{{ format.fileNamTmpltTxt }}</td></tr>
+                <tr><td>File extension</td><td>{{ format.fileExtTxt }}</td></tr>
+                <tr><td>Product Gid</td><td>{{ format.entrpPrdctGid }}</td></tr>
+                <tr><td>Required</td><td>{{ indicatorToText(format.fileRqrdInd) }}</td></tr>
+                <tr><td>Field separator</td><td>{{ format.fldSeparatorVal }}</td></tr>
+                <!--<tr><td>fldDlmtrVal</td><td>{{ format.fldDlmtrVal }}</td></tr>-->
+                <tr><td>Compression</td><td>{{ format.fileCmprsNam }}</td></tr>
+                <tr><td>Subdirectory</td><td>{{ format.fileLctnTmpltTxt }}</td></tr>
+                <tr><td>Headers</td><td>{{ indicatorToText(format.gnrtHdrInd) }}</td></tr>
+                <tr><td>Activity filter</td><td>{{ indicatorToText(format.applyFactActvyFltrInd) }}</td></tr>
+                <tr><td>Max lines per file</td><td>{{ format.fileMaxRecCnt }}</td></tr>
+                <tr><td>End of record marker</td><td>{{ format.endOfRecTxt }}</td></tr>
+                <tr><td>Display order</td><td>{{ format.dsplyOrdrNbr }}</td></tr>
+                <tr><td>Allow empty file</td><td>{{ indicatorToText(format.allowEmptyFileInd) }}</td></tr>
+                <tr><td>Unique filter</td><td>{{ indicatorToText(format.applyDstctClusInd) }}</td></tr>
+                <tr><td>Line ending</td><td>{{ format.lineEndngCde }}</td></tr>
+                <tr>
+                    <td>Last update</td>
+                    <td>{{ format.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ format.lstUpdtId }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-<a role="button" class="btn btn-default" data-ng-href="#/products/{{selections.entrpPrdctGid}}/formats/{{selections.prdctFrmtGid}}/edit">Edit</a>
-<a role="button" class="btn btn-default" data-ng-href="#/products/{{selections.entrpPrdctGid}}/formats/list">Formats</a>
-<a role="button" class="btn btn-default" data-ng-href="#/products/list">Products</a>
-<br>
+    <div class="col-sm-4">
+        <h4>Actions</h4>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a data-ng-href="#/products/{{selections.entrpPrdctGid}}/formats/{{selections.prdctFrmtGid}}/edit">Edit Format</a>
+            </li>
+            <li class="list-group-item">
+                <a data-ng-href="#/products/{{selections.entrpPrdctGid}}/formats/{{selections.prdctFrmtGid}}/attributes/list">Show Attribute List</a>
+            </li>
+            <li class="list-group-item">
+                <a data-ng-href="#/products/{{selections.entrpPrdctGid}}/formats/list">Show Format List</a>
+            </li>
+            <li class="list-group-item">
+                <a data-ng-href="#/products/list">Show Product List</a>
+            </li>
+        </ul>
+    </div>
+</div>

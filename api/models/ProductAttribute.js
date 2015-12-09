@@ -14,8 +14,8 @@ module.exports = {
   attributes: {
     prdctAtrbGid: { columnName: 'PRDCT_ATRB_GID', type: 'integer', required: false, primaryKey: true, autoIncrement: true },
     // prdctFrmtGid is key to the parent Product Format
-    //prdctFrmtGid: { model: "ProductFormat", columnName: 'PRDCT_FRMT_GID', type: 'integer', required: true },
     prdctFrmtGid: { columnName: 'PRDCT_FRMT_GID', type: 'integer', required: true },
+    //productFormat: { model: "ProductFormat", columnName: 'PRDCT_FRMT_GID', type: 'integer', required: true },
     atrbNam: { columnName: 'ATRB_NAM', type: 'string', size: 60, required: true },
     atrbDesc: { columnName: 'ATRB_DESC', type: 'string', size: 2000 },
     atrbHdrNam: { columnName: 'ATRB_HDR_NAM', type: 'string', size: 256 },
