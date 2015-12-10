@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
+                    <!--<th>Description</th>-->
                     <th>Gid</th>
                     <!--
                     <th></th>
@@ -21,7 +21,7 @@
             <tbody>
                 <tr data-ng-repeat=" p in products | orderBy: 'entrpPrdctNam' ">
                     <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/detail">{{ p.entrpPrdctNam }}</a></td>
-                    <td>{{ p.entrpPrdctDesc }}</td>
+                    <!--<td>{{ p.entrpPrdctDesc }}</td>-->
                     <td>{{ p.entrpPrdctGid }}</td>
                     <!--
                     <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/list">Parameters</a></td>

@@ -9,19 +9,21 @@
                 <th>Name</th>
                 <th>Gid</th>
                 <!--<th>Display Order</th>-->
-                <th></th>
+                <!--<th></th>-->
             </thead>
 
             <tbody>
-                <tr data-ng-repeat="f in formats">
+                <tr data-ng-repeat=" f in formats | orderBy: 'prdctFrmtNam' ">
                     <td><a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/detail">{{ f.prdctFrmtNam }}</a></td>
                     <td>{{ f.prdctFrmtGid }}</td>
                     <!--<td>{{ f.dsplyOrdrNbr }}</td>-->
+                    <!--
                     <td>
                         <a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/attributes/list">Attributes</a>
                         &nbsp;&nbsp;
                         <a data-ng-href="#/formats/{{ f.prdctFrmtGid }}/parameterValues/list">Enabling Parameters</a>
                     </td>
+                    -->
                 </tr>
             </tbody>
         </table>
@@ -31,9 +33,9 @@
         <h4>Actions</h4>
 
         <div class="list-group">
-            <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/new">Add format</a>
-            <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/detail">Show product</a>
-            <a class="list-group-item" data-ng-href="#/products/list">Show product list</a>
+            <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/new">Add Format</a>
+            <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/detail">Show Product Detail</a>
+            <a class="list-group-item" data-ng-href="#/products/list">Show Products</a>
         </div>
     </div>
 
