@@ -27,7 +27,7 @@ module.exports = {
     atrbIsFlrInd: { columnName: 'ATRB_IS_FLR_IND', type: 'string', size: 1, defaultsTo: 'N' },
     atrbPadVal: { columnName: 'ATRB_PAD_VAL', type: 'string', size: 256 },
     atrbDataTypTxt: { columnName: 'ATRB_DATA_TYP_TXT', type: 'string', size: 20 },
-    atrbPivotInd: { columnName: 'ATRB_PIVOT_IND', type: 'string', size: 1, defaultTo: 'N' },
+    atrbPivotInd: { columnName: 'ATRB_PIVOT_IND', type: 'string', size: 1, defaultsTo: 'N' },
     atrbRqrdInd: { columnName: 'ATRB_RQRD_IND', type: 'string', size: 1, defaultsTo: 'N' },
     aggFnctnCde: { columnName: 'AGG_FNCTN_CDE', type: 'string', size: 10 },
     pivotSortOrdr: { columnName: 'PIVOT_SORT_ORDR', type: 'string', size: 4 },

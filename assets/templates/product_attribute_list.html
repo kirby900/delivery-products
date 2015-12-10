@@ -1,35 +1,58 @@
-<h4>Attribute List</h4>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Attribute List
+            </div>
 
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Gid</th>
-            <th>Width</th>
-            <th>Data Type</th>
-            <th>Format</th>
-            <th>Standard</th>
-            <th>Pivot</th>
-            <th>Agg</th>
-            <th>Metric ID</th>
-            <th>ID target</th>
-            <th>Value target</th>
-        </tr>
-    </thead>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gid</th>
+                        <th>Width</th>
+                        <th>Data Type</th>
+                        <th>Format</th>
+                        <th>Standard</th>
+                        <th>Pivot</th>
+                        <th>Agg</th>
+                        <th>Metric ID</th>
+                        <th>ID target</th>
+                        <th>Value target</th>
+                    </tr>
+                </thead>
 
-    <tbody data-ui-sortable="" data-ng-model="attributes">
-        <tr data-ng-repeat=" a in attributes ">
-            <td><a data-ng-href="#/products/{{ selections.entrpPrdctGid }}/formats/{{ a.prdctFrmtGid }}/attributes/{{ a.prdctAtrbGid }}/edit">{{ a.atrbNam }}</a></td>
-            <td>{{ a.prdctAtrbGid }}</td>
-            <td>{{ a.atrbMaxLngthNbr }}</td>
-            <td>{{ a.atrbDataTypTxt }}</td>
-            <td>{{ a.atrbFrmtTxt }}</td>
-            <td><input type="checkbox" data-ng-model="a.stdAtrbInd" ng-true-value="'Y'" ng-false-value="'N'"></td>
-            <td><input type="checkbox" data-ng-model="a.atrbPivotInd" ng-true-value="'Y'" ng-false-value="'N'">
-            <td>{{ a.aggFnctnCde }}</td>
-            <td>{{ a.unpivotSrceAtrbId }}</td>
-            <td>{{ indicatorToText(a.unpivotIdTrgtAtrbInd) }}</td>
-            <td>{{ indicatorToText(a.unpivotValTrgtAtrbInd) }}</td>
-        </tr>        
-    </tbody>
-</table>
+                <tbody data-ui-sortable="" data-ng-model="attributes">
+                    <tr data-ng-repeat=" a in attributes ">
+                        <td><a data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/{{ a.prdctFrmtGid }}/attributes/{{ a.prdctAtrbGid }}/edit">{{ a.atrbNam }}</a></td>
+                        <td>{{ a.prdctAtrbGid }}</td>
+                        <td>{{ a.atrbMaxLngthNbr }}</td>
+                        <td>{{ a.atrbDataTypTxt }}</td>
+                        <td>{{ a.atrbFrmtTxt }}</td>
+                        <td><input type="checkbox" data-ng-model="a.stdAtrbInd" ng-true-value="'Y'" ng-false-value="'N'"></td>
+                        <td><input type="checkbox" data-ng-model="a.atrbPivotInd" ng-true-value="'Y'" ng-false-value="'N'"></td>
+                        <td>{{ a.aggFnctnCde }}</td>
+                        <td>{{ a.unpivotSrceAtrbId }}</td>
+                        <td>{{ indicatorToText(a.unpivotIdTrgtAtrbInd) }}</td>
+                        <td>{{ indicatorToText(a.unpivotValTrgtAtrbInd) }}</td>
+                    </tr>        
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Actions
+            </div>
+            
+            <div class="list-group">
+                <a class="list-group-item" 
+                    data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/attributes/new">Add Attribute</a>
+                <a class="list-group-item" 
+                    data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/detail">Show Format Detail</a>
+            </div>
+        </div>
+    </div>
+</div>

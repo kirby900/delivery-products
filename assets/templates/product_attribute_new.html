@@ -1,14 +1,15 @@
-<h4>Edit Product Attribute</h4>
+<h4>New Product Attribute</h4>
 
 <form class="form-horizontal">
     <fieldset>
+<!--    
         <div class="form-group">
             <label class="col-sm-2 control-label">Gid</label>
             <div class="col-sm-10">
-                <p class="form-control-static">{{ attribute.prdctAtrbGid }}</p>
+                <input type="text" class="form-control" data-ng-model="attribute.prdctAtrbGid">
             </div>
         </div>
-
+-->
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
@@ -38,16 +39,9 @@
         </div>
 
         <div class="form-group">
-        <label class="col-sm-2 control-label">Data type</label>
+        <label class="col-sm-2 control-label">Order #</label>
         <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.atrbDataTypTxt">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label class="col-sm-2 control-label">Field width</label>
-        <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.atrbMaxLngthNbr">
+        <input type="text" class="form-control" data-ng-model="attribute.atrbOrdrNbr">
         </div>
         </div>
 
@@ -55,6 +49,13 @@
         <label class="col-sm-2 control-label">Format</label>
         <div class="col-sm-10">
         <input type="text" class="form-control" data-ng-model="attribute.atrbFrmtTxt">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">Field width</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" data-ng-model="attribute.atrbMaxLngthNbr">
         </div>
         </div>
 
@@ -73,20 +74,6 @@
         </div>
 
         <div class="form-group">
-        <label class="col-sm-2 control-label">Quote character</label>
-        <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.txtWrapVal">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label class="col-sm-2 control-label">Order #</label>
-        <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.atrbOrdrNbr">
-        </div>
-        </div>
-
-        <div class="form-group">
         <label class="col-sm-2 control-label">Filler?</label>
         <div class="col-sm-10">
         <input type="text" class="form-control" data-ng-model="attribute.atrbIsFlrInd">
@@ -101,6 +88,13 @@
         </div>
 
         <div class="form-group">
+        <label class="col-sm-2 control-label">Data type</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" data-ng-model="attribute.atrbDataTypTxt">
+        </div>
+        </div>
+
+        <div class="form-group">
         <label class="col-sm-2 control-label">Pivot?</label>
         <div class="col-sm-10">
         <input type="text" class="form-control" data-ng-model="attribute.atrbPivotInd">
@@ -108,16 +102,9 @@
         </div>
 
         <div class="form-group">
-        <label class="col-sm-2 control-label">Pivot value function</label>
+        <label class="col-sm-2 control-label">Required?</label>
         <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.pivotValFnctnNam">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label class="col-sm-2 control-label">Pivot value sort</label>
-        <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.pivotSortOrdr">
+        <input type="text" class="form-control" data-ng-model="attribute.atrbRqrdInd">
         </div>
         </div>
 
@@ -129,9 +116,44 @@
         </div>
 
         <div class="form-group">
+        <label class="col-sm-2 control-label">Pivot value sort</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" data-ng-model="attribute.pivotSortOrdr">
+        </div>
+        </div>
+
+        <div class="form-group">
         <label class="col-sm-2 control-label">Null value override</label>
         <div class="col-sm-10">
         <input type="text" class="form-control" data-ng-model="attribute.aggNullPlugVal">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">Split field?</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" data-ng-model="attribute.splitFileOnAtrbValInd">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">Standard attribute?</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" data-ng-model="attribute.stdAtrbInd">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">Quote character</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" data-ng-model="attribute.txtWrapVal">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">Record sort field rank</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" data-ng-model="attribute.ordrByRankNbr">
         </div>
         </div>
 
@@ -157,30 +179,9 @@
         </div>
 
         <div class="form-group">
-        <label class="col-sm-2 control-label">Split field?</label>
+        <label class="col-sm-2 control-label">Pivot value function</label>
         <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.splitFileOnAtrbValInd">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label class="col-sm-2 control-label">Standard attribute?</label>
-        <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.stdAtrbInd">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label class="col-sm-2 control-label">Record sort field rank</label>
-        <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.ordrByRankNbr">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label class="col-sm-2 control-label">Required?</label>
-        <div class="col-sm-10">
-        <input type="text" class="form-control" data-ng-model="attribute.atrbRqrdInd">
+        <input type="text" class="form-control" data-ng-model="attribute.pivotValFnctnNam">
         </div>
         </div>
 
@@ -188,7 +189,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="button" class="btn btn-default" data-ng-click="save(attribute)">Save</button>
                 <a role="button" class="btn btn-default" 
-                    data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/{{attribute.prdctFrmtGid}}/attributes/list">Cancel</a>
+                    data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/attributes/list">Cancel</a>
             </div>
         </div>
     </fieldset>

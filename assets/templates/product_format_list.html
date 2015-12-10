@@ -2,40 +2,50 @@
 <div class="row">
 
     <div class="col-sm-9">
-        <h4>Product Format List</h4>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Product Format List
+            </div>
 
-        <table class="table table-condensed table-striped">
-            <thead>
-                <th>Name</th>
-                <th>Gid</th>
-                <!--<th>Display Order</th>-->
-                <!--<th></th>-->
-            </thead>
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <th>Name</th>
+                    <th>Record type</th>
+                    <th>Gid</th>
+                    <!--<th>Display Order</th>-->
+                    <!--<th></th>-->
+                </thead>
 
-            <tbody>
-                <tr data-ng-repeat=" f in formats | orderBy: 'prdctFrmtNam' ">
-                    <td><a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/detail">{{ f.prdctFrmtNam }}</a></td>
-                    <td>{{ f.prdctFrmtGid }}</td>
-                    <!--<td>{{ f.dsplyOrdrNbr }}</td>-->
-                    <!--
-                    <td>
-                        <a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/attributes/list">Attributes</a>
-                        &nbsp;&nbsp;
-                        <a data-ng-href="#/formats/{{ f.prdctFrmtGid }}/parameterValues/list">Enabling Parameters</a>
-                    </td>
-                    -->
-                </tr>
-            </tbody>
-        </table>
+                <tbody>
+                    <tr data-ng-repeat=" f in formats | orderBy: 'prdctFrmtNam' ">
+                        <td><a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/detail">{{ f.prdctFrmtNam }}</a></td>
+                        <td>{{ f.fileTypCde }}
+                        <td>{{ f.prdctFrmtGid }}</td>
+                        <!--<td>{{ f.dsplyOrdrNbr }}</td>-->
+                        <!--
+                        <td>
+                            <a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/attributes/list">Attributes</a>
+                            &nbsp;&nbsp;
+                            <a data-ng-href="#/formats/{{ f.prdctFrmtGid }}/parameterValues/list">Enabling Parameters</a>
+                        </td>
+                        -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="col-sm-3">
-        <h4>Actions</h4>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Actions
+            </div>
 
-        <div class="list-group">
-            <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/new">Add Format</a>
-            <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/detail">Show Product Detail</a>
-            <a class="list-group-item" data-ng-href="#/products/list">Show Products</a>
+            <div class="list-group">
+                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/new">Add Format</a>
+                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/detail">Show Product Detail</a>
+                <a class="list-group-item" data-ng-href="#/products/list">Show Products</a>
+            </div>
         </div>
     </div>
 

@@ -1,34 +1,45 @@
 <div class="row">
     <div class="col-sm-9">
-        <h4>Product Parameter Detail</h4>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Product Parameter Detail
+            </div>
 
-        <table class="table table-condensed">
-            <thead>
-                <th>Property</th>
-                <th>Value</th>
-            </thead>
+            <table class="table table-condensed">
+                <thead>
+                    <th>Property</th>
+                    <th>Value</th>
+                </thead>
 
-            <tbody>
-                <tr><td>Gid</td><td>{{ productParameter.prdctParmGid }}</td></tr>
-                <tr><td>Name</td><td>{{ productParameter.parameter.parmNam }}</td></tr>
-                <tr><td>Parm Gid</td><td>{{ productParameter.parameter.parmGid }}</td></tr>
-                <!--<tr><td>Product Gid</td><td>{{ productParameter.entrpPrdctGid }}</td></tr>-->
-                <tr><td>Min occurs</td><td>{{ productParameter.minOcrncNbr }}</td></tr>
-                <tr><td>Max occurs</td><td>{{ productParameter.maxOcrncNbr }}</td></tr>
-                <tr><td>Calculated</td><td>{{ indicatorToText(productParameter.clctdParmInd) }}</td></tr>
-                <tr><td>SQL expression</td><td>{{ productParameter.clctdValExprsTxt }}</td></tr>
-                <tr><td>Related column</td><td>{{ productParameter.rltdColNam }}</td></tr>
-                <tr><td>Last update</td><td>{{ productParameter.lstUpdtTstmp }} <strong>by</strong> {{ productParameter.lstUpdtId }}</td></tr>
-            </tbody>
-        </table>
+                <tbody>
+                    <tr><td>Gid</td><td>{{ productParameter.prdctParmGid }}</td></tr>
+                    <tr><td>Name</td><td>{{ productParameter.parameter.parmNam }}</td></tr>
+                    <tr><td>Parm Gid</td><td>{{ productParameter.parameter.parmGid }}</td></tr>
+                    <!--<tr><td>Product Gid</td><td>{{ productParameter.entrpPrdctGid }}</td></tr>-->
+                    <tr><td>Min occurs</td><td>{{ productParameter.minOcrncNbr }}</td></tr>
+                    <tr><td>Max occurs</td><td>{{ productParameter.maxOcrncNbr }}</td></tr>
+                    <tr><td>Calculated</td><td>{{ indicatorToText(productParameter.clctdParmInd) }}</td></tr>
+                    <tr><td>SQL expression</td><td>{{ productParameter.clctdValExprsTxt }}</td></tr>
+                    <tr><td>Related column</td><td>{{ productParameter.rltdColNam }}</td></tr>
+                    <tr><td>Last update</td><td>{{ productParameter.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ productParameter.lstUpdtId }}</td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="col-sm-3">
-        <h4>Actions</h4>
-        <div class="list-group">
-            <a class="list-group-item" data-ng-href="#/products/{{productParameter.entrpPrdctGid}}/parameters/{{productParameter.prdctParmGid}}/edit">Edit Parameter</a>
-            <button class="list-group-item" data-ng-click="delete(productParameter)">Delete Parameter</button>
-            <a class="list-group-item" data-ng-href="#/products/{{productParameter.entrpPrdctGid}}/parameters/list">Show Parameters</a>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Actions
+            </div>
+
+            <div class="list-group">
+                <a class="list-group-item" 
+                    data-ng-href="#/products/{{productParameter.entrpPrdctGid}}/parameters/{{productParameter.prdctParmGid}}/edit">Edit Parameter</a>
+                <button class="list-group-item" data-ng-click="delete(productParameter)">Delete Parameter</button>
+                <a class="list-group-item" 
+                    data-ng-href="#/products/{{productParameter.entrpPrdctGid}}/parameters/list">Show Parameters</a>
+            </div>
         </div>
     </div>
 </div>
