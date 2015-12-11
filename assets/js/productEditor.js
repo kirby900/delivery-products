@@ -465,39 +465,37 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('products.selected.formats.selected.attributes.list', {
       url: "/list",
       templateUrl: "templates/product_attribute_list.html",
+      resolve: {
+        productAttributes: function($stateParams, ProductAttribute){
+          return ProductAttribute.query({ prdctFrmtGid: $stateParams.formatId }); //.$promise;
+        }
+      },
       ncyBreadcrumb: {
         label: 'Attributes',
         parent: 'products.selected.formats.selected.detail'
       },
-      controller: function($scope, $state, $stateParams, selectedProduct, selectedFormat, ProductAttribute){
+      controller: function($scope, $state, $stateParams, selectedProduct, selectedFormat, productAttributes, ProductAttribute, user){
         console.log('State ' + $state.current.name);
-
-        $scope.sortableOptions = {
-          //containment: 'window',
-          //axis: 'y',
-          update: function(event, ui){
-            console.log('Entered update function');
-          }
-        };
 
         $scope.product = selectedProduct;
         $scope.format = selectedFormat;
 
-        $scope.attributes = [];
+        $scope.attributes = productAttributes;
 
-        // $scope.attributes = ProductAttribute.query({
-        //   prdctFrmtGid: $stateParams.prdctFrmtGid
-        // });
-        ProductAttribute.query({
-          prdctFrmtGid: $stateParams.formatId
-        }, function(data){
-          console.log('Entered success callback of ProductAttribute query');
-          data.sort(function(a, b){
-            return a.atrbOrdrNbr - b.atrbOrdrNbr;
-          });
+        $scope.updateFlag = function(prodAttr, propertyName){
+          console.log('Entered updateFlag()');
+          console.log(prodAttr.atrbNam + ': updating ' + propertyName + ' to ' + prodAttr[propertyName]);
 
-          $scope.attributes = data;
-        });
+          // Create an object with only the changing properties,
+          // rather than updating the _entire_ set of columns.
+          var atrb = {};
+          atrb[propertyName] = prodAttr[propertyName];
+          atrb.lstUpdtId = user.id;
+
+          ProductAttribute.update({ id: prodAttr.prdctAtrbGid }, atrb, function(response){
+            console.log('Updated Product Attribute');
+          });        
+        };
       }
     })
 
@@ -607,9 +605,10 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
 
           ProductAttribute.update({ id: attribute.prdctAtrbGid }, attribute, function(response){
             console.log('Updated Product Attribute');
-            $state.go('products.selected.formats.selected.attributes.list', {
+            $state.go('products.selected.formats.selected.attributes.selected.detail', {
               productId: $stateParams.productId,
-              formatId: $stateParams.formatId
+              formatId: $stateParams.formatId,
+              attributeId: $stateParams.attributeId
             });
           });
         };
