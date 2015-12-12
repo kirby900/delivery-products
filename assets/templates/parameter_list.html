@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Parameter List
+            </div>
+
+            <table class="table table-condensed table-striped">
+            	<thead>
+            		<th><a href="" data-ng-click="setSort('parmNam')">Name</a></th>
+                    <th><a href="" data-ng-click="setSort('parmDataTyp')">Data Type</a></th>
+                    <th><a href="" data-ng-click="setSort('parmCde')">Code</a></th>
+                    <th><a href="" data-ng-click="setSort('parmGid')">Gid</a></th>
+            	</thead>
+            	<tbody>
+            	    <tr data-ng-repeat="p in parameters | orderBy: sortOptions.key: sortOptions.reverse ">
+            	    	<td><a data-ng-href="#/parameters/{{ p.parmGid }}/detail">{{ p.parmNam }}</a></td>
+            	        <td>{{ p.parmDataTyp }}</td>
+                        <td>{{ p.parmCde }}</td>
+            	        <td>{{ p.parmGid }}</td>
+            	    </tr>
+            	</tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Actions
+            </div>
+
+            <div class="list-group">
+                <a class="list-group-item" data-ng-href="#/parameters/new">Add Parameter</a>
+            </div>
+        </div>
+    </div>
+</div>

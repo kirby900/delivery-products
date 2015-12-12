@@ -27,6 +27,143 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       }
     })
 
+    .state('parameters', {
+      abstract: true,
+      url: "/parameters",
+      template: '<ui-view/>'
+    })
+
+    .state('parameters.list', {
+      url: "/list",
+      templateUrl: "templates/parameter_list.html",
+      ncyBreadcrumb: {
+        label: 'Parameters'
+      },
+      controller: function($scope, $state, Parameter){
+        console.log('State ' + $state.current.name);
+
+        $scope.sortOptions = {
+          key: 'parmNam',
+          reverse: false
+        };
+
+        $scope.setSort = function(key){
+          if ( key === $scope.sortOptions.key ){
+            $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
+          } else {
+            $scope.sortOptions.key = key;
+            $scope.sortOptions.reverse = false;
+          }
+        };
+
+        // query() method immediately returns an array that 
+        // will be populated once database call finishes.
+        $scope.parameters = Parameter.query();
+      }
+    })
+
+    .state('parameters.new', {
+      url: "/new",
+      templateUrl: "templates/parameter_new.html",
+      // resolve: {
+      //   types: function(){
+      //     return [
+      //       { typeCode: 'STRING', typeLabel: 'String' },
+      //       { typeCode: 'INTEGER', typeLabel: 'Integer' },
+      //       { typeCode: 'BOOLEAN', typeLabel: 'Boolean' },
+      //       { typeCode: 'DATE', typeLabel: 'Date' }
+      //     ];
+      //   }
+      // },
+      ncyBreadcrumb: {
+        label: 'New',
+        parent: 'parameters.list'
+      },
+      controller: function($scope, $state, ParameterDataType, Parameter, user) {
+        console.log('State ' + $state.current.name);
+
+        $scope.types = ParameterDataType.types;
+
+        $scope.parameter = {
+          parmDataTyp: 'STRING'
+        };
+
+        $scope.save = function(parameter){
+          console.log('Entered save()');
+
+          parameter.lstUpdtId = user.id;
+          Parameter.save(parameter, function(response){
+            console.log('Saved Parameter');
+            $state.go('parameters.list');
+          });
+        };
+      }
+    })
+
+    .state('parameters.selected', {
+      abstract: true,
+      url: "/{parameterId}",
+      template: '<ui-view/>',
+      resolve: {
+        selectedParameter: function($stateParams, Parameter){
+          return Parameter.get({ id: $stateParams.parameterId }).$promise;
+        }
+      }, 
+      controller: function($state){
+        console.log('State ' + $state.current.name);
+      }
+    })
+
+    .state('parameters.selected.detail', {
+      url: "/detail",
+      templateUrl: "templates/parameter_detail.html",
+      ncyBreadcrumb: {
+        label: '{{ parameter.parmNam }}',
+        parent: 'parameters.list'
+      },
+      controller: function($scope, $state, $stateParams, selectedParameter, Parameter){
+        console.log('State ' + $state.current.name);
+
+        $scope.parameter = selectedParameter;
+
+        $scope.delete = function(parameter){
+          console.log('Entered delete()');
+
+          Parameter.delete({ id: parameter.parmGid }, function(response){
+            console.log('Deleted Parameter');
+            $state.go('parameters.list');
+          });
+        };
+      }
+    })
+
+    .state('parameters.selected.edit', {
+      url: "/edit",
+      templateUrl: "templates/parameter_edit.html",
+      ncyBreadcrumb: {
+        label: 'Edit',
+        parent: 'parameters.selected.detail'
+      },
+      controller: function($scope, $state, $stateParams, selectedParameter, ParameterDataType, Parameter){
+        console.log('State ' + $state.current.name);
+
+        $scope.types = ParameterDataType.types;
+        $scope.parameter = selectedParameter;
+
+        $scope.save = function(parameter){
+          console.log('Entered save()');
+
+          Parameter.update({ id: parameter.parmGid }, parameter, function(response){
+            console.log('Updated Parameter');
+            $state.go('parameters.selected.detail', {
+              parameterId: $stateParams.parameterId
+            });
+          });
+        };
+      }
+    })
+
+
     .state('products', {
       abstract: true,
       url: "/products",
@@ -345,29 +482,30 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
 
         $scope.product = selectedProduct;
 
-        $scope.fieldset = [
-          { attributeName: 'prdctFrmtNam', label: 'Name', placeholder: '' },
-          { attributeName: 'fileDesc', label: 'Description', placeholder: '' },
-          { attributeName: 'fileNamTmpltTxt', label: 'File name', placeholder: '' },
-          { attributeName: 'fileExtTxt', label: 'File extension', placeholder: '' },
-          { attributeName: 'fileLctnTmpltTxt', label: 'Subdirectory', placeholder: '' },
-          { attributeName: 'fileTypCde', label: 'Record type', placeholder: '' },
-          { attributeName: 'fldSeparatorVal', label: 'Field separator', placeholder: '' },
+        // $scope.fieldset = [
+        //   { attributeName: 'prdctFrmtNam', label: 'Name', placeholder: '' },
+        //   { attributeName: 'fileDesc', label: 'Description', placeholder: '' },
+        //   { attributeName: 'fileNamTmpltTxt', label: 'File name', placeholder: '' },
+        //   { attributeName: 'fileExtTxt', label: 'File extension', placeholder: '' },
+        //   { attributeName: 'fileLctnTmpltTxt', label: 'Subdirectory', placeholder: '' },
+        //   { attributeName: 'fileTypCde', label: 'Record type', placeholder: '' },
+        //   { attributeName: 'fldSeparatorVal', label: 'Field separator', placeholder: '' },
 
-          { attributeName: 'fileRqrdInd', label: 'Required', placeholder: '' },
-          { attributeName: 'fileCmprsNam', label: 'Compression', placeholder: '' },
-          { attributeName: 'gnrtHdrInd', label: 'Header', placeholder: '' },
-          { attributeName: 'applyFactActvyFltrInd', label: 'Activity filter', placeholder: '' },
-          { attributeName: 'fileMaxRecCnt', label: 'Max lines per file', placeholder: '' },
-          { attributeName: 'endOfRecTxt', label: 'End of record marker', placeholder: '' },
-          { attributeName: 'dsplyOrdrNbr', label: 'Display order', placeholder: '' },
-          { attributeName: 'allowEmptyFileInd', label: 'Allow empty file', placeholder: '' },
-          { attributeName: 'applyDstctClusInd', label: 'Unique filter', placeholder: '' },
-          { attributeName: 'lineEndngCde', label: 'Line ending', placeholder: '' }
-        ];
+        //   { attributeName: 'fileRqrdInd', label: 'Required', placeholder: '' },
+        //   { attributeName: 'fileCmprsNam', label: 'Compression', placeholder: '' },
+        //   { attributeName: 'gnrtHdrInd', label: 'Header', placeholder: '' },
+        //   { attributeName: 'applyFactActvyFltrInd', label: 'Activity filter', placeholder: '' },
+        //   { attributeName: 'fileMaxRecCnt', label: 'Max lines per file', placeholder: '' },
+        //   { attributeName: 'endOfRecTxt', label: 'End of record marker', placeholder: '' },
+        //   { attributeName: 'dsplyOrdrNbr', label: 'Display order', placeholder: '' },
+        //   { attributeName: 'allowEmptyFileInd', label: 'Allow empty file', placeholder: '' },
+        //   { attributeName: 'applyDstctClusInd', label: 'Unique filter', placeholder: '' },
+        //   { attributeName: 'lineEndngCde', label: 'Line ending', placeholder: '' }
+        // ];
 
         $scope.format = {
           entrpPrdctGid: selectedProduct.entrpPrdctGid,
+          fileExtTxt: '.dat',
           fileTypCde: 'VARIABLE',
           fldSeparatorVal: '|',
           fileRqrdInd: 'N',
@@ -656,10 +794,16 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
         label: 'New',
         parent: 'products.selected.tasks.list'
       },
-      controller: function($scope, $state, $stateParams, selectedProduct, ProductTask, user){
+      resolve: {
+        taskTypes: function(TaskType){
+          return TaskType.query();
+        }
+      },
+      controller: function($scope, $state, $stateParams, selectedProduct, taskTypes, ProductTask, user){
         console.log('State ' + $state.current.name);
 
         $scope.product = selectedProduct;
+        $scope.taskTypes = taskTypes;
 
         $scope.task = {
           entrpPrdctGid: selectedProduct.entrpPrdctGid,
@@ -732,10 +876,16 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
         label: 'Edit',
         parent: 'products.selected.tasks.selected.detail'
       },
-      controller: function($scope, $state, $stateParams, selectedProduct, selectedTask, ProductTask, user){
+      resolve: {
+        taskTypes: function(TaskType){
+          return TaskType.query();
+        }
+      },
+      controller: function($scope, $state, $stateParams, selectedProduct, selectedTask, taskTypes, ProductTask, user){
         console.log('State ' + $state.current.name);
         $scope.product = selectedProduct;
         $scope.task = selectedTask;
+        $scope.taskTypes = taskTypes;
 
         $scope.save = function(task){
           console.log('Entered save()');
@@ -747,6 +897,9 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
               productId: $stateParams.productId,
               taskId: $stateParams.taskId
             });
+          }, function(response){
+            console.log('Update failed');
+            console.log(response);
           });
         }
       }

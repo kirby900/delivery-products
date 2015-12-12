@@ -1,25 +1,12 @@
 <h4>New Product Parameter</h4>
 
-<!--
-    prdctParmGid: { columnName: 'PRDCT_PARM_GID', type: 'integer', primaryKey: true, autoIncrement: true },
-    parmGid: { columnName: 'PARM_GID', type: 'integer' },
-    entrpPrdctGid: { columnName: 'ENTRP_PRDCT_GID', type: 'integer' },
-    minOcrncNbr: { columnName: 'MIN_OCRNC_NBR', type: 'integer', required: true },
-    maxOcrncNbr: { columnName: 'MAX_OCRNC_NBR', type: 'integer' },
-    clctdParmInd: { columnName: 'CLCTD_PARM_IND', type: 'string', size: 1, required: true },
-    clctdValExprsTxt: { columnName: 'CLCTD_VAL_EXPRS_TXT', type: 'string', size: 2000 },
-    rltdColNam: { columnName: 'RLTD_COL_NAM', type: 'string', size: 30 },
-    lstUpdtId: { columnName: 'LST_UPDT_ID', type: 'string', size: 60 },
-    lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime' }
--->
-
 <form class="form-horizontal">
     <div class="form-group">
         <label class="col-sm-2 control-label">Name</label>
         <div class="col-sm-10">
             <select class="form-control" 
                 data-ng-model="productParameter.parameter"
-                data-ng-options="p as p.parmNam for p in parameters | orderBy:'parmNam'">
+                data-ng-options="p as p.parmNam for p in parameters | orderBy:'parmNam'" autofocus >
                 <option value="">Select</option>
             </select>
         </div>

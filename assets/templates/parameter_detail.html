@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Parameter Detail
+            </div>
+
+            <table class="table table-condensed">
+                <thead>
+                    <th>Property</th>
+                    <th>Value</th>
+                </thead>
+
+                <tbody>
+                    <tr><td>Gid</td><td>{{ parameter.parmGid }}</td></tr>
+                    <tr><td>Code</td><td>{{ parameter.parmCde }}</td></tr>
+                    <tr><td>Name</td><td>{{ parameter.parmNam }}</td></tr>
+                    <tr><td>Description</td><td>{{ parameter.parmDesc }}</td></tr>
+                    <tr><td>Data type</td><td>{{ parameter.parmDataTyp }}</td></tr>
+                    <tr><td>Format</td><td>{{ parameter.parmFrmtTxt }}</td></tr>
+                    <tr><td>Last update</td><td>{{ parameter.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ parameter.lstUpdtId }}</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Actions
+            </div>
+
+            <div class="list-group">
+                <a class="list-group-item" data-ng-href="#/parameters/{{parameter.parmGid}}/edit">Edit Parameter</a>
+                <button class="list-group-item" data-ng-click="delete(parameter)">Delete Parameter</button>
+                <a class="list-group-item" data-ng-href="#/parameters/list">Show Parameter List</a>
+            </div>
+        </div>
+    </div>
+</div>

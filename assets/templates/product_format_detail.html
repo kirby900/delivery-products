@@ -18,15 +18,12 @@
                     <tr><td>File name</td><td>{{ format.fileNamTmpltTxt }}</td></tr>
                     <tr><td>File extension</td><td>{{ format.fileExtTxt }}</td></tr>
                     <tr><td>Subdirectory</td><td>{{ format.fileLctnTmpltTxt }}</td></tr>
-                    <tr><td>Record type</td><td>{{ format.fileTypCde }}</td></tr>
+                    <tr><td>Record format</td><td>{{ format.fileTypCde }}</td></tr>
                     <tr><td>Field separator</td><td>{{ format.fldSeparatorVal }}</td></tr>
-                    <tr><td>Compression</td><td>{{ format.fileCmprsNam }}</td></tr>
-                    <!--<tr><td>Product Gid</td><td>{{ format.entrpPrdctGid }}</td></tr>-->
-                    <!--<tr><td>fldDlmtrVal</td><td>{{ format.fldDlmtrVal }}</td></tr>-->
-                    <tr><td>Max lines per file</td><td>{{ format.fileMaxRecCnt }}</td></tr>
                     <tr><td>End of record marker</td><td>{{ format.endOfRecTxt }}</td></tr>
-                    <tr><td>Display order</td><td>{{ format.dsplyOrdrNbr }}</td></tr>
                     <tr><td>Line ending</td><td>{{ format.lineEndngCde }}</td></tr>
+                    <tr><td>Compression</td><td>{{ format.fileCmprsNam }}</td></tr>
+                    <tr><td>Max lines per file</td><td>{{ format.fileMaxRecCnt }}</td></tr>
 
                     <tr><td>Headers</td><td>{{ indicatorToText(format.gnrtHdrInd) }}</td></tr>
                     <tr><td>Activity filter</td><td>{{ indicatorToText(format.applyFactActvyFltrInd) }}</td></tr>
@@ -38,6 +35,11 @@
                         <td>Last update</td>
                         <td>{{ format.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ format.lstUpdtId }}</td>
                     </tr>
+<!--
+                    <tr><td>Product Gid</td><td>{{ format.entrpPrdctGid }}</td></tr>
+                    <tr><td>fldDlmtrVal</td><td>{{ format.fldDlmtrVal }}</td></tr>
+                    <tr><td>Display order</td><td>{{ format.dsplyOrdrNbr }}</td></tr>
+-->
                 </tbody>
             </table>
         </div>
@@ -56,8 +58,8 @@
                     data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/attributes/list">Show Attributes</a>
                 <a class="list-group-item" 
                     data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/displayFilters/list">Show Display Filters</a>
-                <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/list">Show Formats</a>
-                <a class="list-group-item" data-ng-href="#/products/list">Show Products</a>
+                <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/list">Show Format List</a>
+                <a class="list-group-item" data-ng-href="#/products/list">Show Product List</a>
             </div>
         </div>
     </div>

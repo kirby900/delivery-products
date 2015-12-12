@@ -4,6 +4,18 @@
 ** operations.
 */
 angular.module('ProductDataService', ['ngResource'])
+
+.factory('ParameterDataType', function(){
+    return {
+        types: [
+            { typeCode: 'STRING', typeLabel: 'String' },
+            { typeCode: 'INTEGER', typeLabel: 'Integer' },
+            { typeCode: 'BOOLEAN', typeLabel: 'Boolean' },
+            { typeCode: 'DATE', typeLabel: 'Date' }
+        ]
+    };
+})
+
 .factory('Parameter', ['$resource', function($resource){
     console.log('Entered factory function for Parameter');
 
@@ -24,6 +36,7 @@ angular.module('ProductDataService', ['ngResource'])
         }
     );
 }])
+
 .factory('EnterpriseProduct', ['$resource', function($resource){
     console.log('Entered factory function for EnterpriseProduct');
 
@@ -35,6 +48,7 @@ angular.module('ProductDataService', ['ngResource'])
         }
     );
 }])
+
 .factory('ProductParameter', ['$resource', function($resource){
     console.log('Entered factory function for ProductParameter');
 
@@ -46,6 +60,7 @@ angular.module('ProductDataService', ['ngResource'])
         }
     );
 }])
+
 .factory('ProductFormat', ['$resource', function($resource){
     console.log('Entered factory function for ProductFormat');
 
@@ -57,6 +72,7 @@ angular.module('ProductDataService', ['ngResource'])
         }
     );
 }])
+
 .factory('ProductFormatParmVal', ['$resource', function($resource){
     console.log('Entered factory function for ProductFormatParmVal');
 
@@ -70,6 +86,7 @@ angular.module('ProductDataService', ['ngResource'])
         }
     );
 }])
+
 .factory('ProductTask', ['$resource', function($resource){
     console.log('Entered factory function for ProductTask');
 
@@ -81,6 +98,7 @@ angular.module('ProductDataService', ['ngResource'])
         }
     );
 }])
+
 .factory('ProductAttribute', ['$resource', function($resource){
     console.log('Entered factory function for ProductAttribute');
 
@@ -92,4 +110,15 @@ angular.module('ProductDataService', ['ngResource'])
         }
     );
 }])
-;
+
+.factory('TaskType', ['$resource', function($resource){
+    console.log('Entered factory function for TaskType');
+
+    return $resource(
+        '/taskTypes/:id',              // the associated URL
+        { id: '@taskTypCde' },         // map id parameter to a property
+        {                              // additional or override methods
+            update: { method: 'PUT' }
+        }
+    );
+}]);

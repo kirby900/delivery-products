@@ -20,8 +20,8 @@
                     -->
                     <tr><td>Target database</td><td>{{ product.trgtSchmaNam }} @ {{ product.trgtDbNam }}</td></tr>
                     <tr><td>Perl driver</td><td>{{ product.trgtPerlDrvrNam }}</td></tr>
-                    <tr><td>Enabled</td><td>{{ indicatorToText(product.aprvdInd) }}</td></tr>
                     <tr><td>Output directory</td><td>{{ product.fileLctnTmpltTxt }}</td></tr>
+                    <tr><td>Enabled</td><td>{{ indicatorToText(product.aprvdInd) }}</td></tr>
                     <tr>
                         <td>Last update</td>
                         <td>{{ product.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ product.lstUpdtId }}</td>
@@ -39,10 +39,10 @@
             
             <div class="list-group">
                 <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/edit">Edit Product</a>
-                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/parameters/list">Show Product Parameters</a>
-                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/list">Show Product Formats</a>
-                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/tasks/list">Show Product Tasks</a>
-                <a class="list-group-item" href="#/products/list">Show Products</a>
+                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/parameters/list">Show Parameters</a>
+                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/list">Show Formats</a>
+                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/tasks/list">Show Tasks</a>
+                <a class="list-group-item" href="#/products/list">Show Product List</a>
             </div>
         </div>
     </div>

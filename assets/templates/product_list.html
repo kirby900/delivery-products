@@ -9,25 +9,20 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <!--<th>Description</th>-->
                         <th>Gid</th>
-                        <!--
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        -->
+                        <th> </th>
+                        <th> </th>
+                        <th> </th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr data-ng-repeat=" p in products | orderBy: 'entrpPrdctNam' ">
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/detail">{{ p.entrpPrdctNam }}</a></td>
-                        <!--<td>{{ p.entrpPrdctDesc }}</td>-->
                         <td>{{ p.entrpPrdctGid }}</td>
-                        <!--
-                        <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/list">Parameters</a></td>
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/formats/list">Formats</a></td>
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/tasks/list">Tasks</a></td>
-                        -->
+                        <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/list">Parameters</a></td>
                     </tr>        
                 </tbody>
             </table>

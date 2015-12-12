@@ -12,82 +12,29 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="task.taskNam">
+                <input type="text" class="form-control" data-ng-model="task.taskNam" autofocus >
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">Type</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="task.taskTypCde">
-            </div>
-        </div>
-<!--
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Product Gid</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="task.entrpPrdctGid">
-            </div>
-        </div>
--->
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Seq #</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="task.taskSeqNbr">
+                <!--<input type="text" class="form-control" data-ng-model="task.taskTypCde">-->
+                <select class="form-control" data-ng-model="task.taskTypCde"
+                    data-ng-options=" tt.taskTypCde as tt.taskTypDesc for tt in taskTypes | orderBy:'taskTypDesc' ">
+                    <option value="">Select task type</option>
+                </select>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group slide-effect" data-ng-show="task.taskTypCde === 'EXEC_PROC'">
             <label class="col-sm-2 control-label">SQL template</label>
             <div class="col-sm-10">
             <input type="text" class="form-control" data-ng-model="task.srceSqlTmpltTxt">
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Requirement Gid</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="task.rqmtGid">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Target table</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="task.trgtPrdctDataObjctGid">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Create target table</label>
-            <div class="col-sm-10">
-                <label class="control-label">
-                    <input type="checkbox" data-ng-model="task.crteTrgtTblInd" 
-                        data-ng-true-value="'Y'" data-ng-false-value="'N'">
-                </label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Truncate target table</label>
-            <div class="col-sm-10">
-                <label class="control-label">
-                    <input type="checkbox" data-ng-model="task.trgtTrnctInd" 
-                        data-ng-true-value="'Y'" data-ng-false-value="'N'">
-                </label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Prepare partition</label>
-            <div class="col-sm-10">
-                <label class="control-label">
-                    <input type="checkbox" data-ng-model="task.prepPrtnInd" 
-                        data-ng-true-value="'Y'" data-ng-false-value="'N'">
-                </label>
-            </div>
-        </div>
-
+        <div data-ng-show="task.taskTypCde === 'EXTERNAL_PROGRAM'" class="slide-effect">
         <div class="form-group">
             <label class="col-sm-2 control-label">Program name</label>
             <div class="col-sm-10">
@@ -101,20 +48,84 @@
                 <input type="text" class="form-control" data-ng-model="task.extnlPgmArgListTxt">
             </div>
         </div>
+        </div>
 
-        <div class="form-group">
+        <div class="form-group slide-effect" data-ng-show="task.taskTypCde === 'FILEGEN'">
             <label class="col-sm-2 control-label">Linked Format Gid</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" data-ng-model="task.prdctFrmtGid">
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Target table</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" data-ng-model="task.trgtPrdctDataObjctGid">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-ng-model="task.prepPrtnInd" 
+                            data-ng-true-value="'Y'" data-ng-false-value="'N'">
+                        Prepare partition
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-ng-model="task.crteTrgtTblInd" 
+                            data-ng-true-value="'Y'" data-ng-false-value="'N'">
+                        Create target table
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-ng-model="task.trgtTrnctInd" 
+                            data-ng-true-value="'Y'" data-ng-false-value="'N'">
+                        Truncate target table
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Requirement Gid</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" data-ng-model="task.rqmtGid">
+            </div>
+        </div>
+
+<!--
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Product Gid</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" data-ng-model="task.entrpPrdctGid">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Seq #</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" data-ng-model="task.taskSeqNbr">
+            </div>
+        </div>
+-->
+
     </fieldset>
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-default" data-ng-click="save(task)">Save</button>
-            <a role="button" class="btn btn-default" data-ng-href="#/products/{{task.entrpPrdctGid}}/tasks/list">Cancel</a>
+            <button type="submit" class="btn btn-primary" data-ng-click="save(task)">Save</button>
+            <a role="button" class="btn btn-default" data-ng-href="#/products/{{task.entrpPrdctGid}}/tasks/{{task.taskGid}}/detail">Cancel</a>
         </div>
     </div>
 </form>

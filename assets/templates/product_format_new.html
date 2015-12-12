@@ -1,17 +1,153 @@
 <h4>New Product Format</h4>
 
 <form class="form-horizontal">
-    <div class="form-group" data-ng-repeat="fld in fieldset">
-        <label class="col-sm-2 control-label">{{ fld.label }}</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" data-ng-model="format[fld.attributeName]" placeholder="{{fld.placeholder}}">
-        </div>
+<!--
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Gid</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{ format.prdctFrmtGid }}</p>
+    </div>
+  </div>
+-->
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" data-ng-model="format.prdctFrmtNam" autofocus >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" data-ng-model="format.fileDesc">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">File name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" data-ng-model="format.fileNamTmpltTxt">
     </div>
 
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" data-ng-click="save(format)">Save</button>
-            <a role="button" class="btn btn-default" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/list">Cancel</a>
-        </div>
+    <label class="col-sm-2 control-label">File extension</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" data-ng-model="format.fileExtTxt">
     </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Subdirectory</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" data-ng-model="format.fileLctnTmpltTxt">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Record format</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" data-ng-model="format.fileTypCde">
+    </div>
+
+    <label class="col-sm-2 control-label">Field separator</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" data-ng-model="format.fldSeparatorVal">
+    </div>
+
+  </div>
+
+  <div class="form-group">
+
+    <label class="col-sm-2 control-label">Line ending</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" data-ng-model="format.lineEndngCde">
+    </div>
+
+    <label class="col-sm-2 control-label">Record terminator</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" data-ng-model="format.endOfRecTxt">
+    </div>
+
+    <label class="col-sm-2 control-label">Max lines per file</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" data-ng-model="format.fileMaxRecCnt">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Compression</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" data-ng-model="format.fileCmprsNam">
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-ng-model="format.gnrtHdrInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+          Add header
+        </label>
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-ng-model="format.applyFactActvyFltrInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+          Activity filter
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-ng-model="format.applyDstctClusInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+          Distinct filter
+        </label>
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-ng-model="format.allowEmptyFileInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+          Allow empty file
+        </label>
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-ng-model="format.fileRqrdInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+          Required file
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+<!--
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Product Gid</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" data-ng-model="format.entrpPrdctGid">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Display order</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" data-ng-model="format.dsplyOrdrNbr">
+    </div>
+  </div>
+-->
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary" data-ng-click="save(format)">Save</button>
+      <a role="button" class="btn btn-default" data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/list">Cancel</a>
+    </div>
+  </div>
 </form>

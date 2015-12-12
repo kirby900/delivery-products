@@ -1,0 +1,53 @@
+<h4>New Parameter</h4>
+
+<!--
+    parmGid: { columnName: 'PARM_GID', type: 'integer', primaryKey: true, autoIncrement: true },
+    parmCde: { columnName: 'PARM_CDE', type: 'string', size: 10 },
+    parmNam: { columnName: 'PARM_NAM', type: 'string', size: 20 },
+    parmDesc: { columnName: 'PARM_DESC', type: 'string', size: 200 },
+    parmDataTyp: { columnName: 'PARM_DATA_TYP', type: 'string', size: 20 },
+    parmFrmtTxt: { columnName: 'PARM_FRMT_TXT', type: 'string', size: 20 },
+    lstUpdtId: { columnName: 'LST_UPDT_ID', type: 'string', size: 60 },
+    lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime' }
+-->
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="parameter.parmNam" placeholder="Parameter name" autofocus >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="parameter.parmDesc" placeholder="Parameter description">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Data Type</label>
+        <div class="col-sm-10">
+            <select class="form-control" data-ng-model="parameter.parmDataTyp"
+                data-ng-options="t.typeCode as t.typeLabel for t in types">
+                <option value="">Select type</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Format</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="parameter.parmFrmtTxt" placeholder="Parameter format">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" data-ng-click="save(parameter)">Save</button>
+            <a role="button" class="btn btn-default" data-ng-href="#/parameters/list">Cancel</a>
+        </div>
+    </div>
+
+</form>

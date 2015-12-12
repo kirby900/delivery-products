@@ -15,17 +15,18 @@
                     <tr><td>Gid</td><td>{{ task.taskGid }}</td></tr>
                     <tr><td>Name</td><td>{{ task.taskNam }}</td></tr>
                     <tr><td>Type</td><td>{{ task.taskTypCde }}</td></tr>
-                    <tr><td>Product Gid</td><td>{{ task.entrpPrdctGid }}</td></tr>
-                    <tr><td>Sequence #</td><td>{{ task.taskSeqNbr }}</td></tr>
                     <tr><td>SQL template</td><td>{{ task.srceSqlTmpltTxt }}</td></tr>
-                    <tr><td>Create target</td><td>{{ indicatorToText(task.crteTrgtTblInd) }}</td></tr>
-                    <tr><td>Truncate target</td><td>{{ indicatorToText(task.trgtTrnctInd) }}</td></tr>
-                    <tr><td>Requirement</td><td>{{ task.rqmtGid }}</td></tr>
-                    <tr><td>Target object key</td><td>{{ task.trgtPrdctDataObjctGid }}</td></tr>
-                    <tr><td>Prepare partition</td><td>{{ indicatorToText(task.prepPrtnInd) }}</td></tr>
                     <tr><td>Program name</td><td>{{ task.extnlPgmNam }}</td></tr>
                     <tr><td>Program arguments</td><td>{{ task.extnlPgmArgListTxt }}</td></tr>
                     <tr><td>Linked format</td><td>{{ task.prdctFrmtGid }}</td></tr>
+                    <tr><td>Target table</td><td>{{ task.trgtPrdctDataObjctGid }}</td></tr>
+                    <tr><td>Prepare partition</td><td>{{ indicatorToText(task.prepPrtnInd) }}</td></tr>
+                    <tr><td>Create target</td><td>{{ indicatorToText(task.crteTrgtTblInd) }}</td></tr>
+                    <tr><td>Truncate target</td><td>{{ indicatorToText(task.trgtTrnctInd) }}</td></tr>
+                    <tr><td>Requirement</td><td>{{ task.rqmtGid }}</td></tr>
+
+                    <!--<tr><td>Product Gid</td><td>{{ task.entrpPrdctGid }}</td></tr>-->
+                    <tr><td>Sequence #</td><td>{{ task.taskSeqNbr }}</td></tr>
                     <tr>
                         <td>Last updated</td>
                         <td>{{ task.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ task.lstUpdtId }}</td>
@@ -44,8 +45,8 @@
             <div class="list-group">
                 <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/{{task.taskGid}}/edit">Edit Task</a>
                 <button type="button" class="list-group-item" data-ng-click="delete(task)">Delete Task</button>
-                <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/list">Show Tasks</a>
-                <a class="list-group-item" data-ng-href="#/products/list">Show Products</a>
+                <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/list">Show Task List</a>
+                <a class="list-group-item" data-ng-href="#/products/list">Show Product List</a>
             </div>
         </div>
     </div>

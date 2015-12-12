@@ -1,0 +1,57 @@
+<h4>Edit Parameter</h4>
+
+<form class="form-horizontal">
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Gid</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{ parameter.parmNam }}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Code</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{ parameter.parmCde }}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="parameter.parmNam" placeholder="Parameter name" autofocus >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="parameter.parmDesc" placeholder="Parameter description">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Data Type</label>
+        <div class="col-sm-10">
+            <select class="form-control" data-ng-model="parameter.parmDataTyp"
+                data-ng-options="t.typeCode as t.typeLabel for t in types">
+                <option value="">Select type</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Format</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-ng-model="parameter.parmFrmtTxt" placeholder="Parameter format">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" data-ng-click="save(parameter)">Save</button>
+            <a role="button" class="btn btn-default" data-ng-href="#/parameters/{{parameter.parmGid}}/detail">Cancel</a>
+        </div>
+    </div>
+
+</form>
