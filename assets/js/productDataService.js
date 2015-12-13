@@ -106,7 +106,13 @@ angular.module('ProductDataService', ['ngResource'])
         '/productAttributes/:id',      // the associated URL
         { id: '@prdctAtrbGid' },       // map id parameter to a property
         {                              // additional or override methods
-            update: { method: 'PUT' }
+            query: { method: 'GET', isArray: true, cache: false },
+            update: { method: 'PUT' },
+            updateMultiple: {
+                url: '/productAttributes/updateMultiple',
+                method: 'PUT',
+                isArray: true
+            }
         }
     );
 }])

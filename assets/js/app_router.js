@@ -1,9 +1,5 @@
 
-angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'ProductDataService', 'ui.sortable', 'ngAnimate'])
-.value('user', {
-  id: "",
-  name: ""
-})
+angular.module('app')
 .config(function($stateProvider, $urlRouterProvider, $breadcrumbProvider){
 
     $breadcrumbProvider.setOptions({
@@ -65,16 +61,6 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('parameters.new', {
       url: "/new",
       templateUrl: "templates/parameter_new.html",
-      // resolve: {
-      //   types: function(){
-      //     return [
-      //       { typeCode: 'STRING', typeLabel: 'String' },
-      //       { typeCode: 'INTEGER', typeLabel: 'Integer' },
-      //       { typeCode: 'BOOLEAN', typeLabel: 'Boolean' },
-      //       { typeCode: 'DATE', typeLabel: 'Date' }
-      //     ];
-      //   }
-      // },
       ncyBreadcrumb: {
         label: 'New',
         parent: 'parameters.list'
@@ -437,36 +423,21 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
     .state('products.selected.formats.list', {
       url: "/list",
       templateUrl: "templates/product_format_list.html",
+      resolve: {
+        formats: function($stateParams, ProductFormat){
+          console.log('Entered resolve formats in state products.selected.formats.list');
+          return ProductFormat.query({ entrpPrdctGid: $stateParams.productId }).$promise;
+        }
+      },
       ncyBreadcrumb: {
         label: 'Formats',
         parent: 'products.selected.detail'
       },
-      controller: function($scope, $state, $stateParams, selectedProduct, ProductFormat){
+      controller: function($scope, $state, $stateParams, selectedProduct, formats, ProductFormat){
         console.log('State ' + $state.current.name);
 
-        // $scope.sortableOptions = {
-        //   //containment: 'window',
-        //   axis: 'y',
-        //   update: function(event, ui){
-        //     console.log('Order updated');
-        //   }
-        // };
-
-        $scope.product = selectedProduct;
-        
-        //$scope.entrpPrdctGid = $stateParams.productId;
-        $scope.formats = ProductFormat.query({
-          entrpPrdctGid: $stateParams.productId
-        });
-
-        // ProductFormat.query({
-        //   entrpPrdctGid: $stateParams.productId
-        // }).$promise.then(function(data){
-        //   data.sort(function(a, b){
-        //     return a.dsplyOrdrNbr - b.dsplyOrdrNbr;
-        //   });
-        //   $scope.formats = data;
-        // });
+        $scope.product = selectedProduct;        
+        $scope.formats = formats;
       }
     })
 
@@ -481,27 +452,6 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
         console.log('State products.selected.formats.new');
 
         $scope.product = selectedProduct;
-
-        // $scope.fieldset = [
-        //   { attributeName: 'prdctFrmtNam', label: 'Name', placeholder: '' },
-        //   { attributeName: 'fileDesc', label: 'Description', placeholder: '' },
-        //   { attributeName: 'fileNamTmpltTxt', label: 'File name', placeholder: '' },
-        //   { attributeName: 'fileExtTxt', label: 'File extension', placeholder: '' },
-        //   { attributeName: 'fileLctnTmpltTxt', label: 'Subdirectory', placeholder: '' },
-        //   { attributeName: 'fileTypCde', label: 'Record type', placeholder: '' },
-        //   { attributeName: 'fldSeparatorVal', label: 'Field separator', placeholder: '' },
-
-        //   { attributeName: 'fileRqrdInd', label: 'Required', placeholder: '' },
-        //   { attributeName: 'fileCmprsNam', label: 'Compression', placeholder: '' },
-        //   { attributeName: 'gnrtHdrInd', label: 'Header', placeholder: '' },
-        //   { attributeName: 'applyFactActvyFltrInd', label: 'Activity filter', placeholder: '' },
-        //   { attributeName: 'fileMaxRecCnt', label: 'Max lines per file', placeholder: '' },
-        //   { attributeName: 'endOfRecTxt', label: 'End of record marker', placeholder: '' },
-        //   { attributeName: 'dsplyOrdrNbr', label: 'Display order', placeholder: '' },
-        //   { attributeName: 'allowEmptyFileInd', label: 'Allow empty file', placeholder: '' },
-        //   { attributeName: 'applyDstctClusInd', label: 'Unique filter', placeholder: '' },
-        //   { attributeName: 'lineEndngCde', label: 'Line ending', placeholder: '' }
-        // ];
 
         $scope.format = {
           entrpPrdctGid: selectedProduct.entrpPrdctGid,
@@ -538,9 +488,7 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       template: "<ui-view/>",
       resolve: {
         selectedFormat: function($stateParams, ProductFormat){
-          return ProductFormat.get({
-            id: $stateParams.formatId
-          });
+          return ProductFormat.get({ id: $stateParams.formatId }).$promise;
         }
       },
       controller: function($scope, $state, $stateParams){
@@ -605,7 +553,8 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       templateUrl: "templates/product_attribute_list.html",
       resolve: {
         productAttributes: function($stateParams, ProductAttribute){
-          return ProductAttribute.query({ prdctFrmtGid: $stateParams.formatId }); //.$promise;
+          console.log('Entered resolve productAttributes in state products.selected.formats.selected.attributes.list');
+          return ProductAttribute.query({ prdctFrmtGid: $stateParams.formatId });
         }
       },
       ncyBreadcrumb: {
@@ -617,7 +566,6 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
 
         $scope.product = selectedProduct;
         $scope.format = selectedFormat;
-
         $scope.attributes = productAttributes;
 
         $scope.updateFlag = function(prodAttr, propertyName){
@@ -635,6 +583,22 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
           });        
         };
       }
+    })
+
+    .state('products.selected.formats.selected.attributes.reorder', {
+      url: "/reorder",
+      templateUrl: "templates/product_attribute_reorder.html",
+      resolve: {
+        productAttributes: function($stateParams, ProductAttribute){
+          console.log('Entered resolve productAttributes in state products.selected.formats.selected.attributes.reorder')
+          return ProductAttribute.query({ prdctFrmtGid: $stateParams.formatId }).$promise;
+        }
+      },
+      ncyBreadcrumb: {
+        label: 'Arrange',
+        parent: 'products.selected.formats.selected.attributes.list'
+      },
+      controller: 'AttributeOrderController'
     })
 
     .state('products.selected.formats.selected.attributes.new', {
@@ -684,9 +648,7 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       template: '<ui-view/>',
       resolve: {
         selectedAttribute: function($stateParams, ProductAttribute){
-          return ProductAttribute.get({ 
-            id: $stateParams.attributeId 
-          }).$promise;
+          return ProductAttribute.get({ id: $stateParams.attributeId }).$promise;
         }
       },
       ncyBreadcrumb: {
@@ -796,7 +758,7 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       },
       resolve: {
         taskTypes: function(TaskType){
-          return TaskType.query();
+          return TaskType.query().$promise;
         }
       },
       controller: function($scope, $state, $stateParams, selectedProduct, taskTypes, ProductTask, user){
@@ -878,7 +840,7 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       },
       resolve: {
         taskTypes: function(TaskType){
-          return TaskType.query();
+          return TaskType.query().$promise;
         }
       },
       controller: function($scope, $state, $stateParams, selectedProduct, selectedTask, taskTypes, ProductTask, user){
@@ -916,16 +878,4 @@ angular.module('productEditorApp',['ui.router', 'ncy-angular-breadcrumb', 'Produ
       }
     });
 
-})
-.controller('ProductEditorController', ['$scope', function($scope){
-  console.log('Entered ProductEditorController');
-
-  $scope.indicatorToText = function(ind){
-    return ind == "Y" ? 'Yes' : 'No';
-  };
-}])
-.run(function(user){
-  // TODO: fetch real user identity
-  user.id = 'ip2150';
-  user.name = 'Dean Holbrook';
 });
