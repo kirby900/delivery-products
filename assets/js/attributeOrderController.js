@@ -23,7 +23,7 @@ angular.module('app')
         // If true, uses default animation interval.
         // If integer, animates over specified number of milliseconds
         //revert: true,
-        revert: 400,
+        revert: 300,
         update: function(event, ui) {
             console.log('Update event');
             $scope.changed = true;

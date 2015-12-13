@@ -8,20 +8,20 @@
             <table class="table table-condensed table-striped">
                 <thead>
                     <tr>
+                        <th>Order</th>
                         <th>Name</th>
                         <th>Type</th>
                         <th>Gid</th>
-                        <th>Seq #</th>
                         <th></th>
                     </tr>
                 </thead>
 
                 <tbody data-ui-sortable="" data-ng-model="tasks">
                     <tr data-ng-repeat=" t in tasks ">
+                        <td>{{ t.taskSeqNbr }}</td>
                         <td><a data-ng-href="#/products/{{ t.entrpPrdctGid }}/tasks/{{t.taskGid}}/detail">{{ t.taskNam }}</a></td>
                         <td>{{ t.taskTypCde }}</td>
                         <td>{{ t.taskGid }}</td>
-                        <td>{{ t.taskSeqNbr }}</td>
                         <td><a data-ng-href="#/products/{{t.entrpPrdctGid}}/tasks/{{t.taskGid}}/edit">Edit</a></td>
                     </tr>        
                 </tbody>
@@ -37,6 +37,7 @@
 
             <div class="list-group">
                 <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/new">Add Task</a>
+                <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/reorder">Change Task Order</a>
                 <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/detail">Show Product Detail</a>
                 <a class="list-group-item" data-ng-href="#/products/list">Show Product List</a>
             </div>

@@ -22,18 +22,10 @@ module.exports = {
     lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime', required: true }
   },
 
-  // beforeCreate: function(values, cb){
-  //   values.lstUpdtTstmp = new Date();
-  //   cb(null, values);
-  // },
-  // beforeUpdate: function(values, cb){
-  //   values.lstUpdtTstmp = new Date();
-  //   cb(null, values);
-  // },
-
   beforeValidate: function(values, cb){
     values.lstUpdtTstmp = new Date();
     cb(null, values);
   }
+
 };
 

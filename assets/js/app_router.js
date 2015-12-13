@@ -43,7 +43,7 @@ angular.module('app')
           reverse: false
         };
 
-        $scope.setSort = function(key){
+        $scope.sort = function(key){
           if ( key === $scope.sortOptions.key ){
             $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
           } else {
@@ -438,6 +438,20 @@ angular.module('app')
 
         $scope.product = selectedProduct;        
         $scope.formats = formats;
+
+        $scope.sortOptions = {
+          key: 'dsplyOrdrNbr',
+          reverse: false
+        };
+
+        $scope.sort = function(key){
+          if ( key === $scope.sortOptions.key ){
+            $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
+          } else {
+            $scope.sortOptions.key = key;
+            $scope.sortOptions.reverse = false;
+          }
+        };
       }
     })
 
@@ -567,6 +581,20 @@ angular.module('app')
         $scope.product = selectedProduct;
         $scope.format = selectedFormat;
         $scope.attributes = productAttributes;
+
+        $scope.sortOptions = {
+          key: 'atrbOrdrNbr',
+          reverse: false
+        };
+
+        $scope.sort = function(key){
+          if ( key === $scope.sortOptions.key ){
+            $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
+          } else {
+            $scope.sortOptions.key = key;
+            $scope.sortOptions.reverse = false;
+          }
+        };
 
         $scope.updateFlag = function(prodAttr, propertyName){
           console.log('Entered updateFlag()');
@@ -747,6 +775,22 @@ angular.module('app')
           $scope.tasks = data;
         });
       }
+    })
+
+    .state('products.selected.tasks.reorder', {
+      url: "/reorder",
+      templateUrl: "templates/product_task_reorder.html",
+      resolve: {
+        tasks: function($stateParams, ProductTask){
+          console.log('Entered resolve tasks in state products.selected.tasks.reorder')
+          return ProductTask.query({ entrpPrdctGid: $stateParams.productId }).$promise;
+        }
+      },
+      ncyBreadcrumb: {
+        label: 'Arrange',
+        parent: 'products.selected.tasks.list'
+      },
+      controller: 'TaskOrderController'
     })
 
     .state('products.selected.tasks.new', {

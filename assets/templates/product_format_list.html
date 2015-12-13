@@ -9,26 +9,27 @@
 
             <table class="table table-condensed table-striped">
                 <thead>
-                    <th>Name</th>
-                    <th>Record type</th>
-                    <th>Gid</th>
-                    <!--<th>Display Order</th>-->
-                    <!--<th></th>-->
+                    <th><a href="" data-ng-click="sort('dsplyOrdrNbr')">Order</a></th>
+                    <th><a href="" data-ng-click="sort('prdctFrmtNam')">Name</a></th>
+                    <th><a href="" data-ng-click="sort('prdctFrmtGid')">Gid</a></th>
+                    <th><a href="" data-ng-click="sort('fileTypCde')">Record format</a></th>
+                    <th></th>
                 </thead>
 
                 <tbody>
-                    <tr data-ng-repeat=" f in formats | orderBy: 'dsplyOrdrNbr' ">
+                    <tr data-ng-repeat=" f in formats | orderBy: sortOptions.key : sortOptions.reverse ">
+                        <td>{{ f.dsplyOrdrNbr }}
                         <td><a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/detail">{{ f.prdctFrmtNam }}</a></td>
-                        <td>{{ f.fileTypCde }}
                         <td>{{ f.prdctFrmtGid }}</td>
-                        <!--<td>{{ f.dsplyOrdrNbr }}</td>-->
-                        <!--
+                        <td>{{ f.fileTypCde }}
                         <td>
                             <a data-ng-href="#/products/{{ f.entrpPrdctGid }}/formats/{{ f.prdctFrmtGid }}/attributes/list">Attributes</a>
-                            &nbsp;&nbsp;
+                        </td>
+<!--                        
+                        <td>
                             <a data-ng-href="#/formats/{{ f.prdctFrmtGid }}/parameterValues/list">Enabling Parameters</a>
                         </td>
-                        -->
+-->
                     </tr>
                 </tbody>
             </table>

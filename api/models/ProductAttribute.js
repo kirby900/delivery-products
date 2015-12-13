@@ -49,12 +49,4 @@ module.exports = {
     cb(null, values);
   }
 
-  // beforeCreate: function(values, cb){
-  //   values.lstUpdtTstmp = new Date();
-  //   cb(null, values);
-  // },
-  // beforeUpdate: function(values, cb){
-  //   values.lstUpdtTstmp = new Date();
-  //   cb(null, values);
-  // }
 };

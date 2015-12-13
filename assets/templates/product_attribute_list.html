@@ -8,9 +8,11 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Standard</th>
-                        <th>Data Type</th>
+                        <th><a href="" data-ng-click="sort('atrbOrdrNbr')">Order</a></th>
+                        <th><a href="" data-ng-click="sort('atrbNam')">Name</a></th>
+                        <th><a href="" data-ng-click="sort('prdctAtrbGid')">Gid</a></th>
+                        <th><a href="" data-ng-click="sort('stdAtrbInd')">Standard</a></th>
+                        <th><a href="" data-ng-click="sort('atrbDataTypTxt')">Data Type</a></th>
                         <th>Width</th>
                         <th>Format</th>
                         <th>Pivot</th>
@@ -20,14 +22,15 @@
                         <th>ID target</th>
                         <th>Value target</th>
                         -->
-                        <th>Gid</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr data-ng-repeat=" a in attributes | orderBy: 'atrbOrdrNbr' ">
-                        <td><a data-ng-href="#/products/{{ format.entrpPrdctGid }}/formats/{{ a.prdctFrmtGid }}/attributes/{{ a.prdctAtrbGid }}/detail">{{ a.atrbNam }}</a></td>
+                    <tr data-ng-repeat=" a in attributes | orderBy: sortOptions.key: sortOptions.reverse ">
+                        <td>{{ a.atrbOrdrNbr }}</td>
+                        <td><a data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{a.prdctFrmtGid}}/attributes/{{a.prdctAtrbGid}}/detail">{{ a.atrbNam }}</a></td>
 
+                        <td>{{ a.prdctAtrbGid }}</td>
                         <td><input type="checkbox" data-ng-model="a.stdAtrbInd" 
                                 data-ng-true-value="'Y'" data-ng-false-value="'N'"
                                 data-ng-change="updateFlag(a, 'stdAtrbInd')"></td>
@@ -46,7 +49,6 @@
                         <td>{{ indicatorToText(a.unpivotIdTrgtAtrbInd) }}</td>
                         <td>{{ indicatorToText(a.unpivotValTrgtAtrbInd) }}</td>
                         -->
-                        <td>{{ a.prdctAtrbGid }}</td>
                     </tr>        
                 </tbody>
             </table>

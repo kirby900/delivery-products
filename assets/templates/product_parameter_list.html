@@ -21,9 +21,9 @@
             <table class="table table-condensed table-striped">
             	<thead>
             		<th><a href="" data-ng-click="setSort('parameter.parmNam')">Name</a></th>
+                    <th><a href="" data-ng-click="setSort('prdctParmGid')">Gid</a></th>
                     <th><a href="" data-ng-click="setSort('parameter.parmDataTyp')">Data Type</a></th>
                     <th><a href="" data-ng-click="setSort('clctdParmInd')">Calculated</a></th>
-                    <th><a href="" data-ng-click="setSort('prdctParmGid')">Gid</a></th>
             <!--
             		<th>Parm Gid</th>
             		<th>Min Occurs</th>
@@ -35,9 +35,9 @@
             	    	<td>
             	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parameter.parmNam }}</a>
             	        </td>
+                        <td>{{ pp.prdctParmGid }}</td>
             	        <td>{{ pp.parameter.parmDataTyp }}</td>
             	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
-            	        <td>{{ pp.prdctParmGid }}</td>
             <!--
             	        <td>{{ pp.parameter.parmGid }}</td>
             	        <td>{{ pp.minOcrncNbr }}</td>

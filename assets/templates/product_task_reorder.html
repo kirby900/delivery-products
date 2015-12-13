@@ -3,20 +3,20 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                Drag and drop to rearrange Attribute order
+                Drag and drop to rearrange Task order
             </div>
 
-            <ul class="list-group" data-ui-sortable="sortableOptions" data-ng-model="attributes">
-                <li class="list-group-item" data-ng-repeat=" a in attributes ">{{ a.atrbNam }}</li>
+            <ul class="list-group" data-ui-sortable="sortableOptions" data-ng-model="tasks">
+                <li class="list-group-item" data-ng-repeat=" t in tasks ">{{ t.taskNam }}</li>
             </ul>
         </div>
 
         <button type="button" class="btn btn-default" 
             data-ng-disabled="!changed"
-            data-ng-click="save(attributes)">Save</button>
+            data-ng-click="save(tasks)">Save</button>
 
         <a role="button" class="btn btn-default" 
-            data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/attributes/list">Cancel</a>
+            data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/list">Cancel</a>
 
     </div>
 
@@ -28,7 +28,7 @@
             
             <div class="list-group">
                 <a class="list-group-item" 
-                    data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/detail">Show Format Detail</a>
+                    data-ng-href="#/products/{{product.entrpPrdctGid}}/detail">Show Product Detail</a>
             </div>
         </div>
     </div>
