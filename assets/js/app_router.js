@@ -792,21 +792,33 @@ angular.module('app')
         label: 'Tasks',
         parent: 'products.selected.detail'
       },
-      controller: function($scope, $state, $stateParams, selectedProduct, ProductTask){
+      resolve: {
+        tasks: function($stateParams, ProductTask){
+          return ProductTask.query({ entrpPrdctGid: $stateParams.productId }).$promise;
+        }
+      },
+      controller: function($scope, $state, $stateParams, selectedProduct, tasks){
         console.log('State ' + $state.current.name);
 
         $scope.product = selectedProduct;
+        $scope.tasks = tasks;
 
-        $scope.tasks = [];
+        $scope.sortOptions = {
+          key: 'taskSeqNbr',
+          reverse: false
+        };
 
-        // Get tasks for selected product
-        // Sort them by sequence number
-        ProductTask.query({
-          entrpPrdctGid: $stateParams.productId 
-        }, function(data){
-          data.sort(function(a, b){ return a.taskSeqNbr - b.taskSeqNbr; });
-          $scope.tasks = data;
-        });
+        $scope.sort = function(key){
+          //console.log('Entered sort');
+          //console.log('key = ' + key);
+
+          if ( key === $scope.sortOptions.key ){
+            $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
+          } else {
+            $scope.sortOptions.key = key;
+            $scope.sortOptions.reverse = false;
+          }
+        };
       }
     })
 

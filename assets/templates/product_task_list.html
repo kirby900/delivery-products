@@ -8,20 +8,20 @@
             <table class="table table-condensed table-striped">
                 <thead>
                     <tr>
-                        <th>Order</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Gid</th>
+                        <th><a href="" data-ng-click="sort('taskSeqNbr')">Order</a></th>
+                        <th><a href="" data-ng-click="sort('taskNam')">Name</a></th>
+                        <th><a href="" data-ng-click="sort('taskGid')">Gid</a></th>
+                        <th><a href="" data-ng-click="sort('taskTypCde')">Type</a></th>
                         <th></th>
                     </tr>
                 </thead>
 
-                <tbody data-ui-sortable="" data-ng-model="tasks">
-                    <tr data-ng-repeat=" t in tasks ">
+                <tbody data-ng-model="tasks">
+                    <tr data-ng-repeat=" t in tasks | orderBy: sortOptions.key : sortOptions.reverse ">
                         <td>{{ t.taskSeqNbr }}</td>
                         <td><a data-ng-href="#/products/{{ t.entrpPrdctGid }}/tasks/{{t.taskGid}}/detail">{{ t.taskNam }}</a></td>
-                        <td>{{ t.taskTypCde }}</td>
                         <td>{{ t.taskGid }}</td>
+                        <td>{{ t.taskTypCde }}</td>
                         <td><a data-ng-href="#/products/{{t.entrpPrdctGid}}/tasks/{{t.taskGid}}/edit">Edit</a></td>
                     </tr>        
                 </tbody>
