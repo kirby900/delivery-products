@@ -455,6 +455,22 @@ angular.module('app')
       }
     })
 
+    .state('products.selected.formats.reorder', {
+      url: "/reorder",
+      templateUrl: "templates/product_format_reorder.html",
+      resolve: {
+        formats: function($stateParams, ProductFormat){
+          console.log('Entered resolve formats in state products.selected.formats.reorder')
+          return ProductFormat.query({ entrpPrdctGid: $stateParams.productId }).$promise;
+        }
+      },
+      ncyBreadcrumb: {
+        label: 'Arrange',
+        parent: 'products.selected.formats.list'
+      },
+      controller: 'FormatOrderController'
+    })
+
     .state('products.selected.formats.new', {
       url: "/new",
       templateUrl: "templates/product_format_new.html",

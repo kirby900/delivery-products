@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-sm-9">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Drag and drop to rearrange Format order
+            </div>
+
+            <ul class="list-group list-group-condensed" data-ui-sortable="sortableOptions" data-ng-model="formats">
+                <li class="list-group-item" data-ng-repeat=" f in formats ">{{ f.prdctFrmtNam }}</li>
+            </ul>
+        </div>
+
+        <button type="button" class="btn btn-default" 
+            data-ng-disabled="!changed"
+            data-ng-click="save(formats)">Save</button>
+
+        <a role="button" class="btn btn-default" 
+            data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/list">Cancel</a>
+
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Actions
+            </div>
+            
+            <div class="list-group">
+                <a class="list-group-item" 
+                    data-ng-href="#/products/{{product.entrpPrdctGid}}/detail">Show Product Detail</a>
+            </div>
+        </div>
+    </div>
+</div>

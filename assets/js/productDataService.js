@@ -68,7 +68,12 @@ angular.module('ProductDataService', ['ngResource'])
         '/productFormats/:id',         // the associated URL
         { id: '@prdctFrmtGid' },       // map id parameter to a property
         {                              // additional or override methods
-            update: { method: 'PUT' }
+            update: { method: 'PUT' },
+            updateMultiple: {
+                url: '/productFormats/updateMultiple',
+                method: 'PUT',
+                isArray: true
+            }
         }
     );
 }])
