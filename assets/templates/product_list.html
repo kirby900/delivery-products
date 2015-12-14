@@ -8,8 +8,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Gid</th>
+                        <th><a href="" data-ng-click="sort('entrpPrdctNam')">Name</a></th>
+                        <th><a href="" data-ng-click="sort('entrpPrdctGid')">Gid</a></th>
                         <th> </th>
                         <th> </th>
                         <th> </th>
@@ -17,7 +17,7 @@
                 </thead>
 
                 <tbody>
-                    <tr data-ng-repeat=" p in products | orderBy: 'entrpPrdctNam' ">
+                    <tr data-ng-repeat=" p in products | orderBy: sortOptions.key : sortOptions.reverse ">
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/detail">{{ p.entrpPrdctNam }}</a></td>
                         <td>{{ p.entrpPrdctGid }}</td>
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/formats/list">Formats</a></td>

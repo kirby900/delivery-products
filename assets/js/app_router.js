@@ -149,7 +149,6 @@ angular.module('app')
       }
     })
 
-
     .state('products', {
       abstract: true,
       url: "/products",
@@ -159,12 +158,30 @@ angular.module('app')
     .state('products.list', {
       url: "/list",
       templateUrl: "templates/product_list.html",
+      resolve: {
+        products: function(EnterpriseProduct){
+          return EnterpriseProduct.query().$promise;
+        }
+      },
       ncyBreadcrumb: {
-        //parent: 'home',
         label: 'Products'
       },
       controller: function($scope, $state, EnterpriseProduct){
         console.log('State ' + $state.current.name);
+
+        $scope.sortOptions = {
+          key: 'entrpPrdctNam',
+          reverse: false
+        };
+
+        $scope.sort = function(key){
+          if ( key === $scope.sortOptions.key ){
+            $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
+          } else {
+            $scope.sortOptions.key = key;
+            $scope.sortOptions.reverse = false;
+          }
+        };
 
         // query() method immediately returns an array that will be
         // populated once database call finishes.
