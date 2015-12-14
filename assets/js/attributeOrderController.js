@@ -36,7 +36,7 @@ angular.module('app')
         var attrs = attributes.map(function(attr, idx){
             return {
                 prdctAtrbGid: attr.prdctAtrbGid,
-                atrbOrdrNbr: idx + 1,
+                atrbOrdrNbr: (idx + 1),
                 lstUpdtId: user.id
             };
         });

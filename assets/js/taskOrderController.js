@@ -38,7 +38,7 @@ angular.module('app')
         var items = reorderedTasks.map(function(task, idx){
             return {
                 taskGid: task.taskGid,
-                taskSeqNbr: idx + 1,
+                taskSeqNbr: (idx + 1),
                 lstUpdtId: user.id
             };
         });
