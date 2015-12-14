@@ -1,9 +1,9 @@
-TODO:
-
 Add feature to re-order attributes -- Finished Dec 13, 2015
 Add feature to re-order tasks -- Finished Dec 13, 2015
+Add feature to re-order formats -- Finished Dec 13, 2015
+
+TODO:
 Add authentication
 Add feature authorization
 Add feature to select and rank output record sort fields
-Add feature to re-order formats
 Add Product Parameter list of values
