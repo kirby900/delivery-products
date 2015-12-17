@@ -78,11 +78,11 @@ angular.module('ProductDataService', ['ngResource'])
     );
 }])
 
-.factory('ProductFormatParmVal', ['$resource', function($resource){
+.factory('ProductFormatParameterVal', ['$resource', function($resource){
     console.log('Entered factory function for ProductFormatParmVal');
 
     return $resource(
-        '/productFormatParmVals',      // the associated URL with NO id 
+        '/productFormatParameterVals', // the associated URL with NO id 
                                        // parameter because the database table
                                        // has a three-column primary key.
         {},                            // No default request params

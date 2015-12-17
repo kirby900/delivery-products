@@ -6,6 +6,17 @@
  */
 
 module.exports = {
+
+	find: function(request, response){
+		ProductParameterView.find(request.query)
+			.then(function(data){
+				console.log('Product Parameters found: ' + data.length);
+				return response.json(data);
+			})
+			.catch(function(error){
+				return response.status(500).send('Internal server error');
+			});
+	}
 	
 };
 

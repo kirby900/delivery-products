@@ -20,10 +20,10 @@
 
             <table class="table table-condensed table-striped">
             	<thead>
-            		<th><a href="" data-ng-click="setSort('parameter.parmNam')">Name</a></th>
-                    <th><a href="" data-ng-click="setSort('prdctParmGid')">Gid</a></th>
-                    <th><a href="" data-ng-click="setSort('parameter.parmDataTyp')">Data Type</a></th>
-                    <th><a href="" data-ng-click="setSort('clctdParmInd')">Calculated</a></th>
+            		<th><a href="" data-ng-click="sort('parmNam')">Name</a></th>
+                    <th><a href="" data-ng-click="sort('prdctParmGid')">Gid</a></th>
+                    <th><a href="" data-ng-click="sort('parmDataTyp')">Data Type</a></th>
+                    <th><a href="" data-ng-click="sort('clctdParmInd')">Calculated</a></th>
             <!--
             		<th>Parm Gid</th>
             		<th>Min Occurs</th>
@@ -31,12 +31,12 @@
             -->
             	</thead>
             	<tbody>
-            	    <tr data-ng-repeat="pp in productParameters | orderBy: sort.key: sort.reverse ">
+            	    <tr data-ng-repeat="pp in productParameters | orderBy: sortOptions.key: sortOptions.reverse ">
             	    	<td>
-            	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parameter.parmNam }}</a>
+            	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parmNam }}</a>
             	        </td>
                         <td>{{ pp.prdctParmGid }}</td>
-            	        <td>{{ pp.parameter.parmDataTyp }}</td>
+            	        <td>{{ pp.parmDataTyp }}</td>
             	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
             <!--
             	        <td>{{ pp.parameter.parmGid }}</td>

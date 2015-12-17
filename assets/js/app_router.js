@@ -297,17 +297,17 @@ angular.module('app')
       controller: function($scope, $state, $stateParams, selectedProduct, ProductParameter){
         console.log('State ' + $state.current.name);
 
-        $scope.sort = {
-          key: 'parameter.parmNam',
+        $scope.sortOptions = {
+          key: 'parmNam',
           reverse: false
         };
 
-        $scope.setSort = function(key){
-          if ( key === $scope.sort.key ){
-            $scope.sort.reverse = !$scope.sort.reverse;
+        $scope.sort = function(key){
+          if ( key === $scope.sortOptions.key ){
+            $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
           } else {
-            $scope.sort.key = key;
-            $scope.sort.reverse = false;
+            $scope.sortOptions.key = key;
+            $scope.sortOptions.reverse = false;
           }
         };
 
@@ -586,6 +586,22 @@ angular.module('app')
       }
     })
 
+    .state('products.selected.formats.selected.displayconditions', {
+      url: "/displayConditions",
+      templateUrl: "templates/product_format_display_conditions.html",
+      resolve: {
+        productFormatParameterVals: function($stateParams, ProductFormatParameterVal){
+          console.log('Entered resolve productFormatParameterVals in state products.selected.formats.selected.displayconditions');
+          return ProductFormatParameterVal.query({ prdctFrmtGid: $stateParams.formatId }).$promise;
+        }
+      },
+      ncyBreadcrumb: {
+        label: 'Display Settings',
+        parent: 'products.selected.formats.selected.detail'
+      },
+      controller: 'ProductFormatDisplayConditionsController'
+    })
+
     .state('products.selected.formats.selected.attributes', {
       abstract: true,
       url: "/attributes",
@@ -601,7 +617,7 @@ angular.module('app')
       resolve: {
         productAttributes: function($stateParams, ProductAttribute){
           console.log('Entered resolve productAttributes in state products.selected.formats.selected.attributes.list');
-          return ProductAttribute.query({ prdctFrmtGid: $stateParams.formatId });
+          return ProductAttribute.query({ prdctFrmtGid: $stateParams.formatId }).$promise;
         }
       },
       ncyBreadcrumb: {
