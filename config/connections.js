@@ -25,10 +25,15 @@ module.exports.connections = {
   * Local Oracle database.                                                   *
   * User and password maintained in local.js                                 *
   ***************************************************************************/
-
+/*
   localOracle: {
     adapter: 'sails-oracle-db',
     connectString: 'localhost:1521/xe'
+  },
+*/
+  devDatabase: {
+    adapter: 'sails-oracle-db'
+    //connectString: 'odsdev'
   }
 
   /***************************************************************************

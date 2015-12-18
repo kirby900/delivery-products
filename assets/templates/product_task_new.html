@@ -53,7 +53,10 @@
         <div class="form-group slide-effect" data-ng-show="task.taskTypCde === 'FILEGEN'">
             <label class="col-sm-2 control-label">Linked Format Gid</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="task.prdctFrmtGid">
+                <select class="form-control" data-ng-model="task.prdctFrmtGid"
+                    data-ng-options="f.prdctFrmtGid as f.prdctFrmtNam for f in formats | orderBy: 'prdctFrmtNam' ">
+                    <option value="">Select format</option>
+                </select>
             </div>
         </div>
 

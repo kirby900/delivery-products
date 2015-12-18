@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('ProductFormatDisplayConditionsController', [
+.controller('FormatDisplayConditionsController', [
     '$scope', 
     '$stateParams', 
     '$state', 
@@ -7,7 +7,7 @@ angular.module('app')
     'selectedFormat', 
     'productFormatParameterVals', 
     function($scope, $stateParams, $state, selectedProduct, selectedFormat, productFormatParameterVals){
-        console.log('Entered ProductFormatDisplayConditionsController');
+        console.log('Entered FormatDisplayConditionsController');
 
         $scope.product = selectedProduct;
         $scope.format = selectedFormat;
