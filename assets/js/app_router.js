@@ -324,17 +324,33 @@ angular.module('app')
       resolve: {
         parameters: function($stateParams, Parameter){
           return Parameter.query().$promise;
+        },
+        usedParameters: function($stateParams, ProductParameter){
+          return ProductParameter.query({ entrpPrdctGid: $stateParams.productId }).$promise;
         }
       },
       ncyBreadcrumb: {
         label: 'New',
         parent: 'products.selected.parameters.list'
       },
-      controller: function($scope, $state, $stateParams, parameters, selectedProduct, ProductParameter, user) {
+      controller: function($scope, $state, $stateParams, parameters, usedParameters, selectedProduct, ProductParameter, user) {
         console.log('State ' + $state.current.name);
 
+        // Build list of parameters NOT already linked to product
+        var assignedParmKeys = {};
+        usedParameters.forEach(function(parm){
+          assignedParmKeys[parm.parmGid] = 1;
+        });
+
+        var availableParameters = [];
+        parameters.forEach(function(parm){
+          if ( !assignedParmKeys[parm.parmGid] ){
+            availableParameters.push(parm);
+          }
+        })
+
         $scope.product = selectedProduct;
-        $scope.parameters = parameters;
+        $scope.parameters = availableParameters;
 
         $scope.productParameter = {
           entrpPrdctGid: $stateParams.productId,
@@ -637,7 +653,9 @@ angular.module('app')
         };
 
         $scope.sort = function(key){
+          console.log('Sort by ' + key);
           if ( key === $scope.sortOptions.key ){
+            console.log('Toggle sort order');
             $scope.sortOptions.reverse = !$scope.sortOptions.reverse;
           } else {
             $scope.sortOptions.key = key;

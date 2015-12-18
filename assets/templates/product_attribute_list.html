@@ -14,10 +14,10 @@
                         <th><a href="" data-ng-click="sort('stdAtrbInd')">Standard</a></th>
                         <th><a href="" data-ng-click="sort('atrbDataTypTxt')">Data Type</a></th>
                         <th><a href="" data-ng-click="sort('atrbMaxLngthNbr')">Width</a></th>
-                        <th>Format</th>
-                        <th>Pivot</th>
-                        <th>Agg</th>
-                        <th>Metric ID</th>
+                        <th><a href="" data-ng-click="sort('atrbFrmtTxt')">Format</a></th>
+                        <th><a href="" data-ng-click="sort('atrbPivotInd')">Pivot</a></th>
+                        <th><a href="" data-ng-click="sort('aggFnctnCde')">Agg</a></th>
+                        <th><a href="" data-ng-click="sort('unpivotSrceAtrbId')">Metric ID</a></th>
                         <!--
                         <th>ID target</th>
                         <th>Value target</th>
@@ -31,17 +31,21 @@
                         <td><a data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{a.prdctFrmtGid}}/attributes/{{a.prdctAtrbGid}}/detail">{{ a.atrbNam }}</a></td>
 
                         <td>{{ a.prdctAtrbGid }}</td>
+<!--
                         <td><input type="checkbox" data-ng-model="a.stdAtrbInd" 
                                 data-ng-true-value="'Y'" data-ng-false-value="'N'"
                                 data-ng-change="updateFlag(a, 'stdAtrbInd')"></td>
-
+-->
+                        <td>{{ indicatorToText(a.stdAtrbInd) }}</td>
                         <td>{{ a.atrbDataTypTxt }}</td>
                         <td>{{ a.atrbMaxLngthNbr }}</td>
                         <td>{{ a.atrbFrmtTxt }}</td>
-
+<!--
                         <td><input type="checkbox" data-ng-model="a.atrbPivotInd" 
                                 data-ng-true-value="'Y'" data-ng-false-value="'N'"
                                 data-ng-change="updateFlag(a, 'atrbPivotInd')"></td>
+-->
+                        <td>{{ indicatorToText(a.atrbPivotInd) }}</td>
 
                         <td>{{ a.aggFnctnCde }}</td>
                         <td>{{ a.unpivotSrceAtrbId }}</td>

@@ -5,13 +5,13 @@ angular.module('app')
     $scope.product = selectedProduct;
     $scope.format = selectedFormat;
 
-    console.log( 'Before sort: ' + productAttributes.map(function(attr){ return attr.atrbOrdrNbr }).join(', ') );
+    //console.log( 'Before sort: ' + productAttributes.map(function(attr){ return attr.atrbOrdrNbr }).join(', ') );
 
     productAttributes.sort(function(a,b){
         return a.atrbOrdrNbr - b.atrbOrdrNbr;
     });
 
-    console.log( 'After sort: ' + productAttributes.map(function(attr){ return attr.atrbOrdrNbr }).join(', ') );
+    //console.log( 'After sort: ' + productAttributes.map(function(attr){ return attr.atrbOrdrNbr }).join(', ') );
 
     $scope.attributes = productAttributes;
 
