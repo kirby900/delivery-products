@@ -1,18 +1,17 @@
-<h4>New Product</h4>
+<h4>Edit Product</h4>
 
 <form class="form-horizontal">
-<!--
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Gid</label>
-        <div class="col-sm-10">
-            <p class="form-control-static">{{ product.entrpPrdctGid }}</p>
-        </div>
-    </div>
--->
+
     <div class="form-group">
         <label class="col-sm-2 control-label">Name</label>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
             <input type="text" class="form-control" data-ng-model="product.entrpPrdctNam" autofocus >
+        </div>
+
+        <label class="col-sm-2 control-label">Gid</label>
+        <div class="col-sm-2">
+            <!--<p class="form-control-static">{{ product.entrpPrdctGid }}</p>-->
+            <input type="text" class="form-control" data-ng-model="product.entrpPrdctGid" readonly >
         </div>
     </div>
 
@@ -22,39 +21,30 @@
             <input type="text" class="form-control" data-ng-model="product.entrpPrdctDesc">
         </div>
     </div>
-<!--
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Group Id</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" data-ng-model="product.entrpPrdctGrpGid">
-        </div>
-    </div>
--->
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Target database</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" data-ng-model="product.trgtDbNam">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Target schema</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" data-ng-model="product.trgtSchmaNam">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Perl driver</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" data-ng-model="product.trgtPerlDrvrNam">
-        </div>
-    </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">Base output directory</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" data-ng-model="product.fileLctnTmpltTxt">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Target schema</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" data-ng-model="product.trgtSchmaNam">
+        </div>
+
+        <label class="col-sm-2 control-label">Target database</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" data-ng-model="product.trgtDbNam">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Perl driver</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" data-ng-model="product.trgtPerlDrvrNam">
         </div>
     </div>
 
@@ -76,7 +66,7 @@
             <button type="submit" class="btn btn-primary" 
                 data-ng-disable=" ! isModified() "
                 data-ng-click="save(product)">Save</button>
-            <a role="button" class="btn btn-default" data-ng-href="#/products/list">Cancel</a>
+            <a role="button" class="btn btn-default" data-ng-href="#/products/{{product.entrpPrdctGid}}/detail">Cancel</a>
         </div>
     </div>
 </form>

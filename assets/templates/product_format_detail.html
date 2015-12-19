@@ -5,43 +5,115 @@
             <div class="panel-heading">
                 Product Format Detail
             </div>
-            <table class="table table-condensed">
-                <thead>
-                    <th>Property</th>
-                    <th>Value</th>
-                </thead>
 
-                <tbody>
-                    <tr><td>Gid</td><td>{{ format.prdctFrmtGid }}</td></tr>
-                    <tr><td>Name</td><td>{{ format.prdctFrmtNam }}</td></tr>
-                    <tr><td>Description</td><td>{{ format.fileDesc }}</td></tr>
-                    <tr><td>File name</td><td>{{ format.fileNamTmpltTxt }}</td></tr>
-                    <tr><td>File extension</td><td>{{ format.fileExtTxt }}</td></tr>
-                    <tr><td>Subdirectory</td><td>{{ format.fileLctnTmpltTxt }}</td></tr>
-                    <tr><td>Record format</td><td>{{ format.fileTypCde }}</td></tr>
-                    <tr><td>Field separator</td><td>{{ format.fldSeparatorVal }}</td></tr>
-                    <tr><td>Record terminator</td><td>{{ format.endOfRecTxt }}</td></tr>
-                    <tr><td>Line ending</td><td>{{ format.lineEndngCde }}</td></tr>
-                    <tr><td>Compression</td><td>{{ format.fileCmprsNam }}</td></tr>
-                    <tr><td>Max lines per file</td><td>{{ format.fileMaxRecCnt }}</td></tr>
 
-                    <tr><td>Headers</td><td>{{ indicatorToText(format.gnrtHdrInd) }}</td></tr>
-                    <tr><td>Activity filter</td><td>{{ indicatorToText(format.applyFactActvyFltrInd) }}</td></tr>
-                    <tr><td>Unique filter</td><td>{{ indicatorToText(format.applyDstctClusInd) }}</td></tr>
-                    <tr><td>Allow empty file</td><td>{{ indicatorToText(format.allowEmptyFileInd) }}</td></tr>
-                    <tr><td>Required</td><td>{{ indicatorToText(format.fileRqrdInd) }}</td></tr>
+<div class="form-horizontal">
+  <div class="row">
+    <label class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-6">
+      <p class="form-control-static">{{ format.prdctFrmtNam }}</p>
+    </div>
 
-                    <tr>
-                        <td>Last update</td>
-                        <td>{{ format.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ format.lstUpdtId }}</td>
-                    </tr>
-<!--
-                    <tr><td>Product Gid</td><td>{{ format.entrpPrdctGid }}</td></tr>
-                    <tr><td>fldDlmtrVal</td><td>{{ format.fldDlmtrVal }}</td></tr>
-                    <tr><td>Display order</td><td>{{ format.dsplyOrdrNbr }}</td></tr>
--->
-                </tbody>
-            </table>
+    <label class="col-sm-2 control-label">Gid</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.prdctFrmtGid }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{ format.fileDesc }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">File name</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{ format.fileNamTmpltTxt }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">File extension</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.fileExtTxt }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">Compression</label>
+    <div class="col-sm-4">
+      <p class="form-control-static">{{ format.fileCmprsNam }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">Subdirectory</label>
+    <div class="col-sm-6">
+      <p class="form-control-static">{{ format.fileLctnTmpltTxt }}</p>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">Record format</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.fileTypCde }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">Field separator</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.fldSeparatorVal }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">Line ending</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.lineEndngCde }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">Record terminator</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.endOfRecTxt }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">Max lines per file</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.fileMaxRecCnt }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">Include headers</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ indicatorToText(format.gnrtHdrInd) }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">Activity filter</label>
+    <div class="col-sm-2">
+        <p class="form-control-static">{{ indicatorToText(format.applyFactActvyFltrInd) }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">Remove duplicates</label>
+    <div class="col-sm-2">
+        <p class="form-control-static">{{ indicatorToText(format.applyDstctClusInd) }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-2 control-label">Require file</label>
+    <div class="col-sm-2">
+        <p class="form-control-static">{{ indicatorToText(format.fileRqrdInd) }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">Allow empty file</label>
+    <div class="col-sm-2">
+        <p class="form-control-static">{{ indicatorToText(format.allowEmptyFileInd) }}</p>
+    </div>
+  </div>
+
+</div>
+
         </div>
     </div>
 

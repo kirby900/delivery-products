@@ -13,8 +13,9 @@ angular.module('app')
 
       ProductFormat.update({ id: format.prdctFrmtGid }, format, function(response){
         console.log('Updated Product Format');
-        $state.go('products.selected.formats.list', {
-          productId: $stateParams.productId
+        $state.go('products.selected.formats.selected.detail', {
+          productId: $stateParams.productId,
+          formatId: $stateParams.formatId
         });
       });
     };

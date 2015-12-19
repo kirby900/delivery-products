@@ -6,19 +6,35 @@
             </div>
 
             <table class="table table-condensed">
-                <thead>
-                    <th>Property</th>
-                    <th>Value</th>
-                </thead>
-
                 <tbody>
-                    <tr><td>Gid</td><td>{{ parameter.parmGid }}</td></tr>
-                    <tr><td>Code</td><td>{{ parameter.parmCde }}</td></tr>
-                    <tr><td>Name</td><td>{{ parameter.parmNam }}</td></tr>
-                    <tr><td>Description</td><td>{{ parameter.parmDesc }}</td></tr>
-                    <tr><td>Data type</td><td>{{ parameter.parmDataTyp }}</td></tr>
-                    <tr><td>Format</td><td>{{ parameter.parmFrmtTxt }}</td></tr>
-                    <tr><td>Last update</td><td>{{ parameter.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ parameter.lstUpdtId }}</td></tr>
+                    <tr>
+                        <th>Gid</th>
+                        <td>{{ parameter.parmGid }}</td>
+                    </tr>
+                    <tr>
+                        <th>Code</th>
+                        <td>{{ parameter.parmCde }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ parameter.parmNam }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ parameter.parmDesc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Data type</th>
+                        <td>{{ parameter.parmDataTyp }}</td>
+                    </tr>
+                    <tr>
+                        <th>Format</th>
+                        <td>{{ parameter.parmFrmtTxt }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last update</th>
+                        <td>{{ parameter.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{ parameter.lstUpdtId }}</strong></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -91,7 +91,7 @@ angular.module('app')
 
     .state('products.list', {
       url: "/list",
-      templateUrl: "templates/product_list.html",
+      templateUrl: "templates/enterprise_product_list.html",
       controller: 'EnterpriseProductListController',
       resolve: {
         enterpriseProducts: function(EnterpriseProduct){
@@ -105,7 +105,7 @@ angular.module('app')
 
     .state('products.new', {
       url: "/new",
-      templateUrl: "templates/product_new.html",
+      templateUrl: "templates/enterprise_product_new.html",
       controller: 'EnterpriseProductNewController',
       ncyBreadcrumb: {
         label: 'Add Product',
@@ -127,7 +127,7 @@ angular.module('app')
 
     .state('products.selected.detail', {
       url: "/detail",
-      templateUrl: "templates/product_detail.html",
+      templateUrl: "templates/enterprise_product_detail.html",
       controller: 'EnterpriseProductDetailController',
       ncyBreadcrumb: {
         label: '{{ product.entrpPrdctNam }}',
@@ -137,7 +137,7 @@ angular.module('app')
 
     .state('products.selected.edit', {
       url: "/edit",
-      templateUrl: "templates/product_edit.html",
+      templateUrl: "templates/enterprise_product_edit.html",
       controller: 'EnterpriseProductEditController',
       ncyBreadcrumb: {
         label: 'Edit',
