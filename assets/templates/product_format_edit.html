@@ -2,16 +2,14 @@
 
 <form class="form-horizontal">
   <div class="form-group">
-    <label class="col-sm-2 control-label">Gid</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">{{ format.prdctFrmtGid }}</p>
-    </div>
-  </div>
-
-  <div class="form-group">
     <label class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
+    <div class="col-sm-6">
       <input type="text" class="form-control" data-ng-model="format.prdctFrmtNam" autofocus >
+    </div>
+
+    <label class="col-sm-2 control-label">Gid</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">{{ format.prdctFrmtGid }}</p>
     </div>
   </div>
 
@@ -36,14 +34,19 @@
 
   <div class="form-group">
     <label class="col-sm-2 control-label">Subdirectory</label>
-    <div class="col-sm-10">
+    <div class="col-sm-6">
       <input type="text" class="form-control" data-ng-model="format.fileLctnTmpltTxt">
+    </div>
+
+    <label class="col-sm-2 control-label">Compression</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" data-ng-model="format.fileCmprsNam">
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-2 control-label">Record format</label>
-    <div class="col-sm-6">
+    <div class="col-sm-2">
       <input type="text" class="form-control" data-ng-model="format.fileTypCde">
     </div>
 
@@ -52,14 +55,13 @@
       <input type="text" class="form-control" data-ng-model="format.fldSeparatorVal">
     </div>
 
-  </div>
-
-  <div class="form-group">
-
     <label class="col-sm-2 control-label">Line ending</label>
     <div class="col-sm-2">
       <input type="text" class="form-control" data-ng-model="format.lineEndngCde">
     </div>
+  </div>
+
+  <div class="form-group">
 
     <label class="col-sm-2 control-label">Record terminator</label>
     <div class="col-sm-2">
@@ -73,16 +75,11 @@
   </div>
 
   <div class="form-group">
-    <label class="col-sm-2 control-label">Compression</label>
-    <div class="col-sm-2">
-      <input type="text" class="form-control" data-ng-model="format.fileCmprsNam">
-    </div>
-
     <div class="col-sm-offset-2 col-sm-2">
       <div class="checkbox">
         <label>
           <input type="checkbox" data-ng-model="format.gnrtHdrInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
-          Add header
+          Include field headers
         </label>
       </div>
     </div>
@@ -91,19 +88,28 @@
       <div class="checkbox">
         <label>
           <input type="checkbox" data-ng-model="format.applyFactActvyFltrInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
-          Activity filter
+          Apply activity filter
         </label>
       </div>
     </div>
 
-  </div>
-
-  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-2">
       <div class="checkbox">
         <label>
           <input type="checkbox" data-ng-model="format.applyDstctClusInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
-          Distinct filter
+          Remove duplicates
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+
+    <div class="col-sm-offset-2 col-sm-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-ng-model="format.fileRqrdInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+          Require this file
         </label>
       </div>
     </div>
@@ -113,15 +119,6 @@
         <label>
           <input type="checkbox" data-ng-model="format.allowEmptyFileInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
           Allow empty file
-        </label>
-      </div>
-    </div>
-
-    <div class="col-sm-offset-2 col-sm-2">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" data-ng-model="format.fileRqrdInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
-          Required file
         </label>
       </div>
     </div>
