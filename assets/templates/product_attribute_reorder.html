@@ -3,20 +3,19 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                Drag and drop to rearrange Attribute order
+                Click and drag to re-order attributes
             </div>
 
-            <ul class="list-group list-group-condensed" data-ui-sortable="sortableOptions" data-ng-model="attributes">
-                <li class="list-group-item" data-ng-repeat=" a in attributes ">{{ a.atrbNam }}</li>
-            </ul>
+            <div class="panel-body">
+                <ol data-ui-sortable="sortableOptions" data-ng-model="attributes">
+                    <li data-ng-repeat=" a in attributes ">{{ a.atrbNam }}</li>
+                </ol>
+            </div>
         </div>
 
-        <button type="button" class="btn btn-default" 
-            data-ng-disabled="!changed"
-            data-ng-click="save(attributes)">Save</button>
+        <button type="button" class="btn btn-primary" data-ng-disabled="!changed" data-ng-click="save(attributes)">Save</button>
 
-        <a role="button" class="btn btn-default" 
-            data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/attributes/list">Cancel</a>
+        <a role="button" class="btn btn-default" data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/attributes/list">Cancel</a>
 
     </div>
 
