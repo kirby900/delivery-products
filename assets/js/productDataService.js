@@ -99,6 +99,7 @@ angular.module('ProductDataService', ['ngResource'])
         '/productTasks/:id',           // the associated URL
         { id: '@taskGid' },            // map id parameter to a property
         {                              // additional or override methods
+            query: { method: 'GET', isArray: true, cache: false },
             update: { method: 'PUT' },
             updateMultiple: {
                 url: '/productTasks/updateMultiple',
@@ -121,6 +122,11 @@ angular.module('ProductDataService', ['ngResource'])
             updateMultiple: {
                 url: '/productAttributes/updateMultiple',
                 method: 'PUT',
+                isArray: true
+            },
+            recordSortAttributes: {
+                url: '/productAttributes/recordSortAttributes',
+                method: 'GET',
                 isArray: true
             }
         }

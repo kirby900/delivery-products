@@ -40,5 +40,28 @@ module.exports = {
             console.log(err);
             return response.status(500).send(err);            
         });
-    }	
+    },
+
+    recordSortAttributes: function(request, response){
+        console.log('Entered recordSortAttributes');
+
+        // Build a query object to retrieve only record sorting attributes
+        var query = {
+            ordrByRankNbr: { '>': 0 }
+        };
+
+        // Add filters from request query
+        Object.keys(request.query).forEach(function(key){
+            console.log('key = ' + key);
+            query[key] = request.query[key];
+        });
+
+        ProductAttribute.find(query)
+        .then(function(result){
+            return response.json(result);
+        })
+        .catch(function(error){
+            return response.status(500).send(error);
+        });
+    }
 };

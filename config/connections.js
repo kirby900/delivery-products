@@ -32,8 +32,8 @@ module.exports.connections = {
   },
 */
   devDatabase: {
-    adapter: 'sails-oracle-db'
-    //connectString: 'odsdev'
+    adapter: 'sails-oracle-db',
+    connectString: 'odsdev'
   }
 
   /***************************************************************************

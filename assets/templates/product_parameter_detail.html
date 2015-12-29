@@ -3,25 +3,21 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Product Parameter Detail
+                <a class="pull-right" data-ng-href="#/products/{{productParameter.entrpPrdctGid}}/parameters/{{productParameter.prdctParmGid}}/edit">Edit</a>
             </div>
 
             <table class="table table-condensed">
-                <thead>
-                    <th>Property</th>
-                    <th>Value</th>
-                </thead>
-
                 <tbody>
-                    <tr><td>Gid</td><td>{{ productParameter.prdctParmGid }}</td></tr>
-                    <tr><td>Name</td><td>{{ productParameter.parameter.parmNam }}</td></tr>
-                    <tr><td>Parm Gid</td><td>{{ productParameter.parameter.parmGid }}</td></tr>
-                    <!--<tr><td>Product Gid</td><td>{{ productParameter.entrpPrdctGid }}</td></tr>-->
-                    <tr><td>Min occurs</td><td>{{ productParameter.minOcrncNbr }}</td></tr>
-                    <tr><td>Max occurs</td><td>{{ productParameter.maxOcrncNbr }}</td></tr>
-                    <tr><td>Calculated</td><td>{{ indicatorToText(productParameter.clctdParmInd) }}</td></tr>
-                    <tr><td>SQL expression</td><td>{{ productParameter.clctdValExprsTxt }}</td></tr>
-                    <tr><td>Related column</td><td>{{ productParameter.rltdColNam }}</td></tr>
-                    <tr><td>Last update</td><td>{{ productParameter.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ productParameter.lstUpdtId }}</td></tr>
+                    <tr><th>Gid</th><td>{{ productParameter.prdctParmGid }}</td></tr>
+                    <tr><th>Name</th><td>{{ productParameter.parameter.parmNam }}</td></tr>
+                    <tr><th>Parm Gid</th><td>{{ productParameter.parameter.parmGid }}</td></tr>
+                    <!--<tr><th>Product Gid</th><td>{{ productParameter.entrpPrdctGid }}</td></tr>-->
+                    <tr><th>Min occurs</th><td>{{ productParameter.minOcrncNbr }}</td></tr>
+                    <tr><th>Max occurs</th><td>{{ productParameter.maxOcrncNbr }}</td></tr>
+                    <tr><th>Calculated</th><td>{{ indicatorToText(productParameter.clctdParmInd) }}</td></tr>
+                    <tr><th>SQL expression</th><td>{{ productParameter.clctdValExprsTxt }}</td></tr>
+                    <tr><th>Related column</th><td>{{ productParameter.rltdColNam }}</td></tr>
+                    <tr><th>Last update</th><td>{{ productParameter.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ productParameter.lstUpdtId }}</td></tr>
                 </tbody>
             </table>
         </div>

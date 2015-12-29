@@ -285,9 +285,28 @@ angular.module('app')
       url: "/detail",
       templateUrl: "templates/product_format_detail.html",
       controller: 'FormatDetailController',
+      resolve: {
+        sortAttributes: function($stateParams, ProductAttribute){
+          return ProductAttribute.recordSortAttributes({ prdctFrmtGid: $stateParams.formatId }).$promise;
+        }
+      },
       ncyBreadcrumb: {
         label: '{{ format.prdctFrmtNam }}',
         parent: 'products.selected.formats.list'
+      }
+    })
+
+    .state('products.selected.formats.selected.detail.recordSort', {
+      //url: "/detail",
+      templateUrl: "templates/product_format_record_sort_fields.html",
+      controller: 'FormatRecordSortController',
+      resolve: {
+        sortAttributes: function($stateParams, ProductAttribute){
+          return ProductAttribute.query({
+            prdctFrmtGid: $stateParams.formatId, 
+            ordrByRankNbr: {'>': 0} 
+          }).$promise;
+        }
       }
     })
 

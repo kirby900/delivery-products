@@ -3,32 +3,28 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Task Detail
+                <a class="pull-right" data-ng-href="#/products/{{task.entrpPrdctGid}}/tasks/{{task.taskGid}}/edit">Edit</a>
             </div>
 
             <table class="table table-condensed">
-                <thead>
-                    <th>Property</th>
-                    <th>Value</th>
-                </thead>
-
                 <tbody>
-                    <tr><td>Gid</td><td>{{ task.taskGid }}</td></tr>
-                    <tr><td>Name</td><td>{{ task.taskNam }}</td></tr>
-                    <tr><td>Type</td><td>{{ task.taskTypCde }}</td></tr>
-                    <tr><td>SQL template</td><td>{{ task.srceSqlTmpltTxt }}</td></tr>
-                    <tr><td>Program name</td><td>{{ task.extnlPgmNam }}</td></tr>
-                    <tr><td>Program arguments</td><td>{{ task.extnlPgmArgListTxt }}</td></tr>
-                    <tr><td>Linked format</td><td>{{ task.prdctFrmtGid }}</td></tr>
-                    <tr><td>Target table</td><td>{{ task.trgtPrdctDataObjctGid }}</td></tr>
-                    <tr><td>Prepare partition</td><td>{{ indicatorToText(task.prepPrtnInd) }}</td></tr>
-                    <tr><td>Create target</td><td>{{ indicatorToText(task.crteTrgtTblInd) }}</td></tr>
-                    <tr><td>Truncate target</td><td>{{ indicatorToText(task.trgtTrnctInd) }}</td></tr>
-                    <tr><td>Requirement</td><td>{{ task.rqmtGid }}</td></tr>
+                    <tr><th>Gid</th><td>{{ task.taskGid }}</td></tr>
+                    <tr><th>Name</th><td>{{ task.taskNam }}</td></tr>
+                    <tr><th>Type</th><td>{{ task.taskTypCde }}</td></tr>
+                    <tr><th>SQL template</th><td>{{ task.srceSqlTmpltTxt }}</td></tr>
+                    <tr><th>Program name</th><td>{{ task.extnlPgmNam }}</td></tr>
+                    <tr><th>Program arguments</th><td>{{ task.extnlPgmArgListTxt }}</td></tr>
+                    <tr><th>Linked format</th><td>{{ task.prdctFrmtGid }}</td></tr>
+                    <tr><th>Target table</th><td>{{ task.trgtPrdctDataObjctGid }}</td></tr>
+                    <tr><th>Prepare partition</th><td>{{ indicatorToText(task.prepPrtnInd) }}</td></tr>
+                    <tr><th>Create target</th><td>{{ indicatorToText(task.crteTrgtTblInd) }}</td></tr>
+                    <tr><th>Truncate target</th><td>{{ indicatorToText(task.trgtTrnctInd) }}</td></tr>
+                    <tr><th>Requirement</th><td>{{ task.rqmtGid }}</td></tr>
 
-                    <!--<tr><td>Product Gid</td><td>{{ task.entrpPrdctGid }}</td></tr>-->
-                    <tr><td>Sequence #</td><td>{{ task.taskSeqNbr }}</td></tr>
+                    <!--<tr><th>Product Gid</th><td>{{ task.entrpPrdctGid }}</td></tr>-->
+                    <tr><th>Sequence #</th><td>{{ task.taskSeqNbr }}</td></tr>
                     <tr>
-                        <td>Last updated</td>
+                        <th>Last updated</th>
                         <td>{{ task.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ task.lstUpdtId }}</td>
                     </tr>
                 </tbody>
