@@ -1,12 +1,13 @@
 angular.module('app')
 .controller('AttributeEditController', [
-  '$scope', '$state', '$stateParams', 'selectedProduct', 'selectedFormat', 'selectedAttribute', 'ProductAttribute', 'user',
-  function($scope, $state, $stateParams, selectedProduct, selectedFormat, selectedAttribute, ProductAttribute, user){
+  '$scope', '$state', '$stateParams', 'selectedProduct', 'selectedFormat', 'selectedAttribute', 'aggregateFunctions', 'ProductAttribute', 'user',
+  function($scope, $state, $stateParams, selectedProduct, selectedFormat, selectedAttribute, aggregateFunctions, ProductAttribute, user){
     console.log('State ' + $state.current.name);
 
     $scope.product = selectedProduct;
     $scope.format = selectedFormat;
     $scope.attribute = selectedAttribute;
+    $scope.aggregateFunctions = aggregateFunctions;
 
     $scope.save = function(attribute){
       console.log('Entered save())');

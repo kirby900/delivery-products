@@ -2,14 +2,13 @@
 
 <form class="form-horizontal">
     <fieldset>
-<!--    
-        <div class="form-group">
+        <div class="form-group" data-ng-show="attribute.prdctAtrbGid">
             <label class="col-sm-2 control-label">Gid</label>
             <div class="col-sm-10">
                 <p class="form-control-static">{{ attribute.prdctAtrbGid }}</p>
             </div>
         </div>
--->
+
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
@@ -39,6 +38,13 @@
         </div>
 
         <div class="form-group">
+            <label class="col-sm-2 control-label">Field width</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" data-ng-model="attribute.atrbMaxLngthNbr">
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="col-sm-2 control-label">Data type</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" data-ng-model="attribute.atrbDataTypTxt">
@@ -49,13 +55,6 @@
             <label class="col-sm-2 control-label">Format</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" data-ng-model="attribute.atrbFrmtTxt">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Field width</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="attribute.atrbMaxLngthNbr">
             </div>
         </div>
 
@@ -90,7 +89,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-ng-show=" attribute.atrbIsFlrInd === 'Y' ">
             <label class="col-sm-2 control-label">Filler value</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" data-ng-model="attribute.atrbDfltVal">
@@ -106,14 +105,18 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-ng-show="attribute.atrbPivotInd === 'Y' ">
             <label class="col-sm-2 control-label">Pivot value sort</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="attribute.pivotSortOrdr">
+                <select class="form-control" data-ng-model="attribute.pivotSortOrdr">
+                    <option value="">-- Select --</option>
+                    <option value="ASC">Ascending</option>
+                    <option value="DESC">Descending</option>
+                </select>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-ng-show="attribute.atrbPivotInd === 'Y' ">
             <label class="col-sm-2 control-label">Pivot value function</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" data-ng-model="attribute.pivotValFnctnNam">
@@ -123,7 +126,10 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Aggregate function</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" data-ng-model="attribute.aggFnctnCde">
+                <select class="form-control" data-ng-model="attribute.aggFnctnCde"
+                    data-ng-options="agg.aggFnctnCde as agg.aggFnctnNam for agg in aggregateFunctions | orderBy:'aggFnctnNam' ">
+                    <option value="">No aggregate</option>
+                </select>
             </div>
         </div>
 
@@ -145,7 +151,8 @@
             <label class="col-sm-2 control-label">Unpivot Id target?</label>
             <div class="col-sm-10">
                 <label class="control-label">
-                    <input type="checkbox" data-ng-model="attribute.unpivotIdTrgtAtrbInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+                    <input type="checkbox" data-ng-model="attribute.unpivotIdTrgtAtrbInd" 
+                        data-ng-true-value="'Y'" data-ng-false-value="'N'">
                 </label>
             </div>
         </div>
@@ -154,7 +161,8 @@
             <label class="col-sm-2 control-label">Unpivot value target?</label>
             <div class="col-sm-10">
                 <label class="control-label">
-                    <input type="checkbox" data-ng-model="attribute.unpivotValTrgtAtrbInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+                    <input type="checkbox" data-ng-model="attribute.unpivotValTrgtAtrbInd" 
+                        data-ng-true-value="'Y'" data-ng-false-value="'N'">
                 </label>
             </div>
         </div>
@@ -163,7 +171,8 @@
             <label class="col-sm-2 control-label">Standard attribute?</label>
             <div class="col-sm-10">
                 <label class="control-label">
-                    <input type="checkbox" data-ng-model="attribute.stdAtrbInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+                    <input type="checkbox" data-ng-model="attribute.stdAtrbInd" 
+                        data-ng-true-value="'Y'" data-ng-false-value="'N'">
                 </label>
             </div>
         </div>
@@ -172,7 +181,8 @@
             <label class="col-sm-2 control-label">Split field?</label>
             <div class="col-sm-10">
                 <label class="control-label">
-                    <input type="checkbox" data-ng-model="attribute.splitFileOnAtrbValInd" data-ng-true-value="'Y'" data-ng-false-value="'N'">
+                    <input type="checkbox" data-ng-model="attribute.splitFileOnAtrbValInd" 
+                        data-ng-true-value="'Y'" data-ng-false-value="'N'">
                 </label>
             </div>
         </div>

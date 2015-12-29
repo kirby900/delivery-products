@@ -5,45 +5,40 @@
                 Product Attribute Detail
             </div>
 
-            <table class="table table-condensed">
-                <tbody>
-                    <tr><th>Gid</th><td>{{ attribute.prdctAtrbGid }}</td></tr>
-                    <tr><th>Name</th><td>{{ attribute.atrbNam }}</td></tr>
-                    <tr><th>Description</th><td>{{ attribute.atrbDesc }}</td></tr>
-                    <tr><th>Header</th><td>{{ attribute.atrbHdrNam }}</td></tr>
-                    <tr><th>Field width</th><td>{{ attribute.atrbMaxLngthNbr }}</td></tr>
-                    <tr><th>Data type</th><td>{{ attribute.atrbDataTypTxt }}</td></tr>
-                    <tr><th>Format</th><td>{{ attribute.atrbFrmtTxt }}</td></tr>
-                    <tr><th>Alignment</th><td>{{ attribute.atrbDataAlgnCde }}</td></tr>
-                    <tr><th>Pad character</th><td>{{ attribute.atrbPadVal }}</td></tr>
-                    <tr><th>Quote character</th><td>{{ attribute.txtWrapVal }}</td></tr>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Gid</dt><dd>{{ attribute.prdctAtrbGid }}</dd>
+                    <dt>Name</dt><dd>{{ attribute.atrbNam }}</dd>
+                    <dt>Description</dt><dd>{{ attribute.atrbDesc }}</dd>
+                    <dt>Header</dt><dd>{{ attribute.atrbHdrNam }}</dd>
+                    <dt>Field width</dt><dd>{{ attribute.atrbMaxLngthNbr }}</dd>
+                    <dt>Data type</dt><dd>{{ attribute.atrbDataTypTxt }}</dd>
+                    <dt>Format</dt><dd>{{ attribute.atrbFrmtTxt }}</dd>
+                    <dt>Alignment</dt><dd>{{ attribute.atrbDataAlgnCde }}</dd>
+                    <dt>Pad character</dt><dd>{{ attribute.atrbPadVal }}</dd>
+                    <dt>Quote character</dt><dd>{{ attribute.txtWrapVal }}</dd>
 
-                    <tr><th>Filler?</th><td>{{ indicatorToText(attribute.atrbIsFlrInd) }}</td></tr>
-                    <tr><th>Filler value</th><td>{{ attribute.atrbDfltVal }}</td></tr>
+                    <dt>Filler?</dt><dd>{{ indicatorToText(attribute.atrbIsFlrInd) }}</dd>
+                    <dt>Filler value</dt><dd>{{ attribute.atrbDfltVal }}</dd>
 
-                    <tr><th>Pivot?</th><td>{{ indicatorToText(attribute.atrbPivotInd) }}</td></tr>
-                    <tr><th>Pivot value sort</th><td>{{ attribute.pivotSortOrdr }}</td></tr>
-                    <tr><th>Pivot value function</th><td>{{ attribute.pivotValFnctnNam }}</td></tr>
+                    <dt>Pivot?</dt><dd>{{ indicatorToText(attribute.atrbPivotInd) }}</dd>
+                    <dt>Pivot value sort</dt><dd>{{ attribute.pivotSortOrdr }}</dd>
+                    <dt>Pivot value function</dt><dd>{{ attribute.pivotValFnctnNam }}</dd>
 
-                    <tr><th>Aggregate function</th><td>{{ attribute.aggFnctnCde }}</td></tr>
-                    <tr><th>Metric Id</th><td>{{ attribute.unpivotSrceAtrbId }}</td></tr>
-                    <tr><th>Null value override</th><td>{{ attribute.aggNullPlugVal }}</td></tr>
+                    <dt>Aggregate function</dt><dd>{{ attribute.aggFnctnCde }}</dd>
+                    <dt>Metric Id</dt><dd>{{ attribute.unpivotSrceAtrbId }}</dd>
+                    <dt>Null value override</dt><dd>{{ attribute.aggNullPlugVal }}</dd>
 
-                    <tr><th>Unpivot Id target?</th><td>{{ indicatorToText(attribute.unpivotIdTrgtAtrbInd) }}</td></tr>
-                    <tr><th>Unpivot value target?</th><td>{{ indicatorToText(attribute.unpivotValTrgtAtrbInd) }}</td></tr>
+                    <dt>Unpivot Id target?</dt><dd>{{ indicatorToText(attribute.unpivotIdTrgtAtrbInd) }}</dd>
+                    <dt>Unpivot value target?</dt><dd>{{ indicatorToText(attribute.unpivotValTrgtAtrbInd) }}</dd>
 
-                    <tr><th>Format Gid</th><td>{{ attribute.prdctFrmtGid }}</td></tr>
-                    <tr><th>Standard attribute?</th><td>{{ indicatorToText(attribute.stdAtrbInd) }}</td></tr>
-                    <tr><th>Split field?</th><td>{{ indicatorToText(attribute.splitFileOnAtrbValInd) }}</td></tr>
+                    <dt>Format Gid</dt><dd>{{ attribute.prdctFrmtGid }}</dd>
+                    <dt>Standard attribute?</dt><dd>{{ indicatorToText(attribute.stdAtrbInd) }}</dd>
+                    <dt>Split field?</dt><dd>{{ indicatorToText(attribute.splitFileOnAtrbValInd) }}</dd>
 
-<!--
-                    <tr><th>Required?</th><td>{{ indicatorToText(attribute.atrbRqrdInd) }}</td></tr>
-                    <tr><th>Order #</th><td>{{ attribute.atrbOrdrNbr }}</td></tr>
-                    <tr><th>Record sort field rank</th><td>{{ attribute.ordrByRankNbr }}</td></tr>
--->
-                    <tr><th>Last update</th><td>{{ attribute.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ attribute.lstUpdtId }}</td></tr>
-                </tbody>
-            </table>
+                    <dt>Last update</dt><dd>{{ attribute.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ attribute.lstUpdtId }}</dd>
+                </dl>
+            </div>
         </div>
     </div>
 

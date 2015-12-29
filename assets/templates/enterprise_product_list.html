@@ -13,6 +13,10 @@
                     <tr>
                         <th><a href="" data-ng-click="sort('entrpPrdctNam')">Name</a></th>
                         <th><a href="" data-ng-click="sort('entrpPrdctGid')">Gid</a></th>
+                        <th><a href="" data-ng-click="sort('aprvdInd')">Enabled</a></th>
+                        <th><a href="" data-ng-click="sort('trgtSchmaNam')">Schema</a></th>
+                        <th><a href="" data-ng-click="sort('trgtDbNam')">Database</a></th>
+                        <th><a href="" data-ng-click="sort('fileLctnTmpltTxt')">Directory</a></th>
                         <th> </th>
                         <th> </th>
                         <th> </th>
@@ -23,6 +27,10 @@
                     <tr data-ng-repeat=" p in products | orderBy: sortOptions.key : sortOptions.reverse ">
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/detail">{{ p.entrpPrdctNam }}</a></td>
                         <td>{{ p.entrpPrdctGid }}</td>
+                        <td>{{ indicatorToText(p.aprvdInd) }}</td>
+                        <td>{{ p.trgtSchmaNam }}</td>
+                        <td>{{ p.trgtDbNam }}</td>
+                        <td>{{ p.fileLctnTmpltTxt }}</td>
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/formats/list">Formats</a></td>
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/tasks/list">Tasks</a></td>
                         <td><a data-ng-href="#/products/{{ p.entrpPrdctGid }}/parameters/list">Parameters</a></td>

@@ -133,6 +133,16 @@ angular.module('ProductDataService', ['ngResource'])
     );
 }])
 
+.factory('AggregateFunction', ['$resource', function($resource){
+    console.log('Entered factory function for AggregateFunction');
+
+    return $resource(
+        '/aggregateFunctions/:id',     // the associated URL
+        { id: '@aggFnctnCde' },        // map id parameter to a property
+        { update: { method: 'PUT' } }
+    );
+}])
+
 .factory('TaskType', ['$resource', function($resource){
     console.log('Entered factory function for TaskType');
 

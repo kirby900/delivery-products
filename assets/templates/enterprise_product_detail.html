@@ -6,7 +6,7 @@
                 Product Detail
                 <a class="pull-right" data-ng-href="#/products/{{product.entrpPrdctGid}}/edit">Edit</a>
             </div>
-
+<!--
             <table class="table table-condensed">
                 <tbody>
                     <tr>
@@ -43,6 +43,27 @@
                     </tr>
                 </tbody>
             </table>
+-->
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Gid</dt>
+                    <dd>{{ product.entrpPrdctGid }}</dd>
+                    <dt>Name</dt>
+                    <dd>{{ product.entrpPrdctNam }}</dd>
+                    <dt>Description</dt>
+                    <dd>{{ product.entrpPrdctDesc }}</dd>
+                    <dt>Output directory</dt>
+                    <dd>{{ product.fileLctnTmpltTxt }}</dd>
+                    <dt>Target database</dt>
+                    <dd>{{ product.trgtSchmaNam }} @ {{ product.trgtDbNam }}</dd>
+                    <dt>Perl driver</dt>
+                    <dd>{{ product.trgtPerlDrvrNam }}</dd>
+                    <dt>Enabled</dt>
+                    <dd>{{ indicatorToText(product.aprvdInd) }}</dd>
+                    <dt>Last update</dt>
+                    <dd>{{ product.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{ product.lstUpdtId }}</strong></dd>
+                </dl>
+            </div>
         </div>
     </div>
 

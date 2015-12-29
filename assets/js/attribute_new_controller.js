@@ -1,11 +1,13 @@
 angular.module('app')
 .controller('AttributeNewController', [
-  '$scope', '$state', '$stateParams', 'selectedProduct', 'selectedFormat', 'ProductAttribute', 'user',
-  function($scope, $state, $stateParams, selectedProduct, selectedFormat, ProductAttribute, user){
+  '$scope', '$state', '$stateParams', 'selectedProduct', 'selectedFormat', 'aggregateFunctions', 'ProductAttribute', 'user',
+  function($scope, $state, $stateParams, selectedProduct, selectedFormat, aggregateFunctions, ProductAttribute, user){
     console.log('State ' + $state.current.name);
 
     $scope.product = selectedProduct;
     $scope.format = selectedFormat;
+    $scope.aggregateFunctions = aggregateFunctions;
+
     $scope.attribute = {
       prdctFrmtGid: selectedFormat.prdctFrmtGid,
       atrbDataAlgnCde: 'L',

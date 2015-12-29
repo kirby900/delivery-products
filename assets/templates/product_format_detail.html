@@ -7,112 +7,60 @@
               <a class="pull-right" data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{format.prdctFrmtGid}}/edit">Edit</a>
           </div>
 
+          <div class="panel-body">
 
-          <div class="form-horizontal">
-            <div class="row">
-              <label class="col-sm-2 control-label">Name</label>
-              <div class="col-sm-6">
-                <p class="form-control-static">{{ format.prdctFrmtNam }}</p>
-              </div>
+            <dl class="dl-horizontal">
+              <dt>Gid</dt>
+              <dd>{{ format.prdctFrmtGid }}</dd>
 
-              <label class="col-sm-2 control-label">Gid</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ format.prdctFrmtGid }}</p>
-              </div>
-            </div>
+              <dt>Name</dt>
+              <dd>{{ format.prdctFrmtNam }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">Description</label>
-              <div class="col-sm-10">
-                <p class="form-control-static">{{ format.fileDesc }}</p>
-              </div>
-            </div>
+              <dt>Description</dt>
+              <dd>{{ format.fileDesc }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">File name</label>
-              <div class="col-sm-10">
-                <p class="form-control-static">{{ format.fileNamTmpltTxt }}</p>
-              </div>
-            </div>
+              <dt>File name</dt>
+              <dd>{{ format.fileNamTmpltTxt }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">File extension</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ format.fileExtTxt }}</p>
-              </div>
+              <dt>File extension</dt>
+              <dd>{{ format.fileExtTxt }}</dd>
 
-              <label class="col-sm-2 control-label">Compression</label>
-              <div class="col-sm-4">
-                <p class="form-control-static">{{ format.fileCmprsNam }}</p>
-              </div>
-            </div>
+              <dt>Compression</dt>
+              <dd>{{ format.fileCmprsNam }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">Subdirectory</label>
-              <div class="col-sm-6">
-                <p class="form-control-static">{{ format.fileLctnTmpltTxt }}</p>
-              </div>
+              <dt>Subdirectory</dt>
+              <dd>{{ format.fileLctnTmpltTxt }}</dd>
 
-            </div>
+              <dt>Record format</dt>
+              <dd>{{ format.fileTypCde }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">Record format</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ format.fileTypCde }}</p>
-              </div>
+              <dt>Field separator</dt>
+              <dd>{{ format.fldSeparatorVal }}</dd>
 
-              <label class="col-sm-2 control-label">Field separator</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ format.fldSeparatorVal }}</p>
-              </div>
+              <dt>Line ending</dt>
+              <dd>{{ format.lineEndngCde }}</dd>
 
-              <label class="col-sm-2 control-label">Line ending</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ format.lineEndngCde }}</p>
-              </div>
-            </div>
+              <dt>Record terminator</dt>
+              <dd>{{ format.endOfRecTxt }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">Record terminator</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ format.endOfRecTxt }}</p>
-              </div>
+              <dt>Max lines per file</dt>
+              <dd>{{ format.fileMaxRecCnt }}</dd>
 
-              <label class="col-sm-2 control-label">Max lines per file</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ format.fileMaxRecCnt }}</p>
-              </div>
-            </div>
+              <dt>Include headers</dt>
+              <dd>{{ indicatorToText(format.gnrtHdrInd) }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">Include headers</label>
-              <div class="col-sm-2">
-                <p class="form-control-static">{{ indicatorToText(format.gnrtHdrInd) }}</p>
-              </div>
+              <dt>Activity filter</dt>
+              <dd>{{ indicatorToText(format.applyFactActvyFltrInd) }}</dd>
 
-              <label class="col-sm-2 control-label">Activity filter</label>
-              <div class="col-sm-2">
-                  <p class="form-control-static">{{ indicatorToText(format.applyFactActvyFltrInd) }}</p>
-              </div>
+              <dt>Remove duplicates</dt>
+              <dd>{{ indicatorToText(format.applyDstctClusInd) }}</dd>
 
-              <label class="col-sm-2 control-label">Remove duplicates</label>
-              <div class="col-sm-2">
-                  <p class="form-control-static">{{ indicatorToText(format.applyDstctClusInd) }}</p>
-              </div>
-            </div>
+              <dt>Require file</dt>
+              <dd>{{ indicatorToText(format.fileRqrdInd) }}</dd>
 
-            <div class="row">
-              <label class="col-sm-2 control-label">Require file</label>
-              <div class="col-sm-2">
-                  <p class="form-control-static">{{ indicatorToText(format.fileRqrdInd) }}</p>
-              </div>
-
-              <label class="col-sm-2 control-label">Allow empty file</label>
-              <div class="col-sm-2">
-                  <p class="form-control-static">{{ indicatorToText(format.allowEmptyFileInd) }}</p>
-              </div>
-            </div>
-
+              <dt>Allow empty file</dt>
+              <dd>{{ indicatorToText(format.allowEmptyFileInd) }}</dd>
+            </dl>
           </div>
 
         </div>
@@ -123,16 +71,38 @@
               <a class="pull-right" href="#">Edit</a>
           </div>
 
-          <div class="panel-body" data-ng-hide="sortAttributes.length">
-            No sort attribute defined for this format
+          <div class="panel-body">
+            <p data-ng-hide="sortAttributes.length">
+              No sort attribute defined for this format
+            </p>
+
+            <ol data-ng-show="sortAttributes.length">
+              <li data-ng-repeat="attr in sortAttributes | orderBy: 'ordrByRankNbr' ">
+                {{ attr.atrbNam }}
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              File Split Attributes
+              <a class="pull-right" href="#">Edit</a>
           </div>
 
-          <ol data-ng-show="sortAttributes.length">
-            <li data-ng-repeat="attr in sortAttributes | orderBy: 'ordrByRankNbr' ">
-              {{ attr.atrbNam }}
-            </li>
-          </ol>
-      </div>
+          <div class="panel-body">
+            <p data-ng-hide="splitAttributes.length">
+              No file split attribute defined for this format
+            </p>
+
+            <ol data-ng-show="splitAttributes.length">
+              <li data-ng-repeat="attr in splitAttributes | orderBy: 'atrbOrdrNbr' ">
+                {{ attr.atrbNam }}
+              </li>
+            </ol>
+          </div>
+        </div>
+
     </div>
 
     <div class="col-sm-3">

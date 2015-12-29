@@ -378,6 +378,11 @@ angular.module('app')
       url: "/new",
       templateUrl: "templates/product_attribute_new.html",
       controller: 'AttributeNewController',
+      resolve: {
+        aggregateFunctions: function(AggregateFunction){
+          return AggregateFunction.query().$promise;
+        }
+      },
       ncyBreadcrumb: {
         label: 'New',
         parent: 'products.selected.formats.selected.attributes.list'
@@ -413,6 +418,11 @@ angular.module('app')
       url: "/edit",
       templateUrl: "templates/product_attribute_edit.html",
       controller: 'AttributeEditController',
+      resolve: {
+        aggregateFunctions: function(AggregateFunction){
+          return AggregateFunction.query().$promise;
+        }
+      },
       ncyBreadcrumb: {
         label: 'Edit',
         parent: 'products.selected.formats.selected.attributes.selected.detail'
