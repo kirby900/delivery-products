@@ -1,46 +1,33 @@
+<!--
 <div class="row">
     <div class="col-sm-9">
+-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                Product Parameters
+                Prompted Parameters
                 <ul class="list-inline pull-right">
                     <li><a data-ng-href="#/products/{{product.entrpPrdctGid}}/parameters/new">Add</a></li>
+                    <li><a data-ng-href="#/products/{{product.entrpPrdctGid}}/parameters/reorder">Re-order</a></li>
                 </ul>
             </div>
 
-        <!--
-            prdctParmGid: { columnName: 'PRDCT_PARM_GID', type: 'integer', primaryKey: true, autoIncrement: true },
-            parmGid: { /*model: 'Parameter',*/ columnName: 'PARM_GID', type: 'integer', required: true },
-            entrpPrdctGid: { /*model: 'EnterpriseProduct',*/ columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
-            minOcrncNbr: { columnName: 'MIN_OCRNC_NBR', type: 'integer', required: true },
-            maxOcrncNbr: { columnName: 'MAX_OCRNC_NBR', type: 'integer' },
-            clctdParmInd: { columnName: 'CLCTD_PARM_IND', type: 'string', size: 1, required: true },
-            clctdValExprsTxt: { columnName: 'CLCTD_VAL_EXPRS_TXT', type: 'string', size: 2000 },
-            rltdColNam: { columnName: 'RLTD_COL_NAM', type: 'string', size: 30 },
-            lstUpdtId: { columnName: 'LST_UPDT_ID', type: 'string', size: 60 },
-            lstUpdtTstmp: { columnName: 'LST_UPDT_TSTMP', type: 'datetime' }
-        -->
-
             <table class="table table-condensed table-striped">
             	<thead>
-            		<th><a href="" data-ng-click="sort('parmNam')">Name</a></th>
-                    <th><a href="" data-ng-click="sort('prdctParmGid')">Gid</a></th>
-                    <th><a href="" data-ng-click="sort('parmDataTyp')">Data Type</a></th>
-                    <th><a href="" data-ng-click="sort('clctdParmInd')">Calculated</a></th>
-            <!--
-            		<th>Parm Gid</th>
-            		<th>Min Occurs</th>
-            		<th>Max Occurs</th>
-            -->
+                    <th><a href="" data-ng-click="sort('displayOrder', promptedSort)">Order</a></th>
+            		<th><a href="" data-ng-click="sort('parmNam', promptedSort)">Name</a></th>
+                    <th><a href="" data-ng-click="sort('prdctParmGid', promptedSort)">Gid</a></th>
+                    <th><a href="" data-ng-click="sort('parmDataTyp', promptedSort)">Data Type</a></th>
+                    <th><a href="" data-ng-click="sort('templateName', promptedSort)">Input Widget</a></th>
             	</thead>
             	<tbody>
-            	    <tr data-ng-repeat="pp in productParameters | orderBy: sortOptions.key: sortOptions.reverse ">
+            	    <tr data-ng-repeat="pp in promptedParameters | orderBy: promptedSort.key: promptedSort.reverse ">
+                        <td>{{ pp.displayOrder }}</td>
             	    	<td>
             	        	<a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parmNam }}</a>
             	        </td>
                         <td>{{ pp.prdctParmGid }}</td>
             	        <td>{{ pp.parmDataTyp }}</td>
-            	        <td>{{ indicatorToText(pp.clctdParmInd) }}</td>
+                        <td>{{ pp.templateName }}</td>
             <!--
             	        <td>{{ pp.parameter.parmGid }}</td>
             	        <td>{{ pp.minOcrncNbr }}</td>
@@ -50,6 +37,38 @@
             	</tbody>
             </table>
         </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Calculated Parameters
+                <ul class="list-inline pull-right">
+                    <li><a data-ng-href="#/products/{{product.entrpPrdctGid}}/parameters/new">Add</a></li>
+                </ul>
+            </div>
+
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <th><a href="" data-ng-click="sort('parmNam', calculatedSort)">Name</a></th>
+                    <th><a href="" data-ng-click="sort('prdctParmGid', calculatedSort)">Gid</a></th>
+                    <th><a href="" data-ng-click="sort('parmDataTyp', calculatedSort)">Data Type</a></th>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="pp in calculatedParameters | orderBy: calculatedSort.key: calculatedSort.reverse ">
+                        <td>
+                            <a data-ng-href="#/products/{{ pp.entrpPrdctGid }}/parameters/{{ pp.prdctParmGid }}/detail">{{ pp.parmNam }}</a>
+                        </td>
+                        <td>{{ pp.prdctParmGid }}</td>
+                        <td>{{ pp.parmDataTyp }}</td>
+            <!--
+                        <td>{{ pp.parameter.parmGid }}</td>
+                        <td>{{ pp.minOcrncNbr }}</td>
+                        <td>{{ pp.maxOcrncNbr }}</td>
+            -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+<!--
     </div>
 
     <div class="col-sm-3">
@@ -65,3 +84,4 @@
         </div>
     </div>
 </div>
+-->

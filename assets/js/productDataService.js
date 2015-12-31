@@ -153,4 +153,16 @@ angular.module('ProductDataService', ['ngResource'])
             update: { method: 'PUT' }
         }
     );
+}])
+
+.factory('ParameterTemplate', ['$resource', function($resource){
+    console.log('Entered factory function for ParameterTemplate');
+
+    return $resource(
+        '/parameterTemplates/:id',         // the associated URL
+        { id: '@templateGid' },            // map id parameter to a property
+        {                                  // additional or override methods
+            update: { method: 'PUT' }
+        }
+    );
 }]);
