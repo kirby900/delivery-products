@@ -5,13 +5,15 @@ angular.module('app')
     console.log('State ' + $state.current.name);
 
     $scope.types = ParameterDataType.types;
-    $scope.parameter = selectedParameter;
+    $scope.parameter = angular.copy(selectedParameter);
 
     $scope.save = function(parameter){
       console.log('Entered save()');
 
-      Parameter.update({ id: parameter.parmGid }, parameter, function(response){
+      Parameter.update({ id: parameter.parmGid }, parameter, function(data){
         console.log('Updated Parameter');
+        angular.extend(selectedParameter, data);
+        
         $state.go('parameters.selected.detail', {
           parameterId: $stateParams.parameterId
         });

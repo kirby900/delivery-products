@@ -10,7 +10,7 @@
                 </ul>
             </div>
 
-            <table class="table table-condensed table-striped">
+            <table class="table table-condensed table-hover">
                 <thead>
                     <th><a href="" data-ng-click="sort('dsplyOrdrNbr')">Order</a></th>
                     <th><a href="" data-ng-click="sort('prdctFrmtNam')">Name</a></th>
@@ -46,7 +46,6 @@
             </div>
 
             <div class="list-group">
-                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/new">Add Format</a>
                 <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/formats/reorder">Change Format Order</a>
                 <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/detail">Show Product Detail</a>
                 <a class="list-group-item" data-ng-href="#/products/list">Show Products</a>

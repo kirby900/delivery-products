@@ -15,6 +15,7 @@ module.exports = {
     prdctParmGid: { columnName: 'PRDCT_PARM_GID', type: 'integer', required: true },
     parmGid: { columnName: 'PARM_GID', type: 'integer', required: true },
     entrpPrdctGid: { columnName: 'ENTRP_PRDCT_GID', type: 'integer', required: true },
+    entrpPrdctNam: { columnName: 'ENTRP_PRDCT_NAM', type: 'string', size: 40, required: true },
     parmCde: { columnName: 'PARM_CDE', type: 'string', size: 10, required: true },
     parmNam: { columnName: 'PARM_NAM', type: 'string', size: 20, required: true },
     parmDesc: { columnName: 'PARM_DESC', type: 'string', size: 200 },

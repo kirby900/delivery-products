@@ -4,46 +4,11 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Product Detail
-                <a class="pull-right" data-ng-href="#/products/{{product.entrpPrdctGid}}/edit">Edit</a>
+                <ul class="list-inline pull-right">
+                    <li><a class="pull-right" data-ng-href="#/products/{{product.entrpPrdctGid}}/edit">Edit</a></li>
+                </ul>
             </div>
-<!--
-            <table class="table table-condensed">
-                <tbody>
-                    <tr>
-                        <th>Gid</th>
-                        <td>{{ product.entrpPrdctGid }}</td>
-                    </tr>
-                    <tr>
-                        <th>Name</th>
-                        <td>{{ product.entrpPrdctNam }}</td>
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        <td>{{ product.entrpPrdctDesc }}</td>
-                    </tr>
-                    <tr>
-                        <th>Output directory</th>
-                        <td>{{ product.fileLctnTmpltTxt }}</td>
-                    </tr>
-                    <tr>
-                        <th>Target database</th>
-                        <td>{{ product.trgtSchmaNam }} @ {{ product.trgtDbNam }}</td>
-                    </tr>
-                    <tr>
-                        <th>Perl driver</th>
-                        <td>{{ product.trgtPerlDrvrNam }}</td>
-                    </tr>
-                    <tr>
-                        <th>Enabled</th>
-                        <td>{{ indicatorToText(product.aprvdInd) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Last update</th>
-                        <td>{{ product.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{ product.lstUpdtId }}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
--->
+
             <div class="panel-body">
                 <dl class="dl-horizontal">
                     <dt>Gid</dt>
@@ -74,10 +39,9 @@
             </div>
             
             <div class="list-group">
-                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/edit">Edit Product</a>
-                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/list">Show Formats</a>
-                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/tasks/list">Show Tasks</a>
                 <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/parameters/list">Show Parameters</a>
+                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/tasks/list">Show Tasks</a>
+                <a class="list-group-item" data-ng-href="#/products/{{ product.entrpPrdctGid }}/formats/list">Show Formats</a>
                 <a class="list-group-item" href="#/products/list">Show Product List</a>
             </div>
         </div>

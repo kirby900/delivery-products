@@ -3,6 +3,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Product Attribute Detail
+                <ul class="list-inline pull-right">
+                    <li><a data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{attribute.prdctFrmtGid}}/attributes/{{attribute.prdctAtrbGid}}/edit">Edit</a></li>
+                </ul>
             </div>
 
             <div class="panel-body">
@@ -36,7 +39,7 @@
                     <dt>Standard attribute?</dt><dd>{{ indicatorToText(attribute.stdAtrbInd) }}</dd>
                     <dt>Split field?</dt><dd>{{ indicatorToText(attribute.splitFileOnAtrbValInd) }}</dd>
 
-                    <dt>Last update</dt><dd>{{ attribute.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ attribute.lstUpdtId }}</dd>
+                    <dt>Last update</dt><dd>{{ attribute.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{ attribute.lstUpdtId }}</strong></dd>
                 </dl>
             </div>
         </div>
@@ -49,7 +52,6 @@
             </div>
 
             <div class="list-group">
-                <a class="list-group-item" data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{attribute.prdctFrmtGid}}/attributes/{{attribute.prdctAtrbGid}}/edit">Edit Attribute</a>
                 <a class="list-group-item" data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{attribute.prdctFrmtGid}}/attributes/list">Show Attribute List</a>
                 <a class="list-group-item" data-ng-href="#/products/{{format.entrpPrdctGid}}/formats/{{attribute.prdctFrmtGid}}/detail">Show Format Detail</a>
             </div>

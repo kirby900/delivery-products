@@ -60,6 +60,9 @@
 
               <dt>Allow empty file</dt>
               <dd>{{ indicatorToText(format.allowEmptyFileInd) }}</dd>
+
+              <dt>Last update</dt>
+              <dd>{{ format.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{format.lstUpdtId}}</strong></dd>
             </dl>
           </div>
 

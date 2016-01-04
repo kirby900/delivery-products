@@ -5,15 +5,16 @@ angular.module('app')
     console.log('State ' + $state.current.name);
 
     $scope.product = selectedProduct;
-    $scope.productParameter = selectedProductParm;
     $scope.parameters = parameters;
+    $scope.productParameter = angular.copy(selectedProductParm);
 
     $scope.save = function(prodParm){
       console.log('Entered save()');
       prodParm.lstUpdtId = user.id;
 
-      ProductParameter.update({ id: prodParm.prdctParmGid }, prodParm, function(response){
+      ProductParameter.update({ id: prodParm.prdctParmGid }, prodParm, function(data){
         console.log('Updated Product Parameter');
+        angular.extend(selectedProductParm, data);
 
         $state.go('products.selected.parameters.selected.detail', {
           productId: $stateParams.productId,

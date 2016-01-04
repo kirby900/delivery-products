@@ -3,7 +3,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Task Detail
-                <a class="pull-right" data-ng-href="#/products/{{task.entrpPrdctGid}}/tasks/{{task.taskGid}}/edit">Edit</a>
+                <ul class="list-inline pull-right">
+                    <li><a data-ng-href="#/products/{{task.entrpPrdctGid}}/tasks/{{task.taskGid}}/edit">Edit</a></li>
+                </ul>
             </div>
 
             <div class="panel-body">
@@ -36,8 +38,8 @@
                     <dt>Sequence #</dt>
                     <dd>{{ task.taskSeqNbr }}</dd>
                     -->
-                    <dt>Last updated</dt>
-                    <dd>{{ task.lstUpdtTstmp | date:'medium' }} <strong>by</strong> {{ task.lstUpdtId }}</dd>
+                    <dt>Last update</dt>
+                    <dd>{{ task.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{ task.lstUpdtId }}</strong></dd>
                 </dl>
             </div>
         </div>
@@ -50,8 +52,7 @@
             </div>
 
             <div class="list-group">
-                <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/{{task.taskGid}}/edit">Edit Task</a>
-                <button type="button" class="list-group-item" data-ng-click="delete(task)">Delete Task</button>
+                <a class="list-group-item" data-ng-click="delete(task)">Delete Task</a>
                 <a class="list-group-item" data-ng-href="#/products/{{product.entrpPrdctGid}}/tasks/list">Show Task List</a>
                 <a class="list-group-item" data-ng-href="#/products/list">Show Product List</a>
             </div>

@@ -67,6 +67,11 @@ angular.module('app')
       url: "/detail",
       templateUrl: "templates/parameter_detail.html",
       controller: 'ParameterDetailController',
+      resolve: {
+        productParameters: function($stateParams, ProductParameter){
+          return ProductParameter.query({ parmGid: $stateParams.parameterId }).$promise;
+        }
+      },
       ncyBreadcrumb: {
         label: '{{ parameter.parmNam }}',
         parent: 'parameters.list'

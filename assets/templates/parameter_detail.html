@@ -1,17 +1,19 @@
 <div class="row">
     <div class="col-sm-9">
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 Parameter Detail
-                <a class="pull-right" data-ng-href="#/parameters/{{parameter.parmGid}}/edit">Edit</a>
+                <ul class="list-inline pull-right">
+                    <li><a data-ng-href="#/parameters/{{parameter.parmGid}}/edit">Edit</a></li>
+                </ul>
+
             </div>
 
             <div class="panel-body">
                 <dl class="dl-horizontal">
                     <dt>Gid</dt>
                     <dd>{{ parameter.parmGid }}</dd>
-                    <dt>Code</dt>
-                    <dd>{{ parameter.parmCde }}</dd>
                     <dt>Name</dt>
                     <dd>{{ parameter.parmNam }}</dd>
                     <dt>Description</dt>
@@ -20,11 +22,33 @@
                     <dd>{{ parameter.parmDataTyp }}</dd>
                     <dt>Format</dt>
                     <dd>{{ parameter.parmFrmtTxt }}</dd>
+                    <dt>Code</dt>
+                    <dd>{{ parameter.parmCde }}</dd>
                     <dt>Last update</dt>
                     <dd>{{ parameter.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{ parameter.lstUpdtId }}</strong></dd>
                 </dl>
             </div>
         </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Parameter references
+            </div>
+
+            <div class="panel-body">
+                <ul ng-show="productParameters.length">
+                    <li data-ng-repeat=" productParm in productParameters | orderBy:'entrpPrdctNam' ">
+                        <a data-ng-href="#/products/{{productParm.entrpPrdctGid}}/parameters/{{productParm.prdctParmGid}}/detail">{{ productParm.entrpPrdctNam }}</a>
+                    </li>
+                </ul>
+
+                <p ng-hide="productParameters.length">
+                    None
+                </p>
+            </div>
+
+        </div>
+
     </div>
 
     <div class="col-sm-3">
@@ -34,8 +58,7 @@
             </div>
 
             <div class="list-group">
-                <a class="list-group-item" data-ng-href="#/parameters/{{parameter.parmGid}}/edit">Edit Parameter</a>
-                <button class="list-group-item" data-ng-click="delete(parameter)">Delete Parameter</button>
+                <a class="list-group-item" data-ng-if="productParameters.length == 0" data-ng-click="delete(parameter)">Delete Parameter</a>
                 <a class="list-group-item" data-ng-href="#/parameters/list">Show Parameter List</a>
             </div>
         </div>

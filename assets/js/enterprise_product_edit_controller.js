@@ -4,7 +4,7 @@ angular.module('app')
   function($scope, $state, $stateParams, selectedProduct, EnterpriseProduct, user){
     console.log('Entered products.selected.edit');
 
-    $scope.product = selectedProduct;
+    $scope.product = angular.copy(selectedProduct);
 
     $scope.isModified = function(){
       return dirty;
@@ -14,8 +14,9 @@ angular.module('app')
       console.log('Entered save()');
       product.lstUpdtId = user.id;
 
-      EnterpriseProduct.update({ id: product.entrpPrdctGid }, product, function(response){
+      EnterpriseProduct.update({ id: product.entrpPrdctGid }, product, function(data){
         console.log('Updated Enterprise Product');
+        angular.extend(selectedProduct, data);
         
         $state.go('products.selected.detail', {
           productId: $stateParams.productId

@@ -5,14 +5,16 @@ angular.module('app')
     console.log('State ' + $state.current.name);
 
     $scope.product = selectedProduct;
-    $scope.format = selectedFormat;
+    $scope.format = angular.copy(selectedFormat);
 
     $scope.save = function(format){
       console.log('Entered save()');
       format.lstUpdtId = user.id;
 
-      ProductFormat.update({ id: format.prdctFrmtGid }, format, function(response){
+      ProductFormat.update({ id: format.prdctFrmtGid }, format, function(data){
         console.log('Updated Product Format');
+        angular.extend(selectedFormat, data);
+
         $state.go('products.selected.formats.selected.detail', {
           productId: $stateParams.productId,
           formatId: $stateParams.formatId
