@@ -12,20 +12,28 @@
                 <dl class="dl-horizontal">
                     <dt>Gid</dt>
                     <dd>{{ productParameter.prdctParmGid }}</dd>
+
                     <dt>Name</dt>
                     <dd>{{ productParameter.parameter.parmNam }}</dd>
+
                     <dt>Parm Gid</dt>
                     <dd>{{ productParameter.parameter.parmGid }}</dd>
+
                     <dt>Min occurs</dt>
                     <dd>{{ productParameter.minOcrncNbr }}</dd>
+
                     <dt>Max occurs</dt>
                     <dd>{{ productParameter.maxOcrncNbr }}</dd>
+
                     <dt>Calculated</dt>
                     <dd>{{ indicatorToText(productParameter.clctdParmInd) }}</dd>
+
                     <dt>SQL expression</dt>
                     <dd>{{ productParameter.clctdValExprsTxt }}</dd>
+
                     <dt>Related column</dt>
                     <dd>{{ productParameter.rltdColNam }}</dd>
+
                     <dt>Last update</dt>
                     <dd>{{ productParameter.lstUpdtTstmp | date:'medium' }} <em>by</em> <strong>{{ productParameter.lstUpdtId }}</strong></dd>
                 </dl>
