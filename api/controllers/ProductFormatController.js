@@ -9,6 +9,15 @@ var Promise = require('bluebird');
 
 module.exports = {
 
+    create: function(request, response) {
+        FormatService.addFormat(request.body, function(err, data) {
+            if (err)
+                return response.serverError("Something bad happened!");
+
+            return response.json(data);
+        });
+    },
+
     updateMultiple: function(request, response){
         console.log('Entered updateMultiple');
 

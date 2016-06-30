@@ -12,7 +12,7 @@ angular.module('app')
       prdctFrmtGid: selectedFormat.prdctFrmtGid,
       atrbDataAlgnCde: 'L',
       atrbIsFlrInd: 'N',
-      atrbDataTypTxt: 'STRING',
+      atrbDataTypTxt: 'TEXT',
       atrbMaxLngthNbr: 10,
       atrbPivotInd: 'N',
       atrbRqrdInd: 'N',
